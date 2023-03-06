@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5abbb30cece19514894e9063f8b90385, type: 3}
+  m_Name: WaterPoglin
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 7322234698011271873, guid: d8ebc278021336749bac186193a5cb8d, type: 3}
+  id: 5
+  alias: Water
+  description: On passing away it applies temporary health to its allies that degrades
+    overtime.
+  rarity: 100
+  minimumCapacity: 0.075
+  maximumCapacity: 0.1
+  speed: 0.8
+  interest: 0.5
+  deathAudio: {fileID: 8300000, guid: dbdf8f8ec2edd53438864c07fd2716e8, type: 3}
+  stealAudio: {fileID: 8300000, guid: c2224cf7a95525746b2ed27d6f318769, type: 3}

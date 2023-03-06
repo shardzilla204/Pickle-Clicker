@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ec5ebbd7bdf1644a8a1a0644ddf697, type: 3}
+  m_Name: AutoGlove
+  m_EditorClassIdentifier: Assembly-CSharp::AutoPickle/PoglinScriptableObject
+  id: 0
+  alias: Glove
+  description: Today is one of the many great days of harvest at the pickle farm.
+    You get ready in your worn out attire and put on the musky gloves that reek of
+    pickles due to previous uses of past generations. You then begin picking the
+    pickles into your basket and soon after finish up in the afternoon, walking back
+    home.
+  purchaseCost: 50
+  upgradeCost: 500
+  recieve: 1

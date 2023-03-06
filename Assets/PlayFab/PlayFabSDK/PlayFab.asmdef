@@ -1,0 +1,16 @@
+{
+    "name": "PlayFab",
+    "rootNamespace": "",
+    "references": [
+        "GUID:08a91b5284784994d9f65345e0abb64e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

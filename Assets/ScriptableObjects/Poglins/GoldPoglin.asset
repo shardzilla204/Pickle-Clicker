@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5abbb30cece19514894e9063f8b90385, type: 3}
+  m_Name: GoldPoglin
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 2304635482030175474, guid: a06db18be3627d6479cdbb5b78293e6a, type: 3}
+  id: 2
+  alias: Gold
+  description: A very rare Poglin that's also quite fast, steals even more pickles,
+    but collecting gives 100% more pickles that were originally stolen.
+  rarity: 10
+  minimumCapacity: 0.2
+  maximumCapacity: 0.25
+  speed: 3
+  interest: 2
+  deathAudio: {fileID: 8300000, guid: dbdf8f8ec2edd53438864c07fd2716e8, type: 3}
+  stealAudio: {fileID: 8300000, guid: c2224cf7a95525746b2ed27d6f318769, type: 3}

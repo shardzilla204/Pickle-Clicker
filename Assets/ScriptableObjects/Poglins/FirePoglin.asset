@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5abbb30cece19514894e9063f8b90385, type: 3}
+  m_Name: FirePoglin
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 2846136954063275947, guid: 9028b76aeeb3c1a4daa69983216fd5ab, type: 3}
+  id: 3
+  alias: Fire
+  description: Like a phoenix it resurrects on the first death. After the second
+    it just simply dies.
+  rarity: 200
+  minimumCapacity: 0.075
+  maximumCapacity: 0.1
+  speed: 1
+  interest: 0.5
+  deathAudio: {fileID: 8300000, guid: dbdf8f8ec2edd53438864c07fd2716e8, type: 3}
+  stealAudio: {fileID: 8300000, guid: c2224cf7a95525746b2ed27d6f318769, type: 3}

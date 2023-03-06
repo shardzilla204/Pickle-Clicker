@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d007dd88c4b19b41896f3b818847f5e, type: 3}
+  m_Name: Staff
+  m_EditorClassIdentifier: 
+  id: 0
+  displayName: Staff
+  cost: Maxed
+  description: Body
+  prefab: {fileID: 6337595167513480770, guid: 6bbeb979acd8377429f9b1e64b45c869, type: 3}
+  icon: {fileID: 21300000, guid: 23db649a785b7e64c9ad70eb47a58cbf, type: 3}
+  cosmetic: {fileID: 21300000, guid: 9e271caa4409cdd4390c01716ee247af, type: 3}
+  typeIcon: {fileID: 21300000, guid: bfdb6f05397273f47b4d421c4bfd1372, type: 3}
+  cosmeticType: 2
+  level: 0
+  tiers:
+  - {fileID: 11400000}
+  combinedCosmetics: []
+  unlocked: 0
