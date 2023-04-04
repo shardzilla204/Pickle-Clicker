@@ -19,7 +19,7 @@ namespace PickleClicker.Pickle
 
         public int pickleLevel = 1;
         public double currentPickleProgress = 0;
-        public double maximumPickleProgress = 69;
+        public double maximumPickleProgress = 100;
 
         public long pickleJarsBroken = 0;
         public long pickleBombsUsed = 0;

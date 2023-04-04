@@ -13,13 +13,23 @@ namespace PickleClicker.Controller
         public AudioSource musicPlayer;
         public AudioClip[] music;
         public int currentMusic = 0;
+        private int CONSTANT = 20;
+        private int ADDITION = 5;
 
         private void Awake()
         {
             float musicVolume = PlayerData.userData.musicVolume;
             float soundVolume = PlayerData.userData.soundVolume;
-            audioMixer.SetFloat("Music", Mathf.Log10(musicVolume) * 20);
-            audioMixer.SetFloat("Sound", Mathf.Log10(soundVolume) * 20);
+
+            Debug.Log(musicVolume);
+            Debug.Log(soundVolume);
+            Debug.Log(musicVolume.Equals(null) || soundVolume.Equals(null));
+
+            if (!musicVolume.Equals(null) || !soundVolume.Equals(null))
+            {
+                audioMixer.SetFloat("Music", (Mathf.Log10(musicVolume) * CONSTANT) + ADDITION);
+                audioMixer.SetFloat("Sound", (Mathf.Log10(soundVolume) * CONSTANT) + ADDITION);
+            };
         }
 
         private void Start() 
@@ -45,23 +55,18 @@ namespace PickleClicker.Controller
             }
             musicSliderMain.value = PlayerData.userData.musicVolume;
             soundSliderMain.value = PlayerData.userData.soundVolume;
-            musicSliderLogin.value = PlayerData.userData.musicVolume;
-            soundSliderLogin.value = PlayerData.userData.soundVolume;
         }
 
         [Header("Audio Controls")]
         [SerializeField] private AudioMixer audioMixer;
         [SerializeField] private Slider musicSliderMain;
         [SerializeField] private Slider soundSliderMain;
-        [SerializeField] private Slider musicSliderLogin;
-        [SerializeField] private Slider soundSliderLogin;
 
         public void SetMusicVolumeMain()
         {
             PlayerData.userData.musicVolume = musicSliderMain.value;
             float musicVolume = PlayerData.userData.musicVolume;
-            audioMixer.SetFloat("Music", Mathf.Log10(musicVolume) * 20);
-            Debug.Log(audioMixer.GetFloat("Music", out musicVolume));
+            audioMixer.SetFloat("Music", (Mathf.Log10(musicVolume) * CONSTANT) + ADDITION);
             gameManager.SaveUserData();
         }
 
@@ -69,23 +74,7 @@ namespace PickleClicker.Controller
         {
             PlayerData.userData.soundVolume = soundSliderMain.value;
             float soundVolume = PlayerData.userData.soundVolume;
-            audioMixer.SetFloat("Sound", Mathf.Log10(soundVolume) * 20);
-            gameManager.SaveUserData();
-        }
-
-        public void SetMusicVolumeLogin()
-        {
-            PlayerData.userData.musicVolume = musicSliderLogin.value;
-            float musicVolume = PlayerData.userData.musicVolume;
-            audioMixer.SetFloat("Music", Mathf.Log10(musicVolume) * 20);
-            gameManager.SaveUserData();
-        }
-
-        public void SetSoundVolumeLogin()
-        {
-            PlayerData.userData.soundVolume = soundSliderLogin.value;
-            float soundVolume = PlayerData.userData.soundVolume;
-            audioMixer.SetFloat("Sound", Mathf.Log10(soundVolume) * 20);
+            audioMixer.SetFloat("Sound", (Mathf.Log10(soundVolume) * CONSTANT) + ADDITION);
             gameManager.SaveUserData();
         }
     }

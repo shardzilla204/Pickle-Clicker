@@ -5,5 +5,6 @@ namespace PickleClicker.Data
     public class AutoList
     {
         public List<AutoData> autoBuyables = new List<AutoData>();
+        public List<AutoData> autos = new List<AutoData>();
     }
 }

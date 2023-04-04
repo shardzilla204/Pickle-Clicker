@@ -17,6 +17,9 @@ namespace PickleClicker.Poglin
         private Vector3 offset;
         private List<NormalPoglin> poglins = new List<NormalPoglin>();
 
+        public GameObject timer;
+        public  bool startTimer = false;
+
         private void Start() 
         {
             detectRadius = gameObject.GetComponent<CircleCollider2D>();
@@ -54,6 +57,17 @@ namespace PickleClicker.Poglin
             }
         }
 
+        public void SetUpCountdown()
+        {
+            GameObject timerClone = Instantiate(timer);
+            timerClone.transform.position = gameObject.transform.parent.position;
+            timerClone.transform.SetParent(gameObject.transform.parent);
+            timerClone.name = "Timer";
+
+            PickleBombTimer pickleBombTimer = timerClone.GetComponent<PickleBombTimer>();
+            pickleBombTimer.StartCountdown(timerClone);
+        }
+
         private int CalculateDamage(NormalPoglin poglin)
         {
             UpgradeCategoryData bombCategory = PlayerData.upgradeList.upgradeCategories.Find(category => category.id == 3);
@@ -84,9 +98,9 @@ namespace PickleClicker.Poglin
         {
             EarthPoglin earthPoglin = poglin.GetComponent<EarthPoglin>();
 
-            if (earthPoglin.currentArmor > 0) return false;
+            if (earthPoglin.currentArmor > 0) return true;
 
-            return true;
+            return false;
 
         }
 
@@ -95,6 +109,7 @@ namespace PickleClicker.Poglin
             if (hasArmor)
             {
                 poglin.GetComponent<EarthPoglin>().BreakShield();
+                Debug.Log("Breaking Earth Shield");
                 return;
             }
 
@@ -147,7 +162,7 @@ namespace PickleClicker.Poglin
             UpgradeData bombRadius = bombCategory.upgradeBuyables.Find(upgrade => upgrade.id == 1);
             Vector3 currentScale = circleRadius.transform.localScale;
 
-            detectRadius.radius += (float) bombRadius.amount/100;
+            detectRadius.radius = (float) bombRadius.amount/65;
             circleRadius.transform.localScale = new Vector3(detectRadius.radius * 2, detectRadius.radius * 2, detectRadius.radius * 2);
         }
     }

@@ -863,11 +863,11 @@ PlayerSettings:
   vrEditorSettings: {}
   cloudServicesEnabled:
     Build: 0
-    Collab: 0
+    Collab: 1
     Game Performance: 0
     Purchasing: 0
     UDP: 0
-    Unity Ads: 1
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -882,10 +882,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: f706be01-e49f-4b8c-a0c1-1d537b9cd0e9
+  cloudProjectId: 90610854-e26e-4af0-82b5-3748b923cef1
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Pickle Clicker (1)
+  projectName: Pickle Clicker
   organizationId: shardzilla204
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

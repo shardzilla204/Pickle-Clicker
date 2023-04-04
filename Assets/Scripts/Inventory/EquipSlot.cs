@@ -33,16 +33,13 @@ public class EquipSlot : MonoBehaviour, IDropHandler
 
         if (slotType != cosmeticType)
         {
-            Debug.Log("True and real");
             draggableItem.transform.SetParent(cosmetics.GetComponent<Transform>().transform);
         }
         else
         {
             if (transform.childCount == 1)
             {
-                typeIcon.SetActive(false);
                 draggableItem.parentAfterDrag = transform;
-
                 spriteMerger.AppendToList(dropped);
             }
         }
@@ -52,7 +49,6 @@ public class EquipSlot : MonoBehaviour, IDropHandler
     {
         DraggableItem draggableItem = gameObject.GetComponentInChildren<DraggableItem>();
         draggableItem.transform.SetParent(cosmetics.GetComponent<Transform>().transform);
-        Debug.Log(draggableItem.parentAfterDrag);
     }
 }
 

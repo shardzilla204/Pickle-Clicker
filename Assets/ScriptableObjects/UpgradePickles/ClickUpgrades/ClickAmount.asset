@@ -15,6 +15,6 @@ MonoBehaviour:
   id: 0
   alias: Increase Click
   description: Increases the amount of pickles every click.
-  cost: 750
+  cost: 500
   amount: 0
   maxAmount: 100

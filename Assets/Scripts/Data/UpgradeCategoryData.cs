@@ -10,7 +10,7 @@ namespace PickleClicker.Data
         public string description;
         public List<UpgradeData> upgradeBuyables;
 
-        public UpgradeCategoryData(int id, string alias, string description, List<UpgradeData> upgradeBuyables) 
+        public UpgradeCategoryData(int id, string alias, string description, List<UpgradeData> upgradeBuyables, List<UpgradeData> upgrades) 
         {
             this.id = id;
             this.alias = alias;

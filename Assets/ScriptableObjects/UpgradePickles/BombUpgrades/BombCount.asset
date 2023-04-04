@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BombCount
   m_EditorClassIdentifier: 
   id: 2
-  alias: More Explosions
+  alias: Extra Artillery
   description: Increases the amount of bombs you can have.
   cost: 250000
   amount: 0

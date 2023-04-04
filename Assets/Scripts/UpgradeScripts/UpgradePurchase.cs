@@ -22,7 +22,7 @@ namespace PickleClicker.Upgrade
 
         [SerializeField] private PickleBombController pickleBombController;
 
-        private double MULTIPLIER = 1.00242;
+        private double MULTIPLIER = 1.025;
         private int LINEAR = 3;
 
         private void Update() 
@@ -53,7 +53,31 @@ namespace PickleClicker.Upgrade
 
             upgrade.amount++;
             PlayerData.pickleData.totalUpgradePicklesPicked++;
+
+            CheckForBombUpgrade();
         }
+
+        private void CheckForBombUpgrade()
+        {
+            if (upgrade.categoryId != 3) return;
+
+            PickleBombSpawner pickleBombSpawner = GameObject.FindObjectOfType<PickleBombSpawner>();
+            List<PickleBomb> pickleBombs = GameObject.FindObjectsOfType<PickleBomb>().ToList();
+
+            if (upgrade.id == 2)
+            {
+                pickleBombSpawner.GainExtraBombSlot();
+            } 
+            else if (upgrade.id == 1)
+            {
+                foreach(PickleBomb pickleBomb in pickleBombs)
+                {
+                    pickleBomb.SetRadius();
+                }
+            }
+        }
+
+        //SetRadius();
 
         public void SetUpgradePickle(UpgradeData upgrade) 
         {

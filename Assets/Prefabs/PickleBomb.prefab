@@ -146,6 +146,7 @@ MonoBehaviour:
   detectRadius: {fileID: 3270213695160690841}
   circleRadius: {fileID: 6633503634814281836}
   explosionDamage: 10
+  timer: {fileID: 7452291015239065303, guid: 8c4979c27bb00b54c8c972eb39a12e71, type: 3}
 --- !u!95 &5757594261348663678
 Animator:
   serializedVersion: 4

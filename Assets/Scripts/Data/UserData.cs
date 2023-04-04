@@ -5,8 +5,8 @@ namespace PickleClicker.Data
     [System.Serializable]
     public class UserData
     {
-        public float musicVolume = 1;
-        public float soundVolume = 1;
+        public float musicVolume = 0.25f;
+        public float soundVolume = 0.25f;
         public bool transferredToV109 = false;
     }
 }

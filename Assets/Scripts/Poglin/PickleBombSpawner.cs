@@ -19,10 +19,8 @@ namespace PickleClicker.Poglin
         [SerializeField] private float distance = 15f;
         [SerializeField] private List<float> cosineAngles = new List<float>();
         [SerializeField] private List<float> sineAngles = new List<float>();
-        [SerializeField] private List<Vector2> angles = new List<Vector2>();
+        public List<Vector2> angles = new List<Vector2>();
         public List<GameObject> spots = new List<GameObject>();
-
-        public int extraBombs = 0;
 
         private void Update() 
         {
@@ -30,25 +28,19 @@ namespace PickleClicker.Poglin
 
             UpgradeCategoryData bombCategory = PlayerData.upgradeList.upgradeCategories.Find(category => category.id == 3);
             UpgradeData bombCount = bombCategory.upgradeBuyables.Find(upgrade => upgrade.id == 2);
-            
-            if (bombCount.amount != extraBombs) GainExtraBombSlot();
+
+            purchaseText.text = $"{PlayerData.pickleData.pickleBombCost}\nPickles";
 
             countText.text = $"{PlayerData.pickleData.currentPickleBombCount}/{PlayerData.pickleData.maxPickleBombCount}";
 
             if (PlayerData.pickleData.currentPickleBombCount == 0) ClearBombSlot();
-
-            purchaseText.text = $"{PlayerData.pickleData.pickleBombCost}\nPickles";
             
-            if (PlayerData.pickleData.currentPickleBombCount < PlayerData.pickleData.maxPickleBombCount) return;
-            
-            purchaseText.text = $"Max";
+            if (PlayerData.pickleData.currentPickleBombCount >= PlayerData.pickleData.maxPickleBombCount) purchaseText.text = $"Max";
         }
 
         private void Start() 
         {   
-            CreateBombSlots(3);
-            AddBombSlots();
-            angles.Clear(); 
+            GetBombSlot(3);
         }
 
         public void CreateBomb()
@@ -58,24 +50,47 @@ namespace PickleClicker.Poglin
             PlayerData.pickleData.picklesPicked -= (ulong) PlayerData.pickleData.pickleBombCost;
 
             GameObject pickleBombClone = Instantiate(pickleBomb);
-            pickleBombClone.transform.position = spots[PlayerData.pickleData.currentPickleBombCount].transform.position;
-            pickleBombClone.transform.SetParent(spots[PlayerData.pickleData.currentPickleBombCount].transform);
+            foreach (GameObject spot in spots)
+            {
+                if (spot.transform.childCount != 1)
+                {
+                    pickleBombClone.transform.position = spot.transform.position;
+                    pickleBombClone.transform.SetParent(spot.transform);
+                }
+            }
             pickleBombClone.name = "PickleBomb";
             PlayerData.pickleData.currentPickleBombCount++;
             ChangePrice(PlayerData.pickleData.currentPickleBombCount);
         }
 
+        public void AppendBombsOnLoad()
+        {
+            foreach (GameObject spot in spots)
+            {
+                if (spot.transform.childCount != 1)
+                {
+                    GameObject pickleBombClone = Instantiate(pickleBomb);
+                    pickleBombClone.transform.position = spot.transform.position;
+                    pickleBombClone.transform.SetParent(spot.transform);
+                    pickleBombClone.name = "PickleBomb";
+                }
+            }
+        }
+
         public void GainExtraBombSlot()
         {
             PlayerData.pickleData.maxPickleBombCount++;
-            extraBombs++;
             GetBombSlot(PlayerData.pickleData.maxPickleBombCount);
         }
 
         public void CreateBombSlots(int amount)
         {
+            Debug.Log("Creating bomb slots");
+            Debug.Log($"Amount Creating: {amount}");
             for (int bombCount = 0; bombCount < amount; ++bombCount)
             {
+                Debug.Log($"Executing again...");
+
                 float theta = (2 * Mathf.PI / amount) * bombCount;
                 angles.Add(new Vector3(Mathf.Cos(theta) * distance, Mathf.Sin(theta) * distance, 0));
             }
@@ -97,22 +112,8 @@ namespace PickleClicker.Poglin
         public void GetBombSlot(int amount)
         {
             ClearBombSlots();
-
             CreateBombSlots(amount);
-
             AddBombSlots();
-
-            angles.Clear(); 
-
-            if (PlayerData.pickleData.currentPickleBombCount == 0) return;
-
-            for (int i = 0; i < PlayerData.pickleData.currentPickleBombCount; i++)
-            {
-                GameObject pickleBombClone = Instantiate(pickleBomb);
-                pickleBombClone.transform.position = spots[i].transform.position;
-                pickleBombClone.transform.SetParent(spots[i].transform);
-                pickleBombClone.name = "PickleBomb";
-            }
         }
 
         public void RemoveBombCount(PickleBombSpawner pickleBombSpawner)
@@ -122,15 +123,14 @@ namespace PickleClicker.Poglin
 
         IEnumerator WaitForAnimation(PickleBombSpawner pickleBombSpawner)
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(4);
+            Debug.Log("Decreased bomb count");
             PlayerData.pickleData.currentPickleBombCount--;
             pickleBombSpawner.ChangePrice(PlayerData.pickleData.currentPickleBombCount);
         }
 
         public void ChangePrice(int bombCount)
         {
-            if (bombCount == 0) ClearBombSlots();
-
             long newCost = 3000;
 
             for (int append = 0; append < bombCount; append++)
@@ -148,6 +148,7 @@ namespace PickleClicker.Poglin
                 Destroy(child.gameObject);
                 spots.Clear();
             }
+            angles.Clear();
         }
 
         public void ClearBombSlot()

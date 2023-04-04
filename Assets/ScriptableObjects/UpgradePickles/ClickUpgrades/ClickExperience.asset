@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ClickExperience
   m_EditorClassIdentifier: 
   id: 2
-  alias: Clicker Veteran
+  alias: Juicer Pickle
   description: Gain more pickle experience gained from clicking your pickle.
   cost: 1000
   amount: 0

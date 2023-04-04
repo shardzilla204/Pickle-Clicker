@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BombDamage
   m_EditorClassIdentifier: 
   id: 0
-  alias: Bigger Bomb
+  alias: Bigger Explosion
   description: Increases the bombs damage.
   cost: 5000
   amount: 0

@@ -46,15 +46,8 @@ namespace PickleClicker
         {
             canvasGroup.alpha = 0.5f;
             dragOffset = transform.position - GetMousePos();
-            if (transform.parent == cosmetics.GetComponent<Transform>().transform) 
-            {
-                transform.SetParent(transform.parent.parent.parent.parent.parent);
-            }
-            else
-            {
-                transform.SetParent(transform.parent.parent.parent.parent.parent.parent);
-                parentAfterDrag = cosmetics.GetComponent<Transform>().transform;
-            }
+            transform.SetParent(transform.parent.parent.parent.parent.parent.parent);
+            parentAfterDrag = cosmetics.GetComponent<Transform>().transform;
             transform.SetAsLastSibling();
             image.raycastTarget = false;
             canvasGroup.blocksRaycasts = false;
@@ -78,6 +71,21 @@ namespace PickleClicker
                 }
             }
 
+            Debug.Log($"Parent: {transform.parent}");
+            Debug.Log($"Parent Bool: {transform.parent == cosmetics.GetComponent<Transform>().transform}");
+
+            if (transform.parent == cosmetics.GetComponent<Transform>().transform)
+            {
+                GameObject.FindObjectOfType<Cosmetic>().typePanel.SetActive(true);
+            }
+
+            string parent = gameObject.transform.parent.ToString();
+
+            if (parent.Contains("Cosmetics"))
+            {
+                gameObject.GetComponent<Cosmetic>().typePanel.SetActive(true);
+            }
+
             image.raycastTarget = true; 
             canvasGroup.blocksRaycasts = true;  
         }
@@ -90,7 +98,6 @@ namespace PickleClicker
             }
 
             if (clicked == 1) clickTime = Time.time;
-            
 
             if (clicked > 1 && Time.time - clickTime < clickDelay)
             {
@@ -106,14 +113,12 @@ namespace PickleClicker
 
                     if (equipSlotTransform.childCount == 1 && !parent.Contains("EquipSlot") && cosmeticType == equipSlot.slotType)
                     {
-                        Debug.Log("Why hello Luigi");
                         transform.SetParent(equipSlotTransform);
                         spriteMerger.AppendToList(gameObject);
                         return;
                     }
                     else if (parent.Contains("EquipSlot"))
                     {
-                        Debug.Log("Why hello Mario");
                         transform.SetParent(transform.root);
                         transform.SetAsLastSibling();
                         transform.SetParent(cosmeticsTransform);
@@ -122,7 +127,6 @@ namespace PickleClicker
                     }
                 }
                 Debug.Log($"After Parent: {transform.parent}");
-                return;
             }
         }
 
