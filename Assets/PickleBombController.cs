@@ -21,6 +21,7 @@ namespace PickleClicker.Poglin
 
             Debug.Log(bombRadius.amount);
 
+            // This is here because 
             if (bombRadius.amount < 5)
             {
                 pickleBomb.gameObject.GetComponent<CircleCollider2D>().radius += (bombRadius.amount/10);

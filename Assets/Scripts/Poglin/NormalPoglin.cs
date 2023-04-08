@@ -141,7 +141,7 @@ namespace PickleClicker.Poglin
                 audioSource.Play();
                 StartCoroutine(AutoCollect());
             }
-            else if (dead)
+            else if (dead && animator != null)
             { 
                 animator.SetTrigger("Disappear");
             }
@@ -159,13 +159,15 @@ namespace PickleClicker.Poglin
 
             double totalInterest = (totalSteal * poglinScriptableObject.interest) + totalRecieve;
             PlayerData.pickleData.picklesPicked += (ulong) totalInterest;
+            PlayerData.pickleData.currentPickleProgress += (Random.Range(5, 10) * PlayerData.pickleData.pickleLevel)/3;
 
-            value.transform.SetParent(pickleController.transform);
+            // value.transform.SetParent(pickleController.transform);
             GameObject valueClone = Instantiate(value);
-            valueClone.transform.SetParent(pickleController.transform);
             valueClone.name = "Value";
+            valueClone.transform.SetParent(pickleController.transform);
             valueClone.GetComponent<TextMesh>().text = $"+{totalInterest.ToString("N0")}";
             StartCoroutine(StartPopUp(valueClone));
+
         }
 
         protected virtual void OnMouseUp() 
@@ -225,12 +227,13 @@ namespace PickleClicker.Poglin
             valueClone.GetComponent<TextMesh>().text = $"-{totalSteal.ToString("N0")}";
             StartCoroutine(StartPopUp(valueClone));
 
-            // Debug.Log($"The Poglin stole {totalSteal} pickles!");
+            Debug.Log($"The Poglin stole {totalSteal} pickles!");
             PlayerData.pickleData.picklesPicked -= (ulong) totalSteal;
         }
 
         IEnumerator StartPopUp(GameObject clone)
         {
+ 
             clone.transform.position = new Vector3(Random.Range(-1f, 2f), Random.Range(-1f, 2f), 0);
             clone.GetComponent<Animator>().SetTrigger("Activate");
             yield return new WaitForSeconds(1f);

@@ -65,7 +65,7 @@ namespace PickleClicker.Poglin
                 }
                 yield return new WaitForSeconds(10);
             }
-            poglinWave.GetComponent<TextMesh>().text = "";
+            // poglinWave.GetComponent<TextMesh>().text = $"Wave {currentWave}";
         }
 
         private PoglinScriptableObject GetVariant()

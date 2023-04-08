@@ -29,9 +29,9 @@ namespace PickleClicker.Auto
                     
                 }
                 PlayerData.pickleData.picklesPerSecond = (long) total;
-                PlayerData.pickleData.picklesPicked += (ulong) PlayerData.pickleData.picklesPerSecond;
+                PlayerData.pickleData.picklesPicked += (ulong) PlayerData.pickleData.picklesPerSecond/10;
                 PickleController.GetHighestAmountOfPickles();
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.1f);
             }
         } 
     }

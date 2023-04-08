@@ -53,7 +53,7 @@ namespace PickleClicker.Poglin
                     StartCoroutine(AutoCollect());
                 }
             }
-            else if (dead)
+            else if (dead && animator != null)
             {
                 animator.SetTrigger("Disappear");
             }
