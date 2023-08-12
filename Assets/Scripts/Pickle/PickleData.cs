@@ -1,31 +1,31 @@
-namespace PickleClicker.Pickle
+namespace PickleClicker.Data
 {
     [System.Serializable]
     public class PickleData
     {
-        public ulong picklesPicked = 0;
-        public long picklesPerClick = 1;
-        public long picklesPerSecond = 0;
+        public double pickles = 0;
+        public double gainPerClick = 1;
+        public double gainPerSecond = 0;
 
-        public ulong totalPicklesSpent = 0;
-        public long totalAutoPicklesPicked = 0;
-        public long totalAutoPicklesUpgraded = 0;
-        public long totalUpgradePicklesPicked = 0;
+        public double totalPicklesSpent = 0;
+        public double totalAutoPickles = 0;
+        public double totalAutoPicklesUpgraded = 0;
+        public double totalUpgradePickles = 0;
 
-        public ulong totalPicklesPicked = 0;
-        public long totalCoinsCollected = 0;
-        public long totalClicks = 0;
-        public long totalPoglinsSlayed = 0;
+        public double totalPickles = 0;
+        public double totalCoins = 0;
+        public double totalClicks = 0;
+        public double totalPoglinsSlayed = 0;
 
-        public int pickleLevel = 1;
-        public double currentPickleProgress = 0;
-        public double maximumPickleProgress = 100;
+        public double level = 1;
+        public double currentProgress = 0;
+        public double maximumProgress = 100;
 
-        public long pickleJarsBroken = 0;
-        public long pickleBombsUsed = 0;
+        public double jarsBroken = 0;
+        public double bombsUsed = 0;
 
-        public int currentPickleBombCount = 0;
-        public int maxPickleBombCount = 3;
-        public long pickleBombCost = 3000;
+        public int currentBombCount = 0;
+        public int maximumBombCount = 3;
+        public double bombCost = 3000;
     }
 }

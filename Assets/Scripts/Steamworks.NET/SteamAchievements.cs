@@ -1,10 +1,10 @@
-using PickleClicker.Pickle;
-using PickleClicker.Data;
-using PickleClicker.Upgrade;
+using PickleClicker.Data.Player;
+using PickleClicker.Data.Auto;
+using PickleClicker.Data.Upgrade;
 using Steamworks;
 using UnityEngine;
 
-namespace PickleClicker 
+namespace PickleClicker.Game.Achievements
 {  
     public class SteamAchievements : MonoBehaviour
     {
@@ -21,13 +21,13 @@ namespace PickleClicker
 
             if (!SteamManager.Initialized) return;
 
-            if (PlayerData.pickleData.picklesPicked >= 50) SteamUserStats.SetAchievement("ACH_50");
-            if (PlayerData.pickleData.picklesPicked >= 100) SteamUserStats.SetAchievement("ACH_100");
+            if (PlayerData.pickleData.pickles >= 50) SteamUserStats.SetAchievement("ACH_50");
+            if (PlayerData.pickleData.pickles >= 100) SteamUserStats.SetAchievement("ACH_100");
 
             long totalAutoAmount = 0;
-            foreach (AutoData autoBuyable in PlayerData.autoList.autoBuyables)
+            foreach (AutoData auto in PlayerData.autoDataList)
             {
-                totalAutoAmount += autoBuyable.amount;
+                totalAutoAmount += auto.currentAmount;
             }
 
             if (totalAutoAmount >= 50) SteamUserStats.SetAchievement("ACH_AUTO_50");
@@ -35,9 +35,9 @@ namespace PickleClicker
             if (totalAutoAmount >= 250) SteamUserStats.SetAchievement("ACH_AUTO_250");
 
             int totalUpgradeAmount = 0;
-            foreach (UpgradeCategoryData upgradeCategory in PlayerData.upgradeList.upgradeCategories) 
+            foreach (UpgradeCategoryData upgradeCategory in PlayerData.upgradeCategoryDataList) 
             {
-                foreach (UpgradeData upgrade in upgradeCategory.upgradeBuyables)
+                foreach (UpgradeData upgrade in upgradeCategory.upgrades)
                 {
                     totalUpgradeAmount += upgrade.amount;
                 }
@@ -51,12 +51,12 @@ namespace PickleClicker
             if (PlayerData.pickleData.totalPoglinsSlayed >= 100) SteamUserStats.SetAchievement("ACH_KILL_100");
             if (PlayerData.pickleData.totalPoglinsSlayed >= 250) SteamUserStats.SetAchievement("ACH_KILL_250");
 
-            if (PlayerData.pickleData.pickleLevel >= 50) SteamUserStats.SetAchievement("ACH_LEVEL_50");
-            if (PlayerData.pickleData.pickleLevel >= 100) SteamUserStats.SetAchievement("ACH_LEVEL_100");
-            if (PlayerData.pickleData.pickleLevel >= 250) SteamUserStats.SetAchievement("ACH_LEVEL_250");
+            if (PlayerData.pickleData.level >= 50) SteamUserStats.SetAchievement("ACH_LEVEL_50");
+            if (PlayerData.pickleData.level >= 100) SteamUserStats.SetAchievement("ACH_LEVEL_100");
+            if (PlayerData.pickleData.level >= 250) SteamUserStats.SetAchievement("ACH_LEVEL_250");
 
-            UpgradeCategoryData clickCategory = PlayerData.upgradeList.upgradeCategories.Find(category => category.id == 0);
-            UpgradeData increaseClick = clickCategory.upgradeBuyables.Find(upgrade => upgrade.id == 0);
+            UpgradeCategoryData clickCategory = PlayerData.upgradeCategoryDataList.Find(category => category.id == 0);
+            UpgradeData increaseClick = clickCategory.upgrades.Find(upgrade => upgrade.id == 0);
 
             if (increaseClick.amount >= 100)
             {

@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 312524310f7ab6f4aa71bedfe1a478c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f057024bef89624f895f0b4c03c64d3, type: 3}
   m_Name: BombCount
   m_EditorClassIdentifier: 
+  categoryID: 3
   id: 2
   alias: Extra Artillery
-  description: Increases the amount of bombs you can have.
-  cost: 250000
-  amount: 0
-  maxAmount: 2
+  description: Increases bomb count.
+  purchaseCost: 500
+  currentAmount: 0
+  maxAmount: 100
+  enableEditing: 0

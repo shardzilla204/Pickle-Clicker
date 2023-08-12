@@ -9,19 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d007dd88c4b19b41896f3b818847f5e, type: 3}
+  m_Script: {fileID: 11500000, guid: 309fa11877593974998a8b0e24083dc3, type: 3}
   m_Name: Revolver
   m_EditorClassIdentifier: 
-  id: 0
-  displayName: Revolver
-  cost: 
-  description: Item/Accessory
-  prefab: {fileID: 6337595167513480770, guid: 6bbeb979acd8377429f9b1e64b45c869, type: 3}
-  icon: {fileID: 21300000, guid: 060598e8f063dcf49a2f346433c9b293, type: 3}
-  cosmetic: {fileID: 21300000, guid: 778653df74a669e4e981426dde5afb43, type: 3}
-  typeIcon: {fileID: 21300000, guid: bfdb6f05397273f47b4d421c4bfd1372, type: 3}
+  alias: 
+  description: 
+  itemIcon: {fileID: 21300000, guid: 060598e8f063dcf49a2f346433c9b293, type: 3}
+  item: {fileID: 21300000, guid: 778653df74a669e4e981426dde5afb43, type: 3}
+  typeIcon: {fileID: 21300000, guid: 51c17638f086b0743925bc9e7e10f44b, type: 3}
   cosmeticType: 2
-  level: 0
-  tiers: []
-  combinedCosmetics: []
-  unlocked: 0

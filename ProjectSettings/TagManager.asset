@@ -4,14 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - ClickCostText
-  - ClickButtonText
   - PickleCoinText
-  - PickleBomb
-  - PickleClone
   - PicklesPerSecondText
   - PicklesPickedText
-  - SectionButton
   layers:
   - Default
   - TransparentFX

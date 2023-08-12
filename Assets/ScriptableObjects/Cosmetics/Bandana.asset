@@ -9,19 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d007dd88c4b19b41896f3b818847f5e, type: 3}
+  m_Script: {fileID: 11500000, guid: 309fa11877593974998a8b0e24083dc3, type: 3}
   m_Name: Bandana
   m_EditorClassIdentifier: 
-  id: 5
-  displayName: Bandana
-  cost: 
-  description: Topper
-  prefab: {fileID: 6337595167513480770, guid: 6bbeb979acd8377429f9b1e64b45c869, type: 3}
-  icon: {fileID: 21300000, guid: c0014a4ce152a974fae93575383f1768, type: 3}
-  cosmetic: {fileID: 21300000, guid: 20cf2aa09fb43674c861528ab29c507e, type: 3}
+  alias: Bandana
+  description: 
+  itemIcon: {fileID: 21300000, guid: c0014a4ce152a974fae93575383f1768, type: 3}
+  item: {fileID: 21300000, guid: 20cf2aa09fb43674c861528ab29c507e, type: 3}
   typeIcon: {fileID: 21300000, guid: f3433ed522af40c4d917161ed9027047, type: 3}
   cosmeticType: 0
-  level: 0
-  tiers: []
-  combinedCosmetics: []
-  unlocked: 0

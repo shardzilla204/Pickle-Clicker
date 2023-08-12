@@ -9,16 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43ec5ebbd7bdf1644a8a1a0644ddf697, type: 3}
+  m_Script: {fileID: 11500000, guid: 63b449f3c3616bf40b12b58dca75e3c8, type: 3}
   m_Name: AutoJar
   m_EditorClassIdentifier: 
   id: 1
   alias: Jar
-  description: "Heading back inside your home, you greet your loyal companion, Ustayak,
-    an abandoned Poglin you\u2019ve found in the past eating your prized crops. Nowadays
-    they serve to help sell quality juicy moist pickles with their great sense of
-    smell. Afterwards you go into the storeroom to confine the day's harvest in pickle
-    jars. Feeling tired you then proceed to your bedroom.\r"
+  description: Heading back inside your home, you greet your loyal companion, Ustayak,
+    an abandoned Poglin you've found eating your crops. Nowadays they assist in selling
+    quality juicy moist pickles with their great sense of smell. Afterwards you go
+    into the storeroom to confine today's harvest in pickle jars. Tired you proceed
+    to your bedroom.
   purchaseCost: 100
-  upgradeCost: 1000
+  upgradeCost: 1500
   recieve: 2
+  currentAmount: 0
+  maxAmount: 0
+  amountRequiredForUpgrade: 0
+  recieveMultiplier: 0
+  upgradeLevel: 0
+  enableEditing: 0

@@ -9,16 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43ec5ebbd7bdf1644a8a1a0644ddf697, type: 3}
+  m_Script: {fileID: 11500000, guid: 63b449f3c3616bf40b12b58dca75e3c8, type: 3}
   m_Name: AutoBook
   m_EditorClassIdentifier: 
   id: 2
   alias: Book
-  description: You sit at your desk and pull out a book given by your late grandmother.
-    Within contains the story of an artifact that grants the user the ability to
-    create juicy moist pickles. As you flip through the pages a piece of paper falls
-    out. After inspecting it you unfold as to what seems like a map. Too tired to
-    do any further research you decide to hit the hay.
+  description: You sit at your desk and pull out a rugged book given by your late
+    grandmother. With contains fable of an artifact that grants the user the ability
+    to create the most moist and juiciest of pickles. Flipping through a piece of
+    stained, folded up paper falls out. You unfold to reveal to what seems to be
+    a map. Too tired to investigate any further you decide to hit the hay.
   purchaseCost: 250
   upgradeCost: 2500
   recieve: 3
+  currentAmount: 0
+  maxAmount: 0
+  amountRequiredForUpgrade: 0
+  recieveMultiplier: 0
+  upgradeLevel: 0
+  enableEditing: 0

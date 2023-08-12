@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 312524310f7ab6f4aa71bedfe1a478c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f057024bef89624f895f0b4c03c64d3, type: 3}
   m_Name: ClickExtraDamage
   m_EditorClassIdentifier: 
+  categoryID: 0
   id: 3
-  alias: Empowered Bonk
-  description: Increases the amount of critical damage dealt to Poglins.
-  cost: 1000
-  amount: 0
+  alias: Empowered Club
+  description: Increases the amount of critical damage against Poglins.
+  purchaseCost: 1000
+  currentAmount: 0
   maxAmount: 100
+  enableEditing: 0

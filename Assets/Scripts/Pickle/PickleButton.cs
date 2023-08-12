@@ -1,17 +1,22 @@
-using PickleClicker.CanvasScripts;
+using PickleClicker.Manager;
+using PickleClicker.Manager.Pickle;
+using PickleClicker.Controller.Pickle;
 using UnityEngine;
 
 namespace PickleClicker.Pickle
 {
     public class PickleButton : MonoBehaviour
     {
-        PickleController pickleController;
-        PickleObjectController pickleObjectController;
+        [SerializeField]
+        private PickleController pickleController;
 
-        private void Awake()
+        [SerializeField]
+        private PickleObjectManager pickleObjectManager;
+
+        private void Start()
         {
             pickleController = GameObject.FindObjectOfType<PickleController>();
-            pickleObjectController = GameObject.FindObjectOfType<PickleObjectController>();
+            pickleObjectManager = GameObject.FindObjectOfType<PickleObjectManager>();
         }
         
         private void OnMouseDown() 
@@ -20,7 +25,7 @@ namespace PickleClicker.Pickle
 
             pickleController.PickleClick();
             pickleController.EmitValue();
-            pickleObjectController.CreatePickle();
+            pickleObjectManager.CreatePickle();
         }
     }
 }

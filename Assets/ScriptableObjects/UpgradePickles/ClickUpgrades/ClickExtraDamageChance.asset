@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 312524310f7ab6f4aa71bedfe1a478c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f057024bef89624f895f0b4c03c64d3, type: 3}
   m_Name: ClickExtraDamageChance
   m_EditorClassIdentifier: 
+  categoryID: 0
   id: 4
-  alias: Bonk Chance
-  description: Increases the chance to do critical damage to Poglins.
-  cost: 1000
-  amount: 0
+  alias: Anticipated Strike
+  description: Increases your chances of landing a critical strike.
+  purchaseCost: 1000
+  currentAmount: 0
   maxAmount: 100
+  enableEditing: 0

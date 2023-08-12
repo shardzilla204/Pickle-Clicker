@@ -117,7 +117,7 @@ RectTransform:
   - {fileID: 5387343457253067529}
   - {fileID: 5890319783249750894}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -141,6 +141,12 @@ Rigidbody2D:
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -155,7 +161,7 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 --- !u!95 &315307140949314280
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -172,7 +178,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!70 &7454425009583749556
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -183,6 +190,25 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -262,20 +288,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1230429860784842407}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0769f7cc21ea22240875467dc9e95759, type: 3}
+  m_Script: {fileID: 11500000, guid: a10113598fbc53e4da6f1d97e0f8b3e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poglinScriptableObject: {fileID: 11400000, guid: c3a06c4ce72f77a48885389ae846cd15, type: 2}
-  maxHealth: 2
+  poglinScriptableObject: {fileID: 0}
+  maxHealth: 0
   currentHealth: 0
-  healthBar: {fileID: 8682415947348753533}
+  healthBar: {fileID: 0}
   currentTemporaryHealth: 0
-  temporaryHealthBar: {fileID: 2485870004202230812}
+  temporaryHealthBar: {fileID: 0}
   poglinSpeed: 0
   pickleButton: {fileID: 0}
-  audioSource: {fileID: 3460949892716092380}
-  animator: {fileID: 315307140949314280}
-  value: {fileID: 1540245006332615061, guid: 0bab85fb53dbdec4cafb85ee828c0420, type: 3}
+  audioSource: {fileID: 0}
+  animator: {fileID: 0}
+  value: {fileID: 0}
   pickleController: {fileID: 0}
   goTowards: {fileID: 0}
   stole: 0
@@ -393,6 +419,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 388982979
   m_SortingOrder: 1
   m_TargetDisplay: 0

@@ -1,17 +1,19 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace PickleClicker 
+namespace PickleClicker.Game.Cosmetic
 {
     public class Inventory : MonoBehaviour, IDropHandler
     {
-        [SerializeField] SpriteMerger spriteMerger;
-        [SerializeField] Cosmetics cosmetics;
+        [SerializeField] 
+        private SpriteMerger spriteMerger;
+        
+        [SerializeField] 
+        private GameObject cosmetics;
 
         private void Start() 
         {
             spriteMerger = GameObject.FindObjectOfType<SpriteMerger>();
-            cosmetics = GameObject.FindObjectOfType<Cosmetics>();
         }
 
         public void OnDrop(PointerEventData eventData)

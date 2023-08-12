@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7946204016253140799}
   - component: {fileID: 7292793711654231383}
   m_Layer: 0
-  m_Name: Name
+  m_Name: AliasText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,7 +113,7 @@ RectTransform:
   m_Children:
   - {fileID: 8702367929935584729}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -132,9 +132,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e55533f46ce14946962ea790c679f45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoPickleScriptableObject: {fileID: 0}
-  nameText: {fileID: 7292793711654231383}
-  panelColor: {fileID: 1371252267624211299}
+  autoScriptableObject: {fileID: 0}
+  descriptionManager: {fileID: 0}
+  aliasText: {fileID: 7292793711654231383}
+  panelImage: {fileID: 5611083033953471329}
 --- !u!222 &5106081620974559125
 CanvasRenderer:
   m_ObjectHideFlags: 0

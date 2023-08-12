@@ -1,189 +1,179 @@
-using PickleClicker.Controller;
-using PickleClicker.Buyable;
-using PickleClicker.Data;
+using PickleClicker.Manager;
+using PickleClicker.Controller.Auto;
+using PickleClicker.Data.Auto;
+using PickleClicker.Data.Player;
+using PickleClicker.Data.ScriptableObjects.Auto;
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace PickleClicker.Auto
+namespace PickleClicker.Game.Auto
 {
     public class AutoPurchase : MonoBehaviour
     {
-        public ulong totalCost;
+        private double totalCost;
         private ulong cost;
-        private int amount;
+        private int amountPurchasing;
         private bool notEnough = false;
-        private BuyableType type;
+        private AutoAmountType autoAmountType;
 
-        [SerializeField] private Text amountText;
-        [SerializeField] private Text costText;
-        [SerializeField] private Text recieveText;
-        [SerializeField] private Button purchaseButton;
-        [SerializeField] private Button upgradeButton;
+        private const double MULTIPLIER = 1.025;
+        private const int LINEAR = 1;
 
-        private double MULTIPLIER = 1.02;
-        private int LINEAR = 1;
+        [SerializeField] 
+        private AutoController autoController;
 
-        public AutoData autoBuyable;
-        public AutoBuyableManager autoBuyableManager;
+        [SerializeField] 
+        private DescriptionManager descriptionManager;
+        
+        [SerializeField] 
+        private List<AutoAmountButton> autoAmountButtons = new List<AutoAmountButton>(); 
 
-        [SerializeField] private DescriptionController descriptionController;
+        [SerializeField] 
+        private GameObject buttonContainer;
 
-        [SerializeField] private List<BuyableButton> buttons = new List<BuyableButton>(); 
-        [SerializeField] private GameObject buttonContainer;
+        [SerializeField] 
+        private Button upgradeButton;
 
-        private void Start()
+        private void Awake()
         {
-            buttons = GameObject.FindObjectsOfType<BuyableButton>().ToList();
-            descriptionController = GameObject.FindObjectOfType<DescriptionController>();
-            autoBuyableManager = GameObject.FindObjectOfType<AutoBuyableManager>();
-
-            autoBuyable = descriptionController.autoBuyableManager.autoBuyable;
-            amountText = descriptionController.autoBuyableManager.amountText;
-            costText = descriptionController.autoBuyableManager.costText;
-            recieveText = descriptionController.autoBuyableManager.recieveText;
+            autoAmountButtons = GameObject.FindObjectsOfType<AutoAmountButton>().ToList();
+            descriptionManager = GameObject.FindObjectOfType<DescriptionManager>();
+            autoController = GameObject.FindObjectOfType<AutoController>();
         }
 
         private void Update() 
         {
             if (!notEnough) return;
 
-            if (PlayerData.pickleData.picklesPicked >= this.totalCost)
+            if (PlayerData.pickleData.pickles >= totalCost)
             {
-                costText.text = $"{this.totalCost.ToString("N0")}\nPickles";
+                autoController.purchaseCost.text = $"{totalCost.ToString("N0")}\nPickles";
                 notEnough = !notEnough;
                 return;
             }
 
-            costText.text = $"Not Enough\nPickles\n\nNeed {this.totalCost - PlayerData.pickleData.picklesPicked} More Pickles"; 
+            autoController.purchaseCost.text = $"Need {(totalCost - PlayerData.pickleData.pickles).ToString("N0")} More Pickles"; 
         }
 
         public void BuyAutoPickle()
         {
-            if (PlayerData.pickleData.picklesPicked < this.totalCost || autoBuyable.maxAmount <= autoBuyable.amount) return;
+            if (PlayerData.pickleData.pickles < totalCost || autoController.autoData.maxAmount <= autoController.autoData.currentAmount) return;
 
-            PlayerData.pickleData.picklesPicked -= this.totalCost;
-            PlayerData.pickleData.totalPicklesSpent += this.totalCost;
-            autoBuyable.purchaseCost = this.cost;
+            PlayerData.pickleData.pickles -= totalCost;
+            PlayerData.pickleData.totalPicklesSpent += totalCost;
+            autoController.autoData.purchaseCost = cost;
 
-            autoBuyable.amount += amount;
-            amountText.text = $"{(autoBuyable.amount).ToString("N0")}/{autoBuyable.maxAmount.ToString("N0")}\nPicked";
-            PlayerData.pickleData.totalAutoPicklesPicked += amount;
+            autoController.autoData.currentAmount += amountPurchasing;
+            autoController.amount.text = $"{(autoController.autoData.currentAmount).ToString("N0")}/{autoController.autoData.maxAmount.ToString("N0")}\nPicked";
+            PlayerData.pickleData.totalAutoPickles += amountPurchasing;
             
-            CalculateTotal(this.type);
-            ShowHideButtons();
+            CalculateTotal(autoAmountType);
+            ToggleButtons();
         }
 
         public void SelectOne()
         {
-            CalculateTotal(BuyableType.One);
+            CalculateTotal(AutoAmountType.One);
         }
 
         public void SelectFive()
         {
-            CalculateTotal(BuyableType.Five);
+            CalculateTotal(AutoAmountType.Five);
         }
 
-        public void SelectTen()
+        public void SelectTwentyFive()
         {
-            CalculateTotal(BuyableType.Ten);
+            CalculateTotal(AutoAmountType.TwentyFive);
         }
 
         public void SelectMax()
         {
-            CalculateTotal(BuyableType.Max);
+            CalculateTotal(AutoAmountType.Max);
         }
         
-        public void CalculateTotal(BuyableType type)
+        public void CalculateTotal(AutoAmountType autoAmountType)
         {
             if (!buttonContainer.activeSelf) return;
 
-            ulong currentPickles = PlayerData.pickleData.picklesPicked;
-            ulong cost = autoBuyable.purchaseCost;
-            int amount = 0;
+            double currentPickles = PlayerData.pickleData.pickles;
             notEnough = false;
-            this.type = type;
+            this.autoAmountType = autoAmountType;
 
-            if (type == BuyableType.One) amount = 1;
-            if (type == BuyableType.Five) amount = 5;
-            if (type == BuyableType.Ten) amount = 10;
-            if (type == BuyableType.Max) amount = autoBuyable.maxAmount - autoBuyable.amount;
+            int amountToPurchase = 0;
+            if (autoAmountType.Equals(AutoAmountType.One)) amountToPurchase = 1;
+            if (autoAmountType.Equals(AutoAmountType.Five)) amountToPurchase = 5;
+            if (autoAmountType.Equals(AutoAmountType.TwentyFive)) amountToPurchase = 25;
+            if (autoAmountType.Equals(AutoAmountType.Max)) amountToPurchase = GetRemainingAmount();
 
-            BuyableButton button = buttons.Find(button => button.type == type);
+            AutoAmountButton autoAmountButton = autoAmountButtons.Find(button => button.type == autoAmountType);
             
-            this.amount = amount;
-            this.totalCost = GetPicklesLeft(button, amount);
+            amountPurchasing = amountToPurchase;
+            totalCost = GetPicklesLeft(autoAmountButton, amountPurchasing);
 
-            if (button.type == BuyableType.Max) this.totalCost -= cost;
+            if (autoAmountButton.type.Equals(AutoAmountType.Max)) totalCost -= cost;
 
-            costText.text = $"{this.totalCost.ToString("N0")}\nPickles";
+            autoController.purchaseCost.text = $"{totalCost.ToString("N0")}\nPickles";
 
             if (currentPickles < this.totalCost) notEnough = true;
         }
 
-        private ulong GetPicklesLeft(BuyableButton button, int amount)
+        private int GetRemainingAmount()
         {
-            ulong cost = autoBuyable.purchaseCost;
+            return autoController.autoData.maxAmount - autoController.autoData.currentAmount;
+        }
+
+        private ulong GetPicklesLeft(AutoAmountButton autoAmountButton, int amount)
+        {
+            ulong cost = autoController.autoData.purchaseCost;
+
+            if (autoAmountType.Equals(AutoAmountType.Max)) autoAmountButton.GetComponentInChildren<Text>().text = "Max";
+
             ulong accumulation = 0;
-
-            if (type == BuyableType.Max) button.GetComponentInChildren<Text>().text = "Max";
-
             for (int index = 0; index < amount; index++)
             {
                 accumulation += cost;
                 cost = (ulong) Math.Floor((cost + (ulong) LINEAR) * MULTIPLIER);
 
-                if (type == BuyableType.Max) button.GetComponentInChildren<Text>().text = $"x{amount}";
+                if (autoAmountType.Equals(AutoAmountType.Max)) autoAmountButton.GetComponentInChildren<Text>().text = $"x{amount.ToString("N0")}";
             }
             this.cost = cost;
             return accumulation;
         }
 
-        public void ShowHideButtons()
+        public void ToggleButtons()
         {
-            foreach (BuyableButton button in buttons)
+            foreach (AutoAmountButton autoAmountButton in autoAmountButtons)
             {
-                int amount = 0;
+                int amountToPurchase = 0;
 
-                button.gameObject.SetActive(false);
+                autoAmountButton.gameObject.SetActive(false);
 
-                if (button.type == BuyableType.One) amount = 1;
-                if (button.type == BuyableType.Five) amount = 5;
-                if (button.type == BuyableType.Ten) amount = 10;
-                if (button.type == BuyableType.Max) amount = autoBuyable.maxAmount - autoBuyable.amount;
+                if (autoAmountButton.type == AutoAmountType.One) amountToPurchase = 1;
+                if (autoAmountButton.type == AutoAmountType.Five) amountToPurchase = 5;
+                if (autoAmountButton.type == AutoAmountType.TwentyFive) amountToPurchase = 10;
+                if (autoAmountButton.type == AutoAmountType.Max) amountToPurchase = GetRemainingAmount();
                 
-                if (autoBuyable.maxAmount - autoBuyable.amount >= amount) button.gameObject.SetActive(true);
+                if (autoController.autoData.maxAmount - autoController.autoData.currentAmount >= amountToPurchase) autoAmountButton.gameObject.SetActive(true);
             }
 
-            recieveText.text = $"+{(Math.Floor(autoBuyable.recieve * autoBuyable.multiplier)).ToString("N0")}\nPickles";
-            amountText.fontSize = 20;
-            recieveText.fontSize = 20;
-            costText.gameObject.SetActive(true);
-            buttonContainer.gameObject.SetActive(true);
+            autoController.recieve.text = $"+{(Math.Floor(autoController.autoData.recieve * autoController.autoData.recieveMultiplier)).ToString("N0")}\nPickles";
 
-            if (autoBuyable.amount < autoBuyable.maxAmount) return;
+            if (autoController.autoData.currentAmount < autoController.autoData.maxAmount) return;
 
-            CalculateTotal(BuyableType.One);
-            amountText.fontSize = 25;
-            amountText.fontSize = 25;
-            costText.gameObject.SetActive(false);
-            buttonContainer.gameObject.SetActive(false);
+            CalculateTotal(AutoAmountType.One);
         }
 
-
-        public void DisablePurchaseButton()
+        public void DisableUpgradeButton()
         {
-            ulong purchaseCost = autoBuyable.purchaseCost;
-            ulong upgradeCost = autoBuyable.upgradeCost;
-
-            purchaseButton.interactable = false;
+            ulong upgradeCost = autoController.autoData.upgradeCost;
+            int currentAmount = autoController.autoData.currentAmount;
+            int amountRequiredForUpgrade = autoController.autoData.amountRequiredForUpgrade;
             upgradeButton.interactable = false;
 
-            if (PlayerData.pickleData.picklesPicked >= purchaseCost) purchaseButton.interactable = true;
-
-            if (PlayerData.pickleData.picklesPicked >= upgradeCost && autoBuyable.amount >= autoBuyable.amountRequired) upgradeButton.interactable = true;
+            if (PlayerData.pickleData.pickles >= upgradeCost && currentAmount >= amountRequiredForUpgrade) upgradeButton.interactable = true;
         }
     }
 }

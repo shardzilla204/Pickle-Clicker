@@ -1,39 +1,37 @@
-using PickleClicker.CanvasScripts;
+using PickleClicker.Manager;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-namespace PickleClicker 
+namespace PickleClicker.Game.Cosmetic
 {  
     public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
     {
         private Camera cam;
         private Vector3 dragOffset;
         private Image image;
-        private Canvas canvas;
         private CanvasGroup canvasGroup;
         [HideInInspector] public Transform parentAfterDrag;
         private int clicked = 0;
         private float clickTime = 0;
         private float clickDelay = 0.275f;
-        [SerializeField] private Cosmetics cosmetics;
-        [SerializeField] private List<EquipSlot> equipSlots = new List<EquipSlot>(); 
-        [SerializeField] private SpriteMerger spriteMerger;
+        
+        public GameObject cosmeticsContainer;
+
+        [SerializeField] 
+        private List<EquipSlot> equipSlots = new List<EquipSlot>(); 
+
+        [SerializeField] 
+        private SpriteMerger spriteMerger;
 
         private void Awake() 
         {
             cam = Camera.main;
-        }
-
-        private void Start() 
-        {
-            canvas = GameObject.FindObjectOfType<CanvasManager>().GetComponent<Canvas>();
             equipSlots = GameObject.FindObjectsOfType<EquipSlot>().ToList();
             image = gameObject.GetComponent<Image>();
             canvasGroup = gameObject.GetComponent<CanvasGroup>();
-            cosmetics = GameObject.FindObjectOfType<Cosmetics>();
             spriteMerger = GameObject.FindObjectOfType<SpriteMerger>();
         }
 
@@ -47,7 +45,7 @@ namespace PickleClicker
             canvasGroup.alpha = 0.5f;
             dragOffset = transform.position - GetMousePos();
             transform.SetParent(transform.parent.parent.parent.parent.parent.parent);
-            parentAfterDrag = cosmetics.GetComponent<Transform>().transform;
+            parentAfterDrag = cosmeticsContainer.GetComponent<Transform>().transform;
             transform.SetAsLastSibling();
             image.raycastTarget = false;
             canvasGroup.blocksRaycasts = false;
@@ -61,29 +59,32 @@ namespace PickleClicker
         public void OnEndDrag(PointerEventData eventData)
         {
             canvasGroup.alpha = 1f;
-            Transform cosmeticsTransform = cosmetics.GetComponent<Transform>();
+            Transform cosmeticsContainerTransform = cosmeticsContainer.GetComponent<Transform>();
             foreach (EquipSlot equipSlot in equipSlots)
             {
                 Transform equipSlotTransform = equipSlot.GetComponent<Transform>();
-                if (parentAfterDrag == equipSlotTransform.transform || parentAfterDrag == cosmeticsTransform.transform)
+                if (parentAfterDrag == equipSlotTransform || parentAfterDrag == cosmeticsContainerTransform)
                 {
                     transform.SetParent(parentAfterDrag);
+                    AddressablesManager addressablesManager = GameObject.FindObjectOfType<AddressablesManager>();
+                    addressablesManager.cosmeticItems.Remove(gameObject);
                 }
             }
 
-            Debug.Log($"Parent: {transform.parent}");
-            Debug.Log($"Parent Bool: {transform.parent == cosmetics.GetComponent<Transform>().transform}");
-
-            if (transform.parent == cosmetics.GetComponent<Transform>().transform)
+            if (transform.parent == cosmeticsContainer.GetComponent<Transform>())
             {
-                GameObject.FindObjectOfType<Cosmetic>().typePanel.SetActive(true);
+                GameObject.FindObjectOfType<CosmeticItem>().typePanel.SetActive(true);
+                AddressablesManager addressablesManager = GameObject.FindObjectOfType<AddressablesManager>();
+                addressablesManager.cosmeticItems.Add(gameObject);
             }
 
             string parent = gameObject.transform.parent.ToString();
 
             if (parent.Contains("Cosmetics"))
             {
-                gameObject.GetComponent<Cosmetic>().typePanel.SetActive(true);
+                gameObject.GetComponent<CosmeticItem>().typePanel.SetActive(true);
+                AddressablesManager addressablesManager = GameObject.FindObjectOfType<AddressablesManager>();
+                addressablesManager.cosmeticItems.Add(gameObject);
             }
 
             image.raycastTarget = true; 
@@ -92,29 +93,24 @@ namespace PickleClicker
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            if (eventData.button == PointerEventData.InputButton.Left)
-            {
-                clicked++;
-            }
+            if (eventData.clickCount == 1) clickTime = Time.time;
 
-            if (clicked == 1) clickTime = Time.time;
-
-            if (clicked > 1 && Time.time - clickTime < clickDelay)
+            if (eventData.clickCount > 1 && Time.time - clickTime < eventData.clickTime)
             {
                 clicked = 0;
                 Debug.Log($"Before Parent: {transform.parent}");
-                Transform cosmeticsTransform = cosmetics.GetComponent<Transform>();
+                Transform cosmeticsTransform = cosmeticsContainer.GetComponent<Transform>();
 
                 foreach (EquipSlot equipSlot in equipSlots)
                 {
                     string parent = gameObject.transform.parent.ToString();
                     Transform equipSlotTransform = equipSlot.GetComponent<Transform>();
-                    CosmeticType cosmeticType = eventData.pointerClick.GetComponent<Cosmetic>().cosmeticScriptableObject.cosmeticType;
+                    CosmeticType cosmeticType = eventData.pointerClick.GetComponent<CosmeticItem>().cosmeticScriptableObject.cosmeticType;
 
                     if (equipSlotTransform.childCount == 1 && !parent.Contains("EquipSlot") && cosmeticType == equipSlot.slotType)
                     {
                         transform.SetParent(equipSlotTransform);
-                        spriteMerger.AppendToList(gameObject);
+                        spriteMerger.AppendToList(gameObject.GetComponent<CosmeticItem>());
                         return;
                     }
                     else if (parent.Contains("EquipSlot"))
@@ -123,6 +119,8 @@ namespace PickleClicker
                         transform.SetAsLastSibling();
                         transform.SetParent(cosmeticsTransform);
                         spriteMerger.RemoveFromList(gameObject);
+                        AddressablesManager addressablesManager = GameObject.FindObjectOfType<AddressablesManager>();
+                        addressablesManager.cosmeticItems.Remove(gameObject);
                         return;
                     }
                 }

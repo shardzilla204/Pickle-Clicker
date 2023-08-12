@@ -9,13 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 312524310f7ab6f4aa71bedfe1a478c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f057024bef89624f895f0b4c03c64d3, type: 3}
   m_Name: ClickPierce
   m_EditorClassIdentifier: 
+  categoryID: 0
   id: 5
-  alias: Iron Spear
-  description: Applies normal damage to Earth Poglin's shield. Although doesn't apply
-    critical damage.
-  cost: 5000
-  amount: 0
-  maxAmount: 1
+  alias: Iron Pointed Spear
+  description: Normal damage against Earth Poglin shields. Doesn't apply critical
+    damage.
+  purchaseCost: 5000
+  currentAmount: 0
+  maxAmount: 100
+  enableEditing: 0

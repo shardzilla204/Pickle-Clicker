@@ -1,9 +1,10 @@
-using PickleClicker.Controller;
+using PickleClicker.Manager;
+using PickleClicker.Data.ScriptableObjects.Poglin;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-namespace PickleClicker.Poglin
+namespace PickleClicker.Game.Poglin
 {  
     public class PoglinVariant : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
@@ -11,25 +12,25 @@ namespace PickleClicker.Poglin
         private PoglinScriptableObject poglinScriptableObject;
         
         [SerializeField]
-        private DescriptionController descriptionController;
+        private DescriptionManager descriptionManager;
 
         public Text nameText;
         public GameObject panel;
 
         private void Start()
         {   
-            descriptionController = GameObject.FindObjectOfType<DescriptionController>();
+            descriptionManager = GameObject.FindObjectOfType<DescriptionManager>();
             nameText.text = $"{poglinScriptableObject.alias} Poglin";
 
             if (poglinScriptableObject.id != 0) return;
 
-            descriptionController.ShowPoglin(poglinScriptableObject);
+            descriptionManager.ShowPoglin(poglinScriptableObject);
         }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
             panel.GetComponent<Image>().color = new Color32(66, 43, 20, 255);
-            descriptionController.ShowPoglin(poglinScriptableObject);
+            descriptionManager.ShowPoglin(poglinScriptableObject);
         }
 
         public void OnPointerExit(PointerEventData eventData)

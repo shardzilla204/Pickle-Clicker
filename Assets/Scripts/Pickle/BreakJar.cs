@@ -8,13 +8,12 @@ namespace PickleClicker.Pickle
 
         private void OnMouseOver() 
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                BreakOpen();
-            }
+            if (!Input.GetMouseButtonDown(0)) return;
+                
+            BreakOpenJar();
         }
 
-        private void BreakOpen()
+        private void BreakOpenJar()
         {
             animate.SetTrigger("Break Open");
             animate.SetBool("Broken", true);

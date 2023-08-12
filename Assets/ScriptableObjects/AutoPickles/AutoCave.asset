@@ -9,12 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43ec5ebbd7bdf1644a8a1a0644ddf697, type: 3}
+  m_Script: {fileID: 11500000, guid: 63b449f3c3616bf40b12b58dca75e3c8, type: 3}
   m_Name: AutoCave
   m_EditorClassIdentifier: 
   id: 6
   alias: Cave
   description: No Description
   purchaseCost: 7500
-  upgradeCost: 22500
-  recieve: 15
+  upgradeCost: 25000
+  recieve: 7
+  currentAmount: 0
+  maxAmount: 0
+  amountRequiredForUpgrade: 0
+  recieveMultiplier: 0
+  upgradeLevel: 0
+  enableEditing: 0

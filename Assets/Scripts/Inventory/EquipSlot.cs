@@ -1,18 +1,23 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace PickleClicker 
+namespace PickleClicker.Game.Cosmetic
 {  
 public class EquipSlot : MonoBehaviour, IDropHandler
 {
-    [SerializeField] SpriteMerger spriteMerger;
-    [SerializeField] Cosmetics cosmetics;
-    [SerializeField] public CosmeticType slotType;
-    [SerializeField] GameObject typeIcon;
+    [SerializeField] 
+    private SpriteMerger spriteMerger;
+
+    public CosmeticType slotType;
+
+    [SerializeField] 
+    private GameObject cosmetics;
+    
+    [SerializeField] 
+    private GameObject typeIcon;
 
     private void Start() 
     {
-        cosmetics = GameObject.FindObjectOfType<Cosmetics>();
         spriteMerger = GameObject.FindObjectOfType<SpriteMerger>();
     }
 
@@ -28,7 +33,7 @@ public class EquipSlot : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         GameObject dropped = eventData.pointerDrag;
-        CosmeticType cosmeticType = dropped.GetComponent<Cosmetic>().cosmeticScriptableObject.cosmeticType;
+        CosmeticType cosmeticType = dropped.GetComponent<CosmeticItem>().cosmeticScriptableObject.cosmeticType;
         DraggableItem draggableItem = dropped.GetComponent<DraggableItem>();
 
         if (slotType != cosmeticType)
@@ -40,7 +45,7 @@ public class EquipSlot : MonoBehaviour, IDropHandler
             if (transform.childCount == 1)
             {
                 draggableItem.parentAfterDrag = transform;
-                spriteMerger.AppendToList(dropped);
+                spriteMerger.AppendToList(dropped.GetComponent<CosmeticItem>());
             }
         }
     }

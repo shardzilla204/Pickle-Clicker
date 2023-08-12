@@ -9,14 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d30c0fe185cb3ec488561de21a6662dd, type: 3}
+  m_Script: {fileID: 11500000, guid: d46d1bd1679196944a8dfba082e967cc, type: 3}
   m_Name: PoglinUpgrades
   m_EditorClassIdentifier: 
   id: 2
-  alias: Poglin Upgrades
-  description: A collection of ways to upgrade your offensive and defensive tactics.
-  upgradePickleScriptableObjects:
-  - {fileID: 11400000, guid: e5d0c348806b0e0418ce5a1701e3179e, type: 2}
-  - {fileID: 11400000, guid: fbfd6d3b57c1fcc44ade9b9e86c2a1d4, type: 2}
-  - {fileID: 11400000, guid: 2b2128969a5f16f4a9371b3baafb3158, type: 2}
-  - {fileID: 11400000, guid: 2a531bc2fafac24488194a8298d9a18d, type: 2}
+  alias: Poglin
+  description: A collection of ways to upgrade your poglin hunting.
+  upgradeAssetReference:
+    m_LabelString: poglin

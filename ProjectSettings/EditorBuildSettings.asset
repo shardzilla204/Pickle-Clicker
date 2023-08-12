@@ -8,10 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/pickle-clicker.unity
     guid: 356a671f7f5b38f408cfcb42a8fa5cb1
-  - enabled: 0
-    path: Assets/Scenes/server.unity
-    guid: d3a01f7636918a34ea7ee03523a8d3b2
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: bd9101f6d660ce64a8e24d93af33e042, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: cffa627154cbf3c48a375a0284cb1c93, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: b1e45d38620790b4f9ba7f9a4bb83474, type: 2}
+    com.unity.addressableassets: {fileID: 11400000, guid: 00ac9d82672c4ed4da50273009a6dd63, type: 2}

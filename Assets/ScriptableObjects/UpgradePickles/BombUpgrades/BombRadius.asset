@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 312524310f7ab6f4aa71bedfe1a478c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f057024bef89624f895f0b4c03c64d3, type: 3}
   m_Name: BombRadius
   m_EditorClassIdentifier: 
+  categoryID: 3
   id: 1
-  alias: Stronger Scent
-  description: Increases the bombs detection radius.
-  cost: 5000
-  amount: 0
+  alias: Pungent Scent
+  description: Increases the bomb's detection radius.
+  purchaseCost: 500
+  currentAmount: 0
   maxAmount: 100
+  enableEditing: 0

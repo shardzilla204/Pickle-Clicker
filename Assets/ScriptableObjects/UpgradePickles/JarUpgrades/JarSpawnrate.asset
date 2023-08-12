@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 312524310f7ab6f4aa71bedfe1a478c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f057024bef89624f895f0b4c03c64d3, type: 3}
   m_Name: JarSpawnrate
   m_EditorClassIdentifier: 
+  categoryID: 1
   id: 0
-  alias: Jar Spawnrate
-  description: Increases the pickle jars occurence.
-  cost: 1500
-  amount: 0
+  alias: Random Jars
+  description: Increases the chance for a pickle jar to spawn.
+  purchaseCost: 1500
+  currentAmount: 0
   maxAmount: 100
+  enableEditing: 0

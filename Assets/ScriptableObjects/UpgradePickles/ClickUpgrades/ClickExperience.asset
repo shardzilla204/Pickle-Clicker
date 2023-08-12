@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 312524310f7ab6f4aa71bedfe1a478c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f057024bef89624f895f0b4c03c64d3, type: 3}
   m_Name: ClickExperience
   m_EditorClassIdentifier: 
-  id: 2
-  alias: Juicer Pickle
-  description: Gain more pickle experience gained from clicking your pickle.
-  cost: 1000
-  amount: 0
+  categoryID: 0
+  id: 1
+  alias: Juicy Pickles
+  description: Increases the amount of experience gained every click.
+  purchaseCost: 500
+  currentAmount: 0
   maxAmount: 100
+  enableEditing: 0

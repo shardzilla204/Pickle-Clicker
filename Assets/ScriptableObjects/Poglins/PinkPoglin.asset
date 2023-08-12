@@ -9,18 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5abbb30cece19514894e9063f8b90385, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cb953d3f36e71647a0428079d863b64, type: 3}
   m_Name: PinkPoglin
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2865748478917157024, guid: 7fdb74d803293e24c8add38366b5c8a2, type: 3}
-  id: 1
-  alias: Pink
-  description: A rare faster Poglin that steals more pickles, but collecting it after
-    stealing pickles gives 15% more pickles it stole.
-  rarity: 50
-  minimumCapacity: 0.1
-  maximumCapacity: 0.15
-  speed: 2
-  interest: 1.15
-  deathAudio: {fileID: 8300000, guid: dbdf8f8ec2edd53438864c07fd2716e8, type: 3}
-  stealAudio: {fileID: 8300000, guid: c2224cf7a95525746b2ed27d6f318769, type: 3}
+  prefab: {fileID: 0}
+  id: 0
+  alias: 
+  description: 
+  rarity: 0
+  minimumCapacity: 0.05
+  maximumCapacity: 0.075
+  speed: 1
+  interest: 0.33
+  deathAudio: {fileID: 0}
+  stealAudio: {fileID: 0}

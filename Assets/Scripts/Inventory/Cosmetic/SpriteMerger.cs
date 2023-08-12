@@ -1,52 +1,72 @@
 using PickleClicker.Pickle;
+using PickleClicker.Data.ScriptableObjects.Cosmetic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Linq;
 using System;
 
-namespace PickleClicker 
+namespace PickleClicker.Game.Cosmetic
 {  
     public class SpriteMerger : MonoBehaviour
     {
-        [SerializeField] private List<Sprite> topper = new List<Sprite>();
-        [SerializeField] private List<Sprite> body = new List<Sprite>();
-        [SerializeField] private List<Sprite> accessories = new List<Sprite>();
-        [SerializeField] private List<Sprite> skin = new List<Sprite>();
+        public List<Sprite> sprites = new List<Sprite>();
 
-        [SerializeField] private List<EquipSlot> equipSlots = new List<EquipSlot>();
-        [SerializeField] private Image image;
-        [SerializeField] private SpriteRenderer result;
-        [SerializeField] private SpriteRenderer pickleButton;
+        [SerializeField] 
+        private List<Sprite> topper = new List<Sprite>();
+        
+        [SerializeField] 
+        private List<Sprite> body = new List<Sprite>();
 
-        [SerializeField] private Sprite defaultSkin;
+        [SerializeField] 
+        private List<Sprite> accessories = new List<Sprite>();
+
+        [SerializeField] 
+        private List<Sprite> skin = new List<Sprite>();
+
+        [SerializeField] 
+        private List<EquipSlot> equipSlots = new List<EquipSlot>();
+
+        [SerializeField] 
+        private Image image;
+
+        [SerializeField] 
+        private SpriteRenderer result;
+
+        [SerializeField] 
+        private PickleButton pickleButton;
+
+        [SerializeField] 
+        private Sprite defaultSkin;
 
         private void Awake() 
         {
             equipSlots = GameObject.FindObjectsOfType<EquipSlot>().ToList();
-            pickleButton = GameObject.FindObjectOfType<PickleButton>().GetComponent<SpriteRenderer>();
+            // pickleButton = GameObject.FindObjectOfType<PickleButton>();
             result = gameObject.GetComponent<SpriteRenderer>();
             image = gameObject.GetComponent<Image>();
             result.sprite = image.sprite;
             skin.Add(defaultSkin);
         }
 
-        public void AppendToList(GameObject itemToAdd)
+        public void AppendToList(CosmeticItem itemToAdd)
         {
-            CosmeticScriptableObject cosmeticObject = itemToAdd.GetComponent<Cosmetic>().cosmeticScriptableObject;
-            itemToAdd.GetComponent<Cosmetic>().typePanel.SetActive(false);
+            CosmeticScriptableObject cosmeticScriptableObject = itemToAdd.cosmeticScriptableObject;
+            itemToAdd.typePanel.SetActive(false);
 
-            Sprite cosmeticSprite = cosmeticObject.cosmetic;
+            Sprite cosmeticSprite = cosmeticScriptableObject.item;
 
             if (topper.Contains(cosmeticSprite)) return;
             if (body.Contains(cosmeticSprite)) return;
             if (accessories.Contains(cosmeticSprite)) return;
             if (skin.Contains(cosmeticSprite)) return;
 
-            if (cosmeticObject.cosmeticType == CosmeticType.Topper) topper.Add(cosmeticSprite);
-            if (cosmeticObject.cosmeticType == CosmeticType.Body) body.Add(cosmeticSprite);
-            if (cosmeticObject.cosmeticType == CosmeticType.Accessory) accessories.Add(cosmeticSprite);
-            if (cosmeticObject.cosmeticType == CosmeticType.Skin) skin.Add(cosmeticSprite);   
+            if (cosmeticScriptableObject.cosmeticType == CosmeticType.Topper) topper.Add(cosmeticSprite);
+            if (cosmeticScriptableObject.cosmeticType == CosmeticType.Body) body.Add(cosmeticSprite);
+            if (cosmeticScriptableObject.cosmeticType == CosmeticType.Accessory) accessories.Add(cosmeticSprite);
+            if (cosmeticScriptableObject.cosmeticType == CosmeticType.Skin) skin.Add(cosmeticSprite);   
+
+            sprites.Add(cosmeticSprite);
 
             if (skin.Count == 0 && !skin.Contains(defaultSkin))
             {
@@ -57,17 +77,15 @@ namespace PickleClicker
                 skin.Remove(defaultSkin);
             }
         
-            Merge();    
+            MergeSprites();    
         }
 
         public void RemoveFromList(GameObject itemToRemove)
         {   
-            CosmeticScriptableObject cosmeticObject = itemToRemove.GetComponent<Cosmetic>().cosmeticScriptableObject;
-            itemToRemove.GetComponent<Cosmetic>().typePanel.SetActive(true);
+            CosmeticScriptableObject cosmeticObject = itemToRemove.GetComponent<CosmeticItem>().cosmeticScriptableObject;
+            itemToRemove.GetComponent<CosmeticItem>().typePanel.SetActive(true);
 
-            Sprite cosmeticSprite = cosmeticObject.cosmetic;
-
-            // Debug.Log(cosmeticSprite);
+            Sprite cosmeticSprite = cosmeticObject.item;
 
             if (cosmeticObject.cosmeticType == CosmeticType.Topper) topper.Remove(cosmeticSprite);
             if (cosmeticObject.cosmeticType == CosmeticType.Body) body.Remove(cosmeticSprite);
@@ -76,8 +94,7 @@ namespace PickleClicker
             
             if (skin.Count == 0) skin.Add(defaultSkin);
 
-            // Debug.Log("Removed Object!");
-            Merge();
+            MergeSprites();
         }
 
         public void ClearSprites()
@@ -91,17 +108,17 @@ namespace PickleClicker
             {
                 if (equipSlot.transform.childCount != 1)
                 {
-                    equipSlot.GetComponentInChildren<Cosmetic>().typePanel.SetActive(true);
+                    equipSlot.GetComponentInChildren<CosmeticItem>().typePanel.SetActive(true);
                     equipSlot.OnClear(); 
                 }
             }
 
             if (skin.Count <= 0) skin.Add(defaultSkin);
 
-            Merge();
+            MergeSprites();
         }
 
-        public void Merge()
+        public void MergeSprites()
         {
             Texture2D texture = new Texture2D(image.sprite.texture.width, image.sprite.texture.height);
             Color[] colorArray = new Color[texture.width * texture.height];
@@ -146,9 +163,7 @@ namespace PickleClicker
             Sprite finalSprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f), 3);
             finalSprite.name = "NewSprite";
             result.sprite = finalSprite;
-            Debug.Log(pickleButton);
-            Debug.Log(finalSprite);
-            pickleButton.sprite = finalSprite;
+            pickleButton.GetComponent<SpriteRenderer>().sprite = finalSprite;
         }
 
         private Color[] ApplySkin(Texture2D texture, Color[] colors, Color[][] skinArray)

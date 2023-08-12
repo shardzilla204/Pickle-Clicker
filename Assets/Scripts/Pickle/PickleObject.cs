@@ -1,7 +1,8 @@
 using Random = UnityEngine.Random;
 using UnityEngine;
+using PickleClicker.Manager.Pickle;
 
-namespace PickleClicker.Pickle
+namespace PickleClicker.Game.Pickle
 {
     public class PickleObject : MonoBehaviour
     {
@@ -25,7 +26,7 @@ namespace PickleClicker.Pickle
 
         private void OnDestroy() 
         {
-            PickleObjectController.pickleClones--;
+            PickleObjectManager.pickleClones--;
         }
     }
 }

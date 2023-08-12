@@ -1,34 +1,46 @@
-using PickleClicker.Controller;
+using PickleClicker.Manager;
+using PickleClicker.Data.ScriptableObjects.Auto;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-namespace PickleClicker.Auto
+namespace PickleClicker.Game.Auto
 {
     public class AutoBuyable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        public AutoPickleScriptableObject autoPickleScriptableObject;
+        [SerializeField] 
+        private AutoScriptableObject autoScriptableObject;
 
-        [SerializeField] private DescriptionController descriptionController;
+        [SerializeField] 
+        private DescriptionManager descriptionManager;
 
-        public Text nameText;
-        public GameObject panelColor;
+        [SerializeField] 
+        private Text aliasText;
 
-        private void Awake()
+        [SerializeField] 
+        private Image panelImage;
+
+        private Color32 COLOR_ON_ENTER = new Color32(66, 43, 20, 255);
+        private Color32 COLOR_ON_EXIT = new Color32(76, 53, 30, 255);
+
+        private void Start()
         {   
-            descriptionController = GameObject.FindObjectOfType<DescriptionController>();
-            nameText.text = $"Pickle {autoPickleScriptableObject.alias}";
+            descriptionManager = GameObject.FindObjectOfType<DescriptionManager>();
+            panelImage = gameObject.GetComponentInChildren<Image>();
+            aliasText = gameObject.GetComponentInChildren<Text>();
+            aliasText.text = $"Pickle {autoScriptableObject.alias}";
         }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            panelColor.GetComponent<Image>().color = new Color32(66, 43, 20, 255);
-            descriptionController.ShowAuto(autoPickleScriptableObject.id);
+            panelImage.color = COLOR_ON_ENTER;
+            Debug.Log(autoScriptableObject);
+            descriptionManager.ShowAuto(autoScriptableObject);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            panelColor.GetComponent<Image>().color = new Color32(76, 53, 30, 255);
+            panelImage.color = COLOR_ON_EXIT;
         }
     }
 }

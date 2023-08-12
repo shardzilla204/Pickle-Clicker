@@ -1,45 +1,69 @@
-using PickleClicker.Upgrade;
-using PickleClicker.Data;
-using System.Collections.Generic;
-using UnityEngine;
+using PickleClicker.Data.Player;
+using PickleClicker.Data.Upgrade;
+using PickleClicker.Game.Upgrade;
+using PickleClicker.Manager.Upgrade;
+using PickleClicker.Data.ScriptableObjects.Upgrade;
 
-namespace PickleClicker.Controller
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace PickleClicker.Controller.Upgrade
 {
     public class UpgradeCategoryController : MonoBehaviour
     {
-        [SerializeField] private List<UpgradeCategoryScriptableObject> upgradeCategories; 
+        [SerializeField] private UpgradeCategoryData upgradeCategory;
 
-        private void Awake() 
+        [SerializeField] private GameObject upgradeBoard;
+        [SerializeField] private Transform upgradeBuyablesSection;
+        [SerializeField] private Text aliasText;
+        [SerializeField] private Text descriptionText;
+
+        public void SetDefaultCategory() 
         {
-            SetUpgradeCategories();
+            UpgradeCategoryData upgradeCategoryData = PlayerData.upgradeCategoryDataList.Find(upgradeCategory => upgradeCategory.id == 0);
+            aliasText.text = upgradeCategoryData.alias;
+            descriptionText.text = upgradeCategoryData.description;
+
+            ClearUpgrades();
+
+            SetUpgrades();
         }
 
-        public void SetUpgradeCategories()
+        public void SetCategory(UpgradeCategoryData upgradeCategoryData) 
         {
-            foreach (UpgradeCategoryScriptableObject upgradeCategory in upgradeCategories)
+            aliasText.text = upgradeCategoryData.alias;
+            descriptionText.text = upgradeCategoryData.description;
+
+            ClearUpgrades();
+
+            SetUpgrades();
+        }
+
+        public void ClearUpgrades() 
+        {
+            foreach (Transform child in upgradeBuyablesSection.transform)
             {
-                int categoryId = upgradeCategory.id;
-                string categoryAlias = upgradeCategory.alias;
-                string categoryDescription = upgradeCategory.description;
-                List<UpgradeData> upgradeBuyables = new List<UpgradeData>();
-                List<UpgradeData> upgrades = new List<UpgradeData>();
-
-                foreach(UpgradePickleScriptableObject upgradePickle in upgradeCategory.upgradePickleScriptableObjects)
-                {
-                    int id = upgradePickle.id;
-                    string alias = upgradePickle.alias;
-                    string description = upgradePickle.description;
-                    ulong cost = upgradePickle.cost;
-                    int amount = upgradePickle.amount;
-                    int maxAmount = upgradePickle.maxAmount;
-
-                    upgradeBuyables.Add(new UpgradeData(categoryId, id, alias, description, cost, amount, maxAmount));
-
-                    upgrades.Add(new UpgradeData(categoryId, id, alias, description, cost, amount, maxAmount));
-                }
-
-                PlayerData.upgradeList.upgradeCategories.Add(new UpgradeCategoryData(categoryId, categoryAlias, categoryDescription, upgradeBuyables, upgrades));
+                Destroy(child.gameObject);
             }
+        }
+
+        public void SetUpgrades() 
+        {
+            for (int iteration = 0; iteration < upgradeCategory.upgrades.Count; iteration++) {
+                UpgradeData upgrade = upgradeCategory.upgrades.Find(upgrade => upgrade.id == iteration);
+                GameObject upgradeBuyableClone = Instantiate(upgradeBoard);
+                upgradeBuyableClone.name = "UpgradeBuyable";
+                upgradeBuyableClone.transform.SetParent(upgradeBuyablesSection);
+                upgradeBuyableClone.transform.localScale = new Vector3(1f, 1f, 1f);
+                upgradeBuyableClone.GetComponentInChildren<UpgradePurchase>().SetUpgradePickle(upgrade);
+            }
+        }
+
+        public void SetUpgradeText(int id) 
+        {
+            UpgradeData upgrade = upgradeCategory.upgrades.Find(upgrade => upgrade.id == id);
+            aliasText.text = upgrade.alias;
+            descriptionText.text = upgrade.description;
         }
     }
 }

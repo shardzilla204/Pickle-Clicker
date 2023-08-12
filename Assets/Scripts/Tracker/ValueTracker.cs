@@ -1,4 +1,4 @@
-using PickleClicker.Data;
+using PickleClicker.Data.Player;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,14 +14,14 @@ namespace PickleClicker.Tracker
         {
             foreach (GameObject picklesPickedText in picklesPickedTexts)
             {
-                string picklesPicked = PlayerData.pickleData.picklesPicked.ToString("N0");
-                picklesPickedText.GetComponent<Text>().text = $"{picklesPicked}";
+                string pickles = PlayerData.pickleData.pickles.ToString("N0");
+                picklesPickedText.GetComponent<Text>().text = $"{pickles}";
             }
 
             foreach (GameObject picklesPerSecondText in picklesPerSecondTexts)
             {
-                string picklesPerSecond = PlayerData.pickleData.picklesPerSecond.ToString("N0");
-                picklesPerSecondText.GetComponent<Text>().text = $"{picklesPerSecond}";
+                string gainPerSecond = PlayerData.pickleData.gainPerSecond.ToString("N0");
+                picklesPerSecondText.GetComponent<Text>().text = $"{gainPerSecond}";
             }
 
             foreach (GameObject picklesCoinText in pickleCoinTexts)

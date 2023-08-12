@@ -1,6 +1,7 @@
+using PickleClicker.Game.Poglin.Types;
 using UnityEngine;
 
-namespace PickleClicker.Poglin
+namespace PickleClicker.Game.Poglin
 {
     public class CollectPoglin : StateMachineBehaviour
     {

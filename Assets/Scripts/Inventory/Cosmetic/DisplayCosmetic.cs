@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace PickleClicker 
+namespace PickleClicker.Game.Cosmetic
 {
     public class DisplayItem : MonoBehaviour
     {
