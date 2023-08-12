@@ -1,11 +1,10 @@
-using PickleClicker.Data.Player;
-using PickleClicker.Data.Auto;
-using PickleClicker.Controller.Pickle;
+using PickleClicker.Data;
+using PickleClicker.Pickle;
 using System.Collections;
 using System;
 using UnityEngine;
 
-namespace PickleClicker.Game.Auto
+namespace PickleClicker.Auto
 {
     public class AutoAdd : MonoBehaviour
     {   
@@ -16,23 +15,23 @@ namespace PickleClicker.Game.Auto
 
         //Adds the pickles to your current amount of pickles
         IEnumerator AddAutoPickles()
-        {   
+        {      
             while (true)
             {
-                double total = 0; 
-                for (int index = 0; index < PlayerData.autoDataList.Count; index++)
+                long total = 0; 
+                for (long index = 0; index < PlayerData.autoList.autoBuyables.Count; index++)
                 {
-                    AutoData auto = PlayerData.autoDataList.Find(auto => auto.id == index);
+                    AutoData autoPickle = PlayerData.autoList.autoBuyables.Find(autoPickle => autoPickle.id == index);
 
-                    double autoRecieve = (auto.currentAmount * Math.Floor(auto.recieve * auto.recieveMultiplier));
+                    long autoRecieve = (long) (autoPickle.amount * Math.Floor(autoPickle.recieve * autoPickle.multiplier));
 
                     total += autoRecieve;
                     
                 }
-                PlayerData.pickleData.gainPerSecond = total;
-                PlayerData.pickleData.pickles += PlayerData.pickleData.gainPerSecond/100;
-                if (PlayerData.pickleData.pickles <= PickleController.totalPicklesPicked) PickleController.GetHighestAmountOfPickles();
-                yield return new WaitForSeconds(0.01f);
+                PlayerData.pickleData.picklesPerSecond = (long) total;
+                PlayerData.pickleData.picklesPicked += (ulong) PlayerData.pickleData.picklesPerSecond/10;
+                PickleController.GetHighestAmountOfPickles();
+                yield return new WaitForSeconds(0.1f);
             }
         } 
     }

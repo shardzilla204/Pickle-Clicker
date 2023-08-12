@@ -87,7 +87,7 @@ namespace PickleClicker.Poglin
                 audioSource.Play();
                 StartCoroutine(AutoCollect());
             }
-            else if (dead)
+            else if (dead && animator != null)
             { 
                 animator.SetTrigger("Disappear");
             }

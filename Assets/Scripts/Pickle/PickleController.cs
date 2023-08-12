@@ -33,9 +33,14 @@ namespace PickleClicker.Pickle
         private void Update() 
         {
             string pickleLevel = PlayerData.pickleData.pickleLevel.ToString("N0");
-            pickleLevelText.text = $"{pickleLevel}";
 
-            CheckLevelProgress();
+            if (PlayerData.pickleData.pickleLevel >= ProgressController.maxLevel) {
+                pickleLevelText.color = Color.yellow;
+            } else {
+                pickleLevelText.color = Color.white;
+            }
+
+            pickleLevelText.text = $"{pickleLevel}";
         }
 
         //Adds pickles every click 
@@ -107,7 +112,7 @@ namespace PickleClicker.Pickle
             }
         }
         
-        //Show how many pickles per click
+        // Displaying numbers
         public void EmitValue()
         {
             string pickles = PlayerData.pickleData.picklesPerClick.ToString("N0");
@@ -124,19 +129,6 @@ namespace PickleClicker.Pickle
             clone.GetComponent<Animator>().SetTrigger("Activate");
             yield return new WaitForSeconds(1f);
             Destroy(clone);
-        }
-
-        //Level rewards
-        private void CheckLevelProgress()
-        {
-            int levelRequired = PlayerData.pickleData.pickleLevel + 1;
-            if (PlayerData.pickleData.pickleLevel == levelRequired)
-            {   
-                PlayerData.pickleData.pickleLevel++;
-                PlayerData.pickleData.picklesPicked += (ulong) (Random.Range(25,100) * PlayerData.pickleData.pickleLevel);
-                
-            }
-            pickleLevelText.text = $"{PlayerData.pickleData.pickleLevel}";
         }
     }
 }

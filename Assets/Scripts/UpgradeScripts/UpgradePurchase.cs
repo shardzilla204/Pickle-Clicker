@@ -28,11 +28,12 @@ namespace PickleClicker.Upgrade
         private void Update() 
         {
             levelText.text = $"{upgrade.amount}/{upgrade.maxAmount}\nLevels";
-            costText.text = $"{upgrade.cost} Pickles";
+            costText.text = $"{upgrade.cost.ToString("N0")} Pickles"; // TODO: Add commas.
 
             if (upgrade.maxAmount > upgrade.amount) return;
 
             levelText.text = "Max";
+            // Here delete the circle + button.
         }
 
         private void Start() 
@@ -77,7 +78,7 @@ namespace PickleClicker.Upgrade
             }
         }
 
-        //SetRadius();
+        // SetRadius();
 
         public void SetUpgradePickle(UpgradeData upgrade) 
         {

@@ -21,6 +21,9 @@ namespace PickleClicker.Poglin
 
             Debug.Log(bombRadius.amount);
 
+            // This is here because 
+            // Wanted the amount of radius added to the pickle bomb to change
+            // After buying 5 upgrades towards the bomb radius, the amount given will have been decreased throughout of upgrading the rest of the bomb radius
             if (bombRadius.amount < 5)
             {
                 pickleBomb.gameObject.GetComponent<CircleCollider2D>().radius += (bombRadius.amount/10);
