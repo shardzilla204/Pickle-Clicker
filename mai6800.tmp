@@ -1,0 +1,184 @@
+[gd_scene load_steps=7 format=3 uid="uid://c36kd7o7wl3di"]
+
+[ext_resource type="FontFile" uid="uid://be5okn7w3gx46" path="res://Pangolin-Regular.ttf" id="1_im685"]
+[ext_resource type="Texture2D" uid="uid://bj6c4gsupnue7" path="res://RadialGradient.png" id="1_itrb7"]
+[ext_resource type="Texture2D" uid="uid://co4h8eh6qt60d" path="res://LeftRounded45.png" id="2_peinw"]
+[ext_resource type="Texture2D" uid="uid://km3vo781gia0" path="res://Pickle.png" id="3_daer5"]
+[ext_resource type="Texture2D" uid="uid://bm8icucimxr83" path="res://Blur.png" id="5_nlwpr"]
+[ext_resource type="Script" path="res://PickleButton.cs" id="5_pvase"]
+
+[node name="Canvases" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [-62.0]
+
+[node name="MainCanvas" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="UserInterface" type="Control" parent="MainCanvas"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="MainCanvas/UserInterface"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_itrb7")
+
+[node name="PickleButton" type="TextureButton" parent="MainCanvas/UserInterface"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+action_mode = 0
+texture_normal = ExtResource("3_daer5")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("5_pvase")
+metadata/_edit_group_ = true
+
+[node name="PickleButtonShadow" type="TextureRect" parent="MainCanvas/UserInterface/PickleButton"]
+custom_minimum_size = Vector2(250, 75)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -75.0
+offset_right = 125.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("5_nlwpr")
+expand_mode = 1
+
+[node name="PicklesPickedPanel" type="Control" parent="MainCanvas/UserInterface"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1152.0
+offset_right = -1152.0
+grow_horizontal = 0
+size_flags_vertical = 8
+metadata/_edit_group_ = true
+
+[node name="Panel" type="Node2D" parent="MainCanvas/UserInterface/PicklesPickedPanel"]
+position = Vector2(967, 75)
+
+[node name="ExtensionPanel" type="Sprite2D" parent="MainCanvas/UserInterface/PicklesPickedPanel/Panel"]
+modulate = Color(0.390625, 0.304688, 0.1875, 1)
+position = Vector2(60, 0)
+scale = Vector2(5, 1)
+texture = ExtResource("2_peinw")
+region_enabled = true
+region_rect = Rect2(50, 0, 50, 100)
+
+[node name="EndPanel" type="Sprite2D" parent="MainCanvas/UserInterface/PicklesPickedPanel/Panel"]
+modulate = Color(0.390625, 0.304688, 0.1875, 1)
+position = Vector2(-90, 0)
+texture = ExtResource("2_peinw")
+region_enabled = true
+region_rect = Rect2(0, 0, 50, 100)
+
+[node name="Pickle" type="Sprite2D" parent="MainCanvas/UserInterface/PicklesPickedPanel/Panel"]
+position = Vector2(-65, 0)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("3_daer5")
+
+[node name="PicklesPicked" type="Label" parent="MainCanvas/UserInterface/PicklesPickedPanel"]
+layout_mode = 0
+offset_left = 962.0
+offset_top = 25.0
+offset_right = 1152.0
+offset_bottom = 125.0
+theme_override_fonts/font = ExtResource("1_im685")
+theme_override_font_sizes/font_size = 20
+text = "0
+"
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="PicklesPerSecondPanel" type="Control" parent="MainCanvas/UserInterface"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1152.0
+offset_right = -1152.0
+grow_horizontal = 0
+
+[node name="Panel" type="Node2D" parent="MainCanvas/UserInterface/PicklesPerSecondPanel"]
+position = Vector2(967, 200)
+
+[node name="ExtensionPanel" type="Sprite2D" parent="MainCanvas/UserInterface/PicklesPerSecondPanel/Panel"]
+modulate = Color(0.390625, 0.304688, 0.1875, 1)
+position = Vector2(60, 0)
+scale = Vector2(5, 1)
+texture = ExtResource("2_peinw")
+region_enabled = true
+region_rect = Rect2(50, 0, 50, 100)
+
+[node name="EndPanel" type="Sprite2D" parent="MainCanvas/UserInterface/PicklesPerSecondPanel/Panel"]
+modulate = Color(0.390625, 0.304688, 0.1875, 1)
+position = Vector2(-90, 0)
+texture = ExtResource("2_peinw")
+region_enabled = true
+region_rect = Rect2(0, 0, 50, 100)
+
+[node name="Pickle" type="Sprite2D" parent="MainCanvas/UserInterface/PicklesPerSecondPanel/Panel"]
+position = Vector2(-65, 0)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("3_daer5")
+
+[node name="PicklesPerSecond" type="Label" parent="MainCanvas/UserInterface/PicklesPerSecondPanel"]
+offset_left = 962.0
+offset_top = 150.0
+offset_right = 1152.0
+offset_bottom = 250.0
+theme_override_fonts/font = ExtResource("1_im685")
+theme_override_font_sizes/font_size = 20
+text = "0
+"
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="PerSecond" type="Label" parent="MainCanvas/UserInterface/PicklesPerSecondPanel"]
+offset_left = 877.0
+offset_top = 175.0
+offset_right = 927.0
+offset_bottom = 225.0
+theme_override_fonts/font = ExtResource("1_im685")
+theme_override_font_sizes/font_size = 15
+text = "Per
+Second"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="MainCanvas/UserInterface"]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 168.0
+offset_right = 274.0
+offset_bottom = 196.0
+theme_override_fonts/font = ExtResource("1_im685")
+theme_override_font_sizes/font_size = 25
+action_mode = 0
+text = "Set Fullscreen"
+
+[connection signal="pressed" from="MainCanvas/UserInterface/PickleButton" to="MainCanvas/UserInterface/PickleButton" method="click_pickle"]
