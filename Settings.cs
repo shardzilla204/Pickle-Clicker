@@ -4,64 +4,94 @@ using System.Collections.Generic;
 
 public partial class Settings : Node2D
 {
+	Vector2I initialScreenPosition;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		DisplayServer.WindowSetMinSize(new Vector2I(720, 480));
-		DisplayServer.WindowSetSize()
+		DisplayServer.WindowSetSize(new Vector2I(1280, 720));
 		SpinBox framerateOption = GetNode<SpinBox>("/root/Canvases/SettingsCanvas/UserInterface/VBoxContainer/FramerateOptions");
 		framerateOption.GetLineEdit().ContextMenuEnabled = false;
+		initialScreenPosition = DisplayServer.WindowGetPosition();
+		Console.WriteLine(initialScreenPosition);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		Vector2I currentScreenSize = DisplayServer.ScreenGetSize();
+		Vector2I currentScreenSize = DisplayServer.WindowGetSize();
 		List<Vector2I> resolutions = new List<Vector2I> { new Vector2I(720, 480), new Vector2I(960, 540), new Vector2I(1280, 720), new Vector2I(1920, 1080) };
+		bool found = false;
 		foreach(Vector2I resolution in resolutions)
 		{
-			Console.WriteLine(currentScreenSize[0] == resolution[0]);
-			Console.WriteLine(currentScreenSize[0]);
-			Console.WriteLine(currentScreenSize[1] == resolution[1]);
-			if (currentScreenSize[0] == resolution[0] && currentScreenSize[1] == resolution[1]) return;
-
-			SetCustomResolutionOption();
+			if (currentScreenSize[0] == resolution[0] && currentScreenSize[1] == resolution[1])
+			{
+				found = true;
+				break;
+			}
 		}
+
+		if (found) return;
+
+		SetCustomResolutionOption();
 	}
 
 	public void SetWindowOption(int index)
 	{
-		OptionButton windowOptions = GetNode<OptionButton>("/root/Canvases/SettingsCanvas/UserInterface/VBoxContainer/WindowOptions");
 		CheckButton borderlessOption = GetNode<CheckButton>("/root/Canvases/SettingsCanvas/UserInterface/VBoxContainer/BorderlessOption");
 		OptionButton resolutionOptions = GetNode<OptionButton>("/root/Canvases/SettingsCanvas/UserInterface/VBoxContainer/ResolutionOptions");
 		resolutionOptions.Disabled = false;
 		borderlessOption.Disabled = false;
-		switch(windowOptions.GetSelectedId())
+		DisplayServer.MouseSetMode(DisplayServer.MouseMode.Visible);
+		switch(index)
 		{
 			case 0: 
 			{
 				DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
+				CheckForBorderless();
+				if (DisplayServer.WindowGetSize()[0] <= 720)
+				{
+					DisplayServer.WindowSetSize(new Vector2I(1280, 720));
+					DisplayServer.WindowSetPosition(initialScreenPosition);
+				}
 				break;
 			}
 			case 1: 
 			{
-				DisplayServer.WindowSetMode(DisplayServer.WindowMode.Maximized);
+				DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+				ToggleFullscreen();
 				break;
 			}
 			case 2: 
 			{
-				DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
-				resolutionOptions.Disabled = true;
-				borderlessOption.Disabled = true;
-				break;
-			}
-			case 3: 
-			{
 				DisplayServer.WindowSetMode(DisplayServer.WindowMode.ExclusiveFullscreen);
-				resolutionOptions.Disabled = true;
-				borderlessOption.Disabled = true;
+				ToggleFullscreen();
 				break;
 			}
+		}
+		SetCustomResolutionOption();
+	}
+
+	private void ToggleFullscreen()
+	{
+		CheckButton borderlessOption = GetNode<CheckButton>("/root/Canvases/SettingsCanvas/UserInterface/VBoxContainer/BorderlessOption");
+		OptionButton resolutionOptions = GetNode<OptionButton>("/root/Canvases/SettingsCanvas/UserInterface/VBoxContainer/ResolutionOptions");
+		DisplayServer.MouseSetMode(DisplayServer.MouseMode.Confined);
+		resolutionOptions.Disabled = true;
+		ToggleBorderlessOption(false);
+		borderlessOption.ButtonPressed = false;
+		borderlessOption.Disabled = true;
+	}
+
+	private void CheckForBorderless()
+	{
+		CheckButton borderlessOption = GetNode<CheckButton>("/root/Canvases/SettingsCanvas/UserInterface/VBoxContainer/BorderlessOption");
+		Vector2I currentWindowSize = DisplayServer.WindowGetSize();
+		Vector2I currentScreenSize = DisplayServer.ScreenGetSize();
+		bool match = currentWindowSize[0] >= currentScreenSize[0];
+		if (borderlessOption.ButtonPressed && match)
+		{
+			DisplayServer.WindowSetMode(DisplayServer.WindowMode.Maximized);
 		}
 	}
 
@@ -69,23 +99,26 @@ public partial class Settings : Node2D
 	{
 		OptionButton resolutionOptions = GetNode<OptionButton>("/root/Canvases/SettingsCanvas/UserInterface/VBoxContainer/ResolutionOptions");
 		
-		if (resolutionOptions.ItemCount <= 5) return;
-
-		resolutionOptions.AddItem("Custom");
-		resolutionOptions.Select(4);
-
-		Console.WriteLine("Added Custom");
+		Vector2I currentScreenSize = DisplayServer.WindowGetSize();
+		if (resolutionOptions.ItemCount >= 5)
+		{
+			resolutionOptions.SetItemText(4, $"Custom ({currentScreenSize[0]}x{currentScreenSize[1]})");
+		}
+		else 
+		{
+			resolutionOptions.AddItem($"Custom ({currentScreenSize[0]}x{currentScreenSize[1]})");
+			resolutionOptions.Select(4);
+		}
 	}
 
 	public void SetResolutionOption(int index)
 	{
 		OptionButton resolutionOptions = GetNode<OptionButton>("/root/Canvases/SettingsCanvas/UserInterface/VBoxContainer/ResolutionOptions");
-		if (resolutionOptions.ItemCount <= 5)
+		if (resolutionOptions.ItemCount >= 5)
 		{
 			resolutionOptions.RemoveItem(4);
-			Console.WriteLine("Removed Custom");
 		}
-		switch(resolutionOptions.GetSelectedId())
+		switch(index)
 		{
 			case 0: 
 			{
@@ -110,16 +143,10 @@ public partial class Settings : Node2D
 		}
 	}
 
-	public void OpenSettings()
+	public void ToggleSettings(bool toggled)
 	{
 		CanvasLayer settingsCanvas = GetNode<CanvasLayer>("/root/Canvases/SettingsCanvas");
-		settingsCanvas.Visible = true;
-	}
-
-	public void CloseSettings()
-	{
-		CanvasLayer settingsCanvas = GetNode<CanvasLayer>("/root/Canvases/SettingsCanvas");
-		settingsCanvas.Visible = false;
+		settingsCanvas.Visible = toggled;
 	}
 
 	public void ExitGame()
@@ -130,6 +157,8 @@ public partial class Settings : Node2D
 	public void ToggleBorderlessOption(bool toggled)
 	{
 		DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, toggled);
+		CheckForBorderless();
+		SetCustomResolutionOption();
 	}
 
 	public void ToggleVSyncOption(bool toggled)

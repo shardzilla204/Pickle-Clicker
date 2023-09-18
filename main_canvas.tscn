@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c36kd7o7wl3di"]
+[gd_scene load_steps=11 format=3 uid="uid://c36kd7o7wl3di"]
 
 [ext_resource type="FontFile" uid="uid://be5okn7w3gx46" path="res://Pangolin-Regular.ttf" id="1_im685"]
 [ext_resource type="Texture2D" uid="uid://bj6c4gsupnue7" path="res://RadialGradient.png" id="1_itrb7"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bm8icucimxr83" path="res://Blur.png" id="5_nlwpr"]
 [ext_resource type="Script" path="res://PickleButton.cs" id="5_pvase"]
 [ext_resource type="Theme" uid="uid://dfhjflg85dfk5" path="res://Default.tres" id="8_okjpw"]
+[ext_resource type="Texture2D" uid="uid://dx8gc7n28uucb" path="res://RoundedSquare45.png" id="9_rt6ga"]
+[ext_resource type="Texture2D" uid="uid://1olnyhto4h4r" path="res://CosmeticIcons/BasicEyesIcon.png" id="9_rvjly"]
 
 [node name="Canvases" type="Node2D"]
 script = ExtResource("1_r885t")
@@ -178,10 +180,10 @@ vertical_alignment = 1
 
 [node name="OpenSettings" type="Button" parent="MainCanvas/UserInterface"]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 16.0
-offset_right = 174.0
-offset_bottom = 56.0
+offset_left = 25.0
+offset_top = 15.0
+offset_right = 185.0
+offset_bottom = 55.0
 theme_override_fonts/font = ExtResource("1_im685")
 theme_override_font_sizes/font_size = 25
 action_mode = 0
@@ -189,6 +191,7 @@ text = "Settings
 "
 
 [node name="SettingsCanvas" type="CanvasLayer" parent="."]
+visible = false
 follow_viewport_enabled = true
 
 [node name="UserInterface" type="Control" parent="SettingsCanvas"]
@@ -211,11 +214,15 @@ texture = ExtResource("1_itrb7")
 metadata/_edit_lock_ = true
 
 [node name="ExitSettings" type="Button" parent="SettingsCanvas/UserInterface"]
-layout_mode = 0
-offset_left = 1106.0
-offset_top = 18.0
-offset_right = 1266.0
-offset_bottom = 58.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -185.0
+offset_top = 15.0
+offset_right = -25.0
+offset_bottom = 55.0
+grow_horizontal = 0
 theme_override_fonts/font = ExtResource("1_im685")
 theme_override_font_sizes/font_size = 25
 action_mode = 0
@@ -251,16 +258,14 @@ text = "Exit Game
 layout_mode = 2
 theme = ExtResource("8_okjpw")
 theme_override_fonts/font = ExtResource("1_im685")
-item_count = 4
+item_count = 3
 selected = 0
 popup/item_0/text = "Windowed"
 popup/item_0/id = 0
-popup/item_1/text = "Maximized Window"
+popup/item_1/text = "Fullscreen"
 popup/item_1/id = 1
-popup/item_2/text = "Fullscreen"
+popup/item_2/text = "Exclusive Fullscreen"
 popup/item_2/id = 2
-popup/item_3/text = "Exclusive Fullscreen"
-popup/item_3/id = 3
 
 [node name="ResolutionOptions" type="OptionButton" parent="SettingsCanvas/UserInterface/VBoxContainer"]
 layout_mode = 2
@@ -304,9 +309,84 @@ suffix = "FPS"
 custom_arrow_step = 5.0
 select_all_on_focus = true
 
-[connection signal="pressed" from="MainCanvas/UserInterface/PickleButton" to="MainCanvas/UserInterface/PickleButton" method="click_pickle"]
-[connection signal="pressed" from="MainCanvas/UserInterface/OpenSettings" to="." method="OpenSettings"]
-[connection signal="pressed" from="SettingsCanvas/UserInterface/ExitSettings" to="." method="CloseSettings"]
+[node name="CustomizeCanvas" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="GridContainer" type="GridContainer" parent="CustomizeCanvas"]
+offset_left = 138.0
+offset_top = 108.0
+offset_right = 438.0
+offset_bottom = 408.0
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 3
+
+[node name="AccessoryPanel" type="TextureRect" parent="CustomizeCanvas/GridContainer"]
+self_modulate = Color(0.390625, 0.304688, 0.1875, 1)
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("9_rt6ga")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="CustomizeCanvas/GridContainer/AccessoryPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="AccessoryIcon" type="TextureRect" parent="CustomizeCanvas/GridContainer/AccessoryPanel/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("9_rvjly")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="CustomizeCanvas/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("9_rt6ga")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="CustomizeCanvas/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("9_rt6ga")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect4" type="TextureRect" parent="CustomizeCanvas/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("9_rt6ga")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_left = 470.0
+offset_top = 204.0
+offset_right = 814.0
+offset_bottom = 520.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[connection signal="pressed" from="MainCanvas/UserInterface/PickleButton" to="MainCanvas/UserInterface/PickleButton" method="ClickPickle"]
+[connection signal="pressed" from="MainCanvas/UserInterface/OpenSettings" to="." method="ToggleSettings" binds= [true]]
+[connection signal="pressed" from="SettingsCanvas/UserInterface/ExitSettings" to="." method="ToggleSettings" binds= [false]]
 [connection signal="pressed" from="SettingsCanvas/UserInterface/VBoxContainer/ExitGame" to="." method="ExitGame"]
 [connection signal="item_selected" from="SettingsCanvas/UserInterface/VBoxContainer/WindowOptions" to="." method="SetWindowOption"]
 [connection signal="item_selected" from="SettingsCanvas/UserInterface/VBoxContainer/ResolutionOptions" to="." method="SetResolutionOption"]

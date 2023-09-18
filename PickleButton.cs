@@ -17,16 +17,15 @@ public partial class PickleButton : TextureButton
 		DisplayServer.WindowSetMinSize(new Vector2I(960, 540));
 	}
 
-	private int index = 0;
-	private void click_pickle()
+	private void ClickPickle()
 	{
-		pickles += 1000000;
-		string pickles_formatted = big_number_handler(pickles);
+		pickles += 1;
+		string pickles_formatted = BigNumberHandler(pickles);
 		Label pickles_picked = GetNode<Label>("/root/Canvases/MainCanvas/UserInterface/PicklesPickedPanel/PicklesPicked");
 		pickles_picked.Text = $"{pickles_formatted}";
 	}
 
-	private string big_number_handler(double pickles)
+	private string BigNumberHandler(double pickles)
 	{
 		string[] abbreviations = { "", "K", "M", "B", "T", "Qa", "Qi", "Sx", "Sp", "Oc", "No"};
 		int mag = (int)(Math.Floor(Math.Log10(pickles))/3); // Truncates to 6, divides to 2
