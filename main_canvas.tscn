@@ -1,13 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://c36kd7o7wl3di"]
+[gd_scene load_steps=9 format=3 uid="uid://c36kd7o7wl3di"]
 
 [ext_resource type="FontFile" uid="uid://be5okn7w3gx46" path="res://Pangolin-Regular.ttf" id="1_im685"]
 [ext_resource type="Texture2D" uid="uid://bj6c4gsupnue7" path="res://RadialGradient.png" id="1_itrb7"]
+[ext_resource type="Script" path="res://Settings.cs" id="1_r885t"]
 [ext_resource type="Texture2D" uid="uid://co4h8eh6qt60d" path="res://LeftRounded45.png" id="2_peinw"]
 [ext_resource type="Texture2D" uid="uid://km3vo781gia0" path="res://Pickle.png" id="3_daer5"]
 [ext_resource type="Texture2D" uid="uid://bm8icucimxr83" path="res://Blur.png" id="5_nlwpr"]
 [ext_resource type="Script" path="res://PickleButton.cs" id="5_pvase"]
+[ext_resource type="Theme" uid="uid://dfhjflg85dfk5" path="res://Default.tres" id="8_okjpw"]
 
 [node name="Canvases" type="Node2D"]
+script = ExtResource("1_r885t")
 metadata/_edit_horizontal_guides_ = [-62.0]
 
 [node name="MainCanvas" type="CanvasLayer" parent="."]
@@ -148,6 +151,7 @@ scale = Vector2(0.075, 0.075)
 texture = ExtResource("3_daer5")
 
 [node name="PicklesPerSecond" type="Label" parent="MainCanvas/UserInterface/PicklesPerSecondPanel"]
+layout_mode = 0
 offset_left = 962.0
 offset_top = 150.0
 offset_right = 1152.0
@@ -160,6 +164,7 @@ vertical_alignment = 1
 autowrap_mode = 1
 
 [node name="PerSecond" type="Label" parent="MainCanvas/UserInterface/PicklesPerSecondPanel"]
+layout_mode = 0
 offset_left = 877.0
 offset_top = 175.0
 offset_right = 927.0
@@ -172,6 +177,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="OpenSettings" type="Button" parent="MainCanvas/UserInterface"]
+layout_mode = 0
 offset_left = 14.0
 offset_top = 16.0
 offset_right = 174.0
@@ -183,7 +189,6 @@ text = "Settings
 "
 
 [node name="SettingsCanvas" type="CanvasLayer" parent="."]
-visible = false
 follow_viewport_enabled = true
 
 [node name="UserInterface" type="Control" parent="SettingsCanvas"]
@@ -206,6 +211,7 @@ texture = ExtResource("1_itrb7")
 metadata/_edit_lock_ = true
 
 [node name="ExitSettings" type="Button" parent="SettingsCanvas/UserInterface"]
+layout_mode = 0
 offset_left = 1106.0
 offset_top = 18.0
 offset_right = 1266.0
@@ -217,40 +223,93 @@ text = "Back
 "
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SettingsCanvas/UserInterface"]
-layout_mode = 0
-offset_left = 234.0
-offset_top = 204.0
-offset_right = 394.0
-offset_bottom = 374.0
-theme_override_constants/separation = 25
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.0
+offset_top = -220.0
+offset_right = 127.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
 metadata/_edit_group_ = true
-
-[node name="SetFullscreen" type="Button" parent="SettingsCanvas/UserInterface/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_im685")
-theme_override_font_sizes/font_size = 25
-action_mode = 0
-text = "Set Fullscreen"
-
-[node name="SetWindowed" type="Button" parent="SettingsCanvas/UserInterface/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_im685")
-theme_override_font_sizes/font_size = 25
-action_mode = 0
-text = "Set Windowed
-"
 
 [node name="ExitGame" type="Button" parent="SettingsCanvas/UserInterface/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("8_okjpw")
 theme_override_fonts/font = ExtResource("1_im685")
 theme_override_font_sizes/font_size = 25
 action_mode = 0
 text = "Exit Game
 "
 
+[node name="WindowOptions" type="OptionButton" parent="SettingsCanvas/UserInterface/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_okjpw")
+theme_override_fonts/font = ExtResource("1_im685")
+item_count = 4
+selected = 0
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "Maximized Window"
+popup/item_1/id = 1
+popup/item_2/text = "Fullscreen"
+popup/item_2/id = 2
+popup/item_3/text = "Exclusive Fullscreen"
+popup/item_3/id = 3
+
+[node name="ResolutionOptions" type="OptionButton" parent="SettingsCanvas/UserInterface/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_okjpw")
+item_count = 4
+selected = 2
+popup/item_0/text = "720x480"
+popup/item_0/id = 0
+popup/item_1/text = "960x540"
+popup/item_1/id = 1
+popup/item_2/text = "1280x720"
+popup/item_2/id = 2
+popup/item_3/text = "1920x1080"
+popup/item_3/id = 3
+
+[node name="BorderlessOption" type="CheckButton" parent="SettingsCanvas/UserInterface/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_okjpw")
+theme_override_fonts/font = ExtResource("1_im685")
+theme_override_font_sizes/font_size = 25
+action_mode = 0
+text = "Borderless"
+
+[node name="VSyncOption" type="CheckButton" parent="SettingsCanvas/UserInterface/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_okjpw")
+theme_override_fonts/font = ExtResource("1_im685")
+theme_override_font_sizes/font_size = 25
+action_mode = 0
+text = "V-Sync"
+
+[node name="FramerateOptions" type="SpinBox" parent="SettingsCanvas/UserInterface/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 1
+theme = ExtResource("8_okjpw")
+min_value = 30.0
+max_value = 240.0
+value = 30.0
+rounded = true
+suffix = "FPS"
+custom_arrow_step = 5.0
+select_all_on_focus = true
+
 [connection signal="pressed" from="MainCanvas/UserInterface/PickleButton" to="MainCanvas/UserInterface/PickleButton" method="click_pickle"]
-[connection signal="pressed" from="MainCanvas/UserInterface/OpenSettings" to="MainCanvas/UserInterface/PickleButton" method="OpenSettings"]
-[connection signal="pressed" from="SettingsCanvas/UserInterface/ExitSettings" to="MainCanvas/UserInterface/PickleButton" method="CloseSettings"]
-[connection signal="pressed" from="SettingsCanvas/UserInterface/VBoxContainer/SetFullscreen" to="MainCanvas/UserInterface/PickleButton" method="SetFullscreen"]
-[connection signal="pressed" from="SettingsCanvas/UserInterface/VBoxContainer/SetWindowed" to="MainCanvas/UserInterface/PickleButton" method="SetWindowed"]
-[connection signal="pressed" from="SettingsCanvas/UserInterface/VBoxContainer/ExitGame" to="MainCanvas/UserInterface/PickleButton" method="ExitGame"]
+[connection signal="pressed" from="MainCanvas/UserInterface/OpenSettings" to="." method="OpenSettings"]
+[connection signal="pressed" from="SettingsCanvas/UserInterface/ExitSettings" to="." method="CloseSettings"]
+[connection signal="pressed" from="SettingsCanvas/UserInterface/VBoxContainer/ExitGame" to="." method="ExitGame"]
+[connection signal="item_selected" from="SettingsCanvas/UserInterface/VBoxContainer/WindowOptions" to="." method="SetWindowOption"]
+[connection signal="item_selected" from="SettingsCanvas/UserInterface/VBoxContainer/ResolutionOptions" to="." method="SetResolutionOption"]
+[connection signal="toggled" from="SettingsCanvas/UserInterface/VBoxContainer/BorderlessOption" to="." method="ToggleBorderlessOption"]
+[connection signal="toggled" from="SettingsCanvas/UserInterface/VBoxContainer/VSyncOption" to="." method="ToggleVSyncOption"]
+[connection signal="value_changed" from="SettingsCanvas/UserInterface/VBoxContainer/FramerateOptions" to="." method="SetFramerate"]

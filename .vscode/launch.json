@@ -5,11 +5,22 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Run Godot Run",
+            "name": "Run Godot: Desktop",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
             "program": "c:/Users/Brandon Bui/Downloads/Godot_v4.1.1-stable_mono_win64/Godot_v4.1.1-stable_mono_win64/Godot.exe",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "args": ["--path","${workspaceRoot}"]
+        },
+        {
+            "name": "Run Godot: Laptop",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "C:/Users/shard/Downloads/Godot_v4.1.1-stable_mono_win64/Godot_v4.1.1-stable_mono_win64/Godot.exe",
             "cwd": "${workspaceFolder}",
             "console": "internalConsole",
             "stopAtEntry": false,

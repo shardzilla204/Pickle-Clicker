@@ -17,33 +17,6 @@ public partial class PickleButton : TextureButton
 		DisplayServer.WindowSetMinSize(new Vector2I(960, 540));
 	}
 
-	public void SetFullscreen()
-	{
-		DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
-	}
-
-	public void SetWindowed()
-	{
-		DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
-	}
-
-	public void OpenSettings()
-	{
-		CanvasLayer settingsCanvas = GetNode<CanvasLayer>("/root/Canvases/SettingsCanvas");
-		settingsCanvas.Visible = true;
-	}
-
-	public void CloseSettings()
-	{
-		CanvasLayer settingsCanvas = GetNode<CanvasLayer>("/root/Canvases/SettingsCanvas");
-		settingsCanvas.Visible = false;
-	}
-
-	public void ExitGame()
-	{
-		GetTree().Quit();
-	}
-
 	private int index = 0;
 	private void click_pickle()
 	{

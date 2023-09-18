@@ -13,6 +13,7 @@ config_version=5
 config/name="Pickle Clicker"
 run/main_scene="res://main_canvas.tscn"
 config/features=PackedStringArray("4.1", "C#", "GL Compatibility")
+run/max_fps=60
 config/icon="res://icon.svg"
 
 [display]
