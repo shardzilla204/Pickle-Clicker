@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c36kd7o7wl3di"]
+[gd_scene load_steps=12 format=3 uid="uid://c36kd7o7wl3di"]
 
 [ext_resource type="FontFile" uid="uid://be5okn7w3gx46" path="res://Pangolin-Regular.ttf" id="1_im685"]
 [ext_resource type="Texture2D" uid="uid://bj6c4gsupnue7" path="res://RadialGradient.png" id="1_itrb7"]
@@ -10,10 +10,14 @@
 [ext_resource type="Theme" uid="uid://dfhjflg85dfk5" path="res://Default.tres" id="8_okjpw"]
 [ext_resource type="Texture2D" uid="uid://dx8gc7n28uucb" path="res://RoundedSquare45.png" id="9_rt6ga"]
 [ext_resource type="Texture2D" uid="uid://1olnyhto4h4r" path="res://CosmeticIcons/BasicEyesIcon.png" id="9_rvjly"]
+[ext_resource type="Script" path="res://Steam/SteamManager.cs" id="11_cd5bg"]
 
 [node name="Canvases" type="Node2D"]
 script = ExtResource("1_r885t")
 metadata/_edit_horizontal_guides_ = [-62.0]
+
+[node name="Steamworks" type="Node" parent="."]
+script = ExtResource("11_cd5bg")
 
 [node name="MainCanvas" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -388,6 +392,7 @@ render_target_update_mode = 4
 [connection signal="pressed" from="MainCanvas/UserInterface/OpenSettings" to="." method="ToggleSettings" binds= [true]]
 [connection signal="pressed" from="SettingsCanvas/UserInterface/ExitSettings" to="." method="ToggleSettings" binds= [false]]
 [connection signal="pressed" from="SettingsCanvas/UserInterface/VBoxContainer/ExitGame" to="." method="ExitGame"]
+[connection signal="pressed" from="SettingsCanvas/UserInterface/VBoxContainer/ExitGame" to="Steamworks" method="StopSteam"]
 [connection signal="item_selected" from="SettingsCanvas/UserInterface/VBoxContainer/WindowOptions" to="." method="SetWindowOption"]
 [connection signal="item_selected" from="SettingsCanvas/UserInterface/VBoxContainer/ResolutionOptions" to="." method="SetResolutionOption"]
 [connection signal="toggled" from="SettingsCanvas/UserInterface/VBoxContainer/BorderlessOption" to="." method="ToggleBorderlessOption"]
