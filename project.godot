@@ -11,10 +11,10 @@ config_version=5
 [application]
 
 config/name="Pickle Clicker"
-run/main_scene="res://main_canvas.tscn"
+run/main_scene="res://Assets/Scenes/PickleClicker.tscn"
 config/features=PackedStringArray("4.1", "C#", "GL Compatibility")
 run/max_fps=60
-config/icon="res://icon.svg"
+config/icon="res://ReleaseIcons/ApplicationIcon.png"
 
 [display]
 
