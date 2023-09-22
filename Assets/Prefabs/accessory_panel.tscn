@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://drgsx7lyleleb"]
+
+[ext_resource type="Texture2D" uid="uid://dx8gc7n28uucb" path="res://Assets/Images/RoundedSquare45.png" id="1_aecyt"]
+[ext_resource type="Script" path="res://Assets/Scripts/AccessoryPanel.cs" id="2_7jt8k"]
+
+[node name="AccessoryPanel" type="TextureRect"]
+self_modulate = Color(0.390625, 0.304688, 0.1875, 1)
+show_behind_parent = true
+custom_minimum_size = Vector2(100, 100)
+mouse_filter = 2
+texture = ExtResource("1_aecyt")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="AccessoryIcon" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("2_7jt8k")
