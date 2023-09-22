@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 public partial class PickleProgressBar : TextureProgressBar
 {
@@ -28,6 +29,8 @@ public partial class PickleProgressBar : TextureProgressBar
 
 	public void LevelUp()
 	{
+		RemoveProgress();
+		
 		pickleLevel += 1;
 		Label pickleLevelText = GetNode<Label>($"{USER_INTERFACE_PATH}/PickleProgressBar/PickleLevel");
 		pickleLevelText.Text = $"{pickleLevel}";
@@ -39,7 +42,6 @@ public partial class PickleProgressBar : TextureProgressBar
 		double maxValue = pickleProgressBar.MaxValue;
 		if (maxValue <= currentValue)
 		{
-			RemoveProgress();
 			LevelUp();
 		}
 	}
@@ -53,7 +55,7 @@ public partial class PickleProgressBar : TextureProgressBar
 		if (!toggled) return;
 
 		double percentage = pickleProgressBar.Value / pickleProgressBar.MaxValue * 100;
-		pickleLevelText.Text = $"{percentage}%";
+		pickleLevelText.Text = $"{Math.Floor(percentage)}%";
 		pickleLevelText.AddThemeFontSizeOverride("font_size", 30);
 	}
 }
