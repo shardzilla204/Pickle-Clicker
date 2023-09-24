@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://drgsx7lyleleb"]
 
-[ext_resource type="Texture2D" uid="uid://dx8gc7n28uucb" path="res://Assets/Images/RoundedSquare45.png" id="1_aecyt"]
-[ext_resource type="Script" path="res://Assets/Scripts/AccessoryPanel.cs" id="2_7jt8k"]
+[ext_resource type="Texture2D" uid="uid://dx8gc7n28uucb" path="res://Assets/Images/RoundedSquare45.png" id="1_kyvth"]
+[ext_resource type="Script" path="res://Assets/Scripts/Accessory.cs" id="2_v1jfd"]
 
 [node name="AccessoryPanel" type="TextureRect"]
 self_modulate = Color(0.390625, 0.304688, 0.1875, 1)
 show_behind_parent = true
 custom_minimum_size = Vector2(100, 100)
 mouse_filter = 2
-texture = ExtResource("1_aecyt")
+texture = ExtResource("1_kyvth")
 expand_mode = 1
 stretch_mode = 4
 
@@ -34,4 +34,4 @@ theme_override_constants/margin_bottom = 10
 [node name="AccessoryIcon" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("2_7jt8k")
+script = ExtResource("2_v1jfd")

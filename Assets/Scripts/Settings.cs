@@ -147,6 +147,8 @@ public partial class Settings : CanvasLayer
 	{
 		CanvasLayer settingsCanvas = GetNode<CanvasLayer>("/root/Canvases/SettingsCanvas");
 		settingsCanvas.Visible = toggled;
+		BoxContainer canvasButtons = GetNode<BoxContainer>("/root/Canvases/MainCanvas/UserInterface/CanvasButtons");
+		canvasButtons.Visible = !toggled;
 	}
 
 	public void ExitGame()

@@ -8,6 +8,12 @@
 
 config_version=5
 
+[MonoCustomResourceRegistry]
+
+ClassPrefix=""
+SearchType=0
+ResourceScriptDirectories=["res://"]
+
 [application]
 
 config/name="Pickle Clicker"
@@ -27,7 +33,7 @@ project/assembly_name="Pickle Clicker"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/MonoCustomResourceRegistry/plugin.cfg")
 
 [input]
 

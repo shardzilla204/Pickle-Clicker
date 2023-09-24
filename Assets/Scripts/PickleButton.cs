@@ -18,7 +18,7 @@ public partial class PickleButton : TextureButton
 	{
 		TextureRect pickleProgressBar = GetNode<TextureRect>($"{USER_INTERFACE_PATH}/PickleProgressBar");
 		double pickleLevel = (double) pickleProgressBar.Get("pickleLevel");
-		pickles += 1 + pickleLevel / 10;
+		pickles += 1 + (Math.Pow(pickleLevel, 2) / 10);
 		string picklesFormatted = BigNumberHandler(pickles);
 		Label picklesPicked = GetNode<Label>($"{USER_INTERFACE_PATH}/PicklesPickedPanel/PicklesPicked");
 		picklesPicked.Text = $"{picklesFormatted}";
