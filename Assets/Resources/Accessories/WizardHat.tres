@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://grqvedepujm"]
+
+[ext_resource type="Texture2D" uid="uid://fg7as8cvjdt5" path="res://Assets/Images/Cosmetics/Wizard/WizardHat.png" id="1_18rvh"]
+[ext_resource type="Texture2D" uid="uid://cktermfc632at" path="res://Assets/Images/CosmeticIcons/WizardHatIcon.png" id="2_vqvuh"]
+[ext_resource type="Script" path="res://Assets/Scripts/Accessory/AccessoryData.cs" id="3_6mk10"]
+
+[resource]
+resource_name = "WizardHat"
+script = ExtResource("3_6mk10")
+type = 0
+accessory = ExtResource("1_18rvh")
+icon = ExtResource("2_vqvuh")
+description = ""

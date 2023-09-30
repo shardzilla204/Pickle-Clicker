@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr0dxf5v0yueg"
-path="res://.godot/imported/TopperTypeIcon.png-6294680feb9af9a8808e7c8dd74ee610.ctex"
+uid="uid://dmv7pblffkrd"
+path="res://.godot/imported/Skin.png-22212d1fc6dc35621672b6c1f6d2f9f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Icons/CosmeticTypeIcons/TopperTypeIcon.png"
-dest_files=["res://.godot/imported/TopperTypeIcon.png-6294680feb9af9a8808e7c8dd74ee610.ctex"]
+source_file="res://Assets/Images/Icons/CosmeticTypes/Skin.png"
+dest_files=["res://.godot/imported/Skin.png-22212d1fc6dc35621672b6c1f6d2f9f4.ctex"]
 
 [params]
 

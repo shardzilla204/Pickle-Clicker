@@ -1,7 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bp658aac1kr6u"]
-
-[ext_resource type="Script" path="res://Assets/Scripts/AccessoryData.cs" id="1_tc1u1"]
-
-[resource]
-script = ExtResource("1_tc1u1")
-accessoryType = 0

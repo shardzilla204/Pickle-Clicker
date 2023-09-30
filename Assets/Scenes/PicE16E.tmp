@@ -960,7 +960,7 @@ theme_override_constants/margin_bottom = 20
 [node name="VBoxContainer" type="VBoxContainer" parent="CustomizeCanvas/MarginContainer/VBoxContainer/HSplitContainer/PreviewSection/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 40
+theme_override_constants/separation = 20
 alignment = 1
 
 [node name="PreviewPanel" type="NinePatchRect" parent="CustomizeCanvas/MarginContainer/VBoxContainer/HSplitContainer/PreviewSection/MarginContainer/VBoxContainer"]
@@ -995,27 +995,8 @@ layout_mode = 2
 theme_override_constants/separation = 45
 alignment = 1
 
-[node name="AccessorySlot" parent="CustomizeCanvas/MarginContainer/VBoxContainer/HSplitContainer/PreviewSection/MarginContainer/VBoxContainer/HBoxContainer" groups=["AccessorySlots"] instance=ExtResource("21_cy07g")]
+[node name="AccessorySlot" parent="CustomizeCanvas/MarginContainer/VBoxContainer/HSplitContainer/PreviewSection/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("21_cy07g")]
 layout_mode = 2
-
-[node name="AccessorySlot2" parent="CustomizeCanvas/MarginContainer/VBoxContainer/HSplitContainer/PreviewSection/MarginContainer/VBoxContainer/HBoxContainer" groups=["AccessorySlots"] instance=ExtResource("21_cy07g")]
-layout_mode = 2
-
-[node name="AccessorySlot3" parent="CustomizeCanvas/MarginContainer/VBoxContainer/HSplitContainer/PreviewSection/MarginContainer/VBoxContainer/HBoxContainer" groups=["AccessorySlots"] instance=ExtResource("21_cy07g")]
-layout_mode = 2
-accessoryType = 1
-
-[node name="AccessorySlot4" parent="CustomizeCanvas/MarginContainer/VBoxContainer/HSplitContainer/PreviewSection/MarginContainer/VBoxContainer/HBoxContainer" groups=["AccessorySlots"] instance=ExtResource("21_cy07g")]
-layout_mode = 2
-accessoryType = 2
-
-[node name="AccessorySlot5" parent="CustomizeCanvas/MarginContainer/VBoxContainer/HSplitContainer/PreviewSection/MarginContainer/VBoxContainer/HBoxContainer" groups=["AccessorySlots"] instance=ExtResource("21_cy07g")]
-layout_mode = 2
-accessoryType = 2
-
-[node name="AccessorySlot6" parent="CustomizeCanvas/MarginContainer/VBoxContainer/HSplitContainer/PreviewSection/MarginContainer/VBoxContainer/HBoxContainer" groups=["AccessorySlots"] instance=ExtResource("21_cy07g")]
-layout_mode = 2
-accessoryType = 3
 
 [node name="ConfirmCanvas" type="CanvasLayer" parent="."]
 visible = false

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c0ukg2s08q1ad"
-path="res://.godot/imported/ToolTypeIcon.png-0f04a9c8d66b968526bc538e9d5346db.ctex"
+path="res://.godot/imported/Tool.png-243d17b0ba4c10744dc3826d0ed5d160.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Icons/CosmeticTypeIcons/ToolTypeIcon.png"
-dest_files=["res://.godot/imported/ToolTypeIcon.png-0f04a9c8d66b968526bc538e9d5346db.ctex"]
+source_file="res://Assets/Images/Icons/CosmeticTypes/Tool.png"
+dest_files=["res://.godot/imported/Tool.png-243d17b0ba4c10744dc3826d0ed5d160.ctex"]
 
 [params]
 
