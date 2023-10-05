@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0kek8l32ecua"]
+
+[ext_resource type="SpriteFrames" uid="uid://dq82d1unwxpmg" path="res://NormalPoglin.tres" id="1_2xsnc"]
+[ext_resource type="Script" path="res://Assets/Scripts/Poglin/NormalPoglin.cs" id="1_o5di4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wf7n3"]
+radius = 225.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_msogr"]
+radius = 225.0
+
+[node name="NormalPoglin" type="CharacterBody2D"]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_o5di4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_2xsnc")
+frame_progress = 0.642227
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wf7n3")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_msogr")
+
+[connection signal="area_entered" from="Area2D" to="." method="OnPickleContact"]
+[connection signal="body_entered" from="Area2D" to="." method="OnPickleContact"]

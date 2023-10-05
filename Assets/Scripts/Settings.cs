@@ -10,7 +10,7 @@ public partial class Settings : CanvasLayer
 	{
 		DisplayServer.WindowSetMinSize(new Vector2I(720, 480));
 		DisplayServer.WindowSetSize(new Vector2I(1280, 720));
-		SpinBox framerateOption = GetNode<SpinBox>("/root/Canvases/SettingsCanvas/UserInterface/VBoxContainer/FramerateOptions");
+		SpinBox framerateOption = GetNode<SpinBox>("./VBoxContainer/FramerateOptions");
 		framerateOption.GetLineEdit().ContextMenuEnabled = false;
 		initialScreenPosition = DisplayServer.WindowGetPosition();
 		Console.WriteLine(initialScreenPosition);
@@ -38,8 +38,8 @@ public partial class Settings : CanvasLayer
 
 	public void SetWindowOption(int index)
 	{
-		CheckButton borderlessOption = GetNode<CheckButton>("/root/Canvases/SettingsCanvas/UserInterface/VBoxContainer/BorderlessOption");
-		OptionButton resolutionOptions = GetNode<OptionButton>("/root/Canvases/SettingsCanvas/UserInterface/VBoxContainer/ResolutionOptions");
+		CheckButton borderlessOption = GetNode<CheckButton>("./VBoxContainer/BorderlessOption");
+		OptionButton resolutionOptions = GetNode<OptionButton>("./VBoxContainer/ResolutionOptions");
 		resolutionOptions.Disabled = false;
 		borderlessOption.Disabled = false;
 		DisplayServer.MouseSetMode(DisplayServer.MouseMode.Visible);
@@ -74,8 +74,8 @@ public partial class Settings : CanvasLayer
 
 	private void ToggleFullscreen()
 	{
-		CheckButton borderlessOption = GetNode<CheckButton>("/root/Canvases/SettingsCanvas/UserInterface/VBoxContainer/BorderlessOption");
-		OptionButton resolutionOptions = GetNode<OptionButton>("/root/Canvases/SettingsCanvas/UserInterface/VBoxContainer/ResolutionOptions");
+		CheckButton borderlessOption = GetNode<CheckButton>("./VBoxContainer/BorderlessOption");
+		OptionButton resolutionOptions = GetNode<OptionButton>("./VBoxContainer/ResolutionOptions");
 		DisplayServer.MouseSetMode(DisplayServer.MouseMode.Confined);
 		resolutionOptions.Disabled = true;
 		ToggleBorderlessOption(false);
@@ -85,7 +85,7 @@ public partial class Settings : CanvasLayer
 
 	private void CheckForBorderless()
 	{
-		CheckButton borderlessOption = GetNode<CheckButton>("/root/Canvases/SettingsCanvas/UserInterface/VBoxContainer/BorderlessOption");
+		CheckButton borderlessOption = GetNode<CheckButton>("./VBoxContainer/BorderlessOption");
 		Vector2I currentWindowSize = DisplayServer.WindowGetSize();
 		Vector2I currentScreenSize = DisplayServer.ScreenGetSize();
 		bool match = currentWindowSize[0] >= currentScreenSize[0];
@@ -97,7 +97,7 @@ public partial class Settings : CanvasLayer
 
 	public void SetCustomResolutionOption()
 	{
-		OptionButton resolutionOptions = GetNode<OptionButton>("/root/Canvases/SettingsCanvas/UserInterface/VBoxContainer/ResolutionOptions");
+		OptionButton resolutionOptions = GetNode<OptionButton>("./VBoxContainer/ResolutionOptions");
 		
 		Vector2I currentScreenSize = DisplayServer.WindowGetSize();
 		if (resolutionOptions.ItemCount >= 5)
@@ -113,7 +113,7 @@ public partial class Settings : CanvasLayer
 
 	public void SetResolutionOption(int index)
 	{
-		OptionButton resolutionOptions = GetNode<OptionButton>("/root/Canvases/SettingsCanvas/UserInterface/VBoxContainer/ResolutionOptions");
+		OptionButton resolutionOptions = GetNode<OptionButton>("./VBoxContainer/ResolutionOptions");
 		if (resolutionOptions.ItemCount >= 5)
 		{
 			resolutionOptions.RemoveItem(4);
@@ -143,12 +143,9 @@ public partial class Settings : CanvasLayer
 		}
 	}
 
-	public void ToggleSettings(bool toggled)
+	public void CloseSettings()
 	{
-		CanvasLayer settingsCanvas = GetNode<CanvasLayer>("/root/Canvases/SettingsCanvas");
-		settingsCanvas.Visible = toggled;
-		BoxContainer canvasButtons = GetNode<BoxContainer>("/root/Canvases/MainCanvas/UserInterface/CanvasButtons");
-		canvasButtons.Visible = !toggled;
+		QueueFree();
 	}
 
 	public void ExitGame()
@@ -165,7 +162,7 @@ public partial class Settings : CanvasLayer
 
 	public void ToggleVSyncOption(bool toggled)
 	{
-		SpinBox framerateOption = GetNode<SpinBox>("/root/Canvases/SettingsCanvas/UserInterface/VBoxContainer/FramerateOptions");
+		SpinBox framerateOption = GetNode<SpinBox>("./VBoxContainer/FramerateOptions");
 		switch(toggled)
 		{
 			case true:
@@ -193,7 +190,7 @@ public partial class Settings : CanvasLayer
 
 	public void RemoveFramerateFocus()
 	{
-		SpinBox framerateOption = GetNode<SpinBox>("/root/Canvases/SettingsCanvas/UserInterface/VBoxContainer/FramerateOptions");
+		SpinBox framerateOption = GetNode<SpinBox>("./VBoxContainer/FramerateOptions");
 		framerateOption.GetLineEdit().ReleaseFocus();
 	}
 }

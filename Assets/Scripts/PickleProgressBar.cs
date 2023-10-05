@@ -6,13 +6,12 @@ public partial class PickleProgressBar : TextureRect
 	TextureProgressBar initialProgressBar;
 	TextureProgressBar finalProgressBar;
 	int pickleLevel = 0;
-	const string USER_INTERFACE_PATH = "/root/Canvases/MainCanvas/UserInterface";
 	// Called when the node enters the scene tree for the first time.
 	bool removeProgress = false;
 	public override void _Ready()
 	{
-		initialProgressBar = GetNode<TextureProgressBar>($"{USER_INTERFACE_PATH}/PickleProgressBar/InitialProgressBar");
-		finalProgressBar = GetNode<TextureProgressBar>($"{USER_INTERFACE_PATH}/PickleProgressBar/FinalProgressBar");
+		initialProgressBar = GetNode<TextureProgressBar>($"./InitialProgressBar");
+		finalProgressBar = GetNode<TextureProgressBar>($"./FinalProgressBar");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -51,7 +50,7 @@ public partial class PickleProgressBar : TextureRect
 	{
 		RemoveProgress();
 		pickleLevel += 1;
-		Label pickleLevelText = GetNode<Label>($"{USER_INTERFACE_PATH}/PickleProgressBar/PickleLevel");
+		Label pickleLevelText = GetNode<Label>($"./PickleLevel");
 		pickleLevelText.Text = $"{pickleLevel}";
 		initialProgressBar.MaxValue += 2 ^ pickleLevel;
 		finalProgressBar.MaxValue += 2 ^ pickleLevel;
@@ -68,7 +67,7 @@ public partial class PickleProgressBar : TextureRect
 
 	public void CheckProgress(bool toggled)
 	{
-		Label pickleLevelText = GetNode<Label>($"{USER_INTERFACE_PATH}/PickleProgressBar/PickleLevel");
+		Label pickleLevelText = GetNode<Label>($"./PickleLevel");
 		pickleLevelText.Text = $"{pickleLevel}";
 		pickleLevelText.AddThemeFontSizeOverride("font_size", 40);
 

@@ -1,11 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://c36kd7o7wl3di"]
+[gd_scene load_steps=11 format=3 uid="uid://c36kd7o7wl3di"]
 
 [ext_resource type="Texture2D" uid="uid://bj6c4gsupnue7" path="res://Assets/Images/RadialGradient.png" id="3_cqbj3"]
 [ext_resource type="Texture2D" uid="uid://km3vo781gia0" path="res://Assets/Images/Pickle.png" id="4_xh83i"]
-[ext_resource type="Script" path="res://Assets/Scenes/CanvasManager.cs" id="5_f1y2w"]
 [ext_resource type="Script" path="res://Assets/Scripts/PickleButton.cs" id="5_p8plr"]
 [ext_resource type="Texture2D" uid="uid://bm8icucimxr83" path="res://Assets/Images/Blur.png" id="6_7suit"]
-[ext_resource type="PackedScene" uid="uid://6ebuvgh2qafd" path="res://Assets/Scenes/SettingsCanvas.tscn" id="6_jcd5e"]
 [ext_resource type="Texture2D" uid="uid://co4h8eh6qt60d" path="res://Assets/Images/LeftRounded45.png" id="7_3rx1k"]
 [ext_resource type="FontFile" uid="uid://be5okn7w3gx46" path="res://Assets/Fonts/Pangolin-Regular.ttf" id="8_1v5xl"]
 [ext_resource type="Texture2D" uid="uid://rdui6xevkpsd" path="res://Assets/Images/UnderProgressBar.png" id="8_h0xf5"]
@@ -157,8 +155,6 @@ custom_minimum_size = Vector2(200, 0)
 offset_right = 145.0
 offset_bottom = 95.0
 theme_override_constants/separation = 15
-script = ExtResource("5_f1y2w")
-settingsCanvasScene = ExtResource("6_jcd5e")
 
 [node name="OpenSettings" type="Button" parent="MarginContainer/UserInterface/CanvasButtons"]
 layout_mode = 2
@@ -178,7 +174,6 @@ text = "Pickle Exchange
 "
 
 [node name="OpenApparel" type="Button" parent="MarginContainer/UserInterface/CanvasButtons"]
-visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_1v5xl")
 theme_override_font_sizes/font_size = 25
@@ -330,7 +325,6 @@ position = Vector2(0, 300)
 scale = Vector2(5, 2)
 texture = ExtResource("6_7suit")
 
-[connection signal="pressed" from="MarginContainer/UserInterface/CanvasButtons/OpenSettings" to="MarginContainer/UserInterface/CanvasButtons" method="OpenSettings"]
 [connection signal="value_changed" from="MarginContainer/UserInterface/PickleProgressBar/InitialProgressBar" to="MarginContainer/UserInterface/PickleProgressBar" method="UpdateProgress"]
 [connection signal="mouse_entered" from="MarginContainer/UserInterface/Pickle/Area2D" to="MarginContainer/UserInterface/Pickle" method="OnHover" binds= [true]]
 [connection signal="mouse_exited" from="MarginContainer/UserInterface/Pickle/Area2D" to="MarginContainer/UserInterface/Pickle" method="OnHover" binds= [false]]
