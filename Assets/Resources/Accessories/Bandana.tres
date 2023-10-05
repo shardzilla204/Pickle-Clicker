@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bqprm12vrupy1"]
+
+[ext_resource type="Texture2D" uid="uid://bpfh05155ffni" path="res://Assets/Images/Cosmetics/Bandit/Bandana.png" id="1_2iy0b"]
+[ext_resource type="Texture2D" uid="uid://na6ci0q2x5be" path="res://Assets/Images/CosmeticIcons/BandanaIcon.png" id="2_ex0hs"]
+[ext_resource type="Script" path="res://Assets/Scripts/Accessory/AccessoryData.cs" id="3_7hgum"]
+
+[resource]
+resource_name = "Bandana"
+script = ExtResource("3_7hgum")
+type = 0
+accessory = ExtResource("1_2iy0b")
+icon = ExtResource("2_ex0hs")
+description = ""

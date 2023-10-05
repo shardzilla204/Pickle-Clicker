@@ -1,45 +1,64 @@
 using Godot;
 using System;
 
-public partial class PickleProgressBar : TextureProgressBar
+public partial class PickleProgressBar : TextureRect
 {
-	TextureProgressBar pickleProgressBar;
+	TextureProgressBar initialProgressBar;
+	TextureProgressBar finalProgressBar;
 	int pickleLevel = 0;
-	const string USER_INTERFACE_PATH = "/root/Canvases/MainCanvas/UserInterface";
 	// Called when the node enters the scene tree for the first time.
+	bool removeProgress = false;
 	public override void _Ready()
 	{
-		pickleProgressBar = GetNode<TextureProgressBar>($"{USER_INTERFACE_PATH}/PickleProgressBar");
+		initialProgressBar = GetNode<TextureProgressBar>($"./InitialProgressBar");
+		finalProgressBar = GetNode<TextureProgressBar>($"./FinalProgressBar");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
+	{	
+	}
+
+
+	public void SetFinalProgressBar()
 	{
+		Tween tween = GetTree().CreateTween();
+		tween.TweenProperty(finalProgressBar, "value", initialProgressBar.Value, 1f);
 	}
 
 	public void AddProgress()
 	{
-		pickleProgressBar.Value += 1;
+		initialProgressBar.Value += 1;
+		if (removeProgress) return;
+		SetFinalProgressBar();
 	}
+
 	
-	public void RemoveProgress()
+	public async void RemoveProgress()
 	{
-		pickleProgressBar.Value -= pickleProgressBar.MaxValue;
+		removeProgress = true;
+		Tween tween = GetTree().CreateTween().SetParallel(true);
+		tween.SetEase(Tween.EaseType.Out);
+		tween.TweenProperty(finalProgressBar, "value", 0, 1f);
+		tween.TweenProperty(initialProgressBar, "value", 0, 1f);
+		await ToSignal(tween, "finished");
+		removeProgress = false;
+
 	}
 
 	public void LevelUp()
 	{
 		RemoveProgress();
-		
 		pickleLevel += 1;
-		Label pickleLevelText = GetNode<Label>($"{USER_INTERFACE_PATH}/PickleProgressBar/PickleLevel");
+		Label pickleLevelText = GetNode<Label>($"./PickleLevel");
 		pickleLevelText.Text = $"{pickleLevel}";
-		pickleProgressBar.MaxValue += 2 ^ pickleLevel;
+		initialProgressBar.MaxValue += 2 ^ pickleLevel;
+		finalProgressBar.MaxValue += 2 ^ pickleLevel;
 	}
 
 	public void UpdateProgress(float currentValue)
 	{
-		double maxValue = pickleProgressBar.MaxValue;
+		double maxValue = finalProgressBar.MaxValue;
 		if (maxValue <= currentValue)
 		{
 			LevelUp();
@@ -48,13 +67,13 @@ public partial class PickleProgressBar : TextureProgressBar
 
 	public void CheckProgress(bool toggled)
 	{
-		Label pickleLevelText = GetNode<Label>($"{USER_INTERFACE_PATH}/PickleProgressBar/PickleLevel");
+		Label pickleLevelText = GetNode<Label>($"./PickleLevel");
 		pickleLevelText.Text = $"{pickleLevel}";
 		pickleLevelText.AddThemeFontSizeOverride("font_size", 40);
 
 		if (!toggled) return;
 
-		double percentage = pickleProgressBar.Value / pickleProgressBar.MaxValue * 100;
+		double percentage = finalProgressBar.Value / finalProgressBar.MaxValue * 100;
 		pickleLevelText.Text = $"{Math.Floor(percentage)}%";
 		pickleLevelText.AddThemeFontSizeOverride("font_size", 30);
 	}

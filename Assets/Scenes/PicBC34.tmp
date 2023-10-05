@@ -1,0 +1,328 @@
+[gd_scene load_steps=12 format=3 uid="uid://c36kd7o7wl3di"]
+
+[ext_resource type="Texture2D" uid="uid://bj6c4gsupnue7" path="res://Assets/Images/RadialGradient.png" id="3_cqbj3"]
+[ext_resource type="Texture2D" uid="uid://km3vo781gia0" path="res://Assets/Images/Pickle.png" id="4_xh83i"]
+[ext_resource type="Script" path="res://Assets/Scripts/PickleButton.cs" id="5_p8plr"]
+[ext_resource type="Texture2D" uid="uid://bm8icucimxr83" path="res://Assets/Images/Blur.png" id="6_7suit"]
+[ext_resource type="Texture2D" uid="uid://co4h8eh6qt60d" path="res://Assets/Images/LeftRounded45.png" id="7_3rx1k"]
+[ext_resource type="FontFile" uid="uid://be5okn7w3gx46" path="res://Assets/Fonts/Pangolin-Regular.ttf" id="8_1v5xl"]
+[ext_resource type="Texture2D" uid="uid://rdui6xevkpsd" path="res://Assets/Images/UnderProgressBar.png" id="8_h0xf5"]
+[ext_resource type="Texture2D" uid="uid://bmle0ilt2muv" path="res://Assets/Images/OverProgressBar.png" id="9_2ke1y"]
+[ext_resource type="Script" path="res://Assets/Scripts/PickleProgressBar.cs" id="10_k4ucy"]
+[ext_resource type="Theme" uid="uid://dfhjflg85dfk5" path="res://Assets/Themes/Default.tres" id="11_2u64o"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hx5ku"]
+radius = 50.0
+height = 200.0
+
+[node name="MainCanvas" type="CanvasLayer"]
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_cqbj3")
+metadata/_edit_lock_ = true
+
+[node name="PickleButton" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(200, 200)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -90.0
+offset_right = 100.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+action_mode = 0
+texture_normal = ExtResource("4_xh83i")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("5_p8plr")
+metadata/_edit_group_ = true
+
+[node name="PickleButtonShadow" type="TextureRect" parent="PickleButton"]
+custom_minimum_size = Vector2(250, 75)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -75.0
+offset_right = 125.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("6_7suit")
+expand_mode = 1
+
+[node name="Area2D" type="Area2D" parent="PickleButton"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickleButton/Area2D"]
+position = Vector2(100, 100)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_hx5ku")
+debug_color = Color(0.439216, 0.745098, 0.329412, 0)
+
+[node name="PicklesPickedPanel" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1152.0
+offset_right = -1152.0
+grow_horizontal = 0
+size_flags_vertical = 8
+metadata/_edit_group_ = true
+
+[node name="Panel" type="Node2D" parent="PicklesPickedPanel"]
+position = Vector2(967, 75)
+
+[node name="ExtensionPanel" type="Sprite2D" parent="PicklesPickedPanel/Panel"]
+modulate = Color(0.390625, 0.304688, 0.1875, 1)
+position = Vector2(60, 0)
+scale = Vector2(5, 1)
+texture = ExtResource("7_3rx1k")
+region_enabled = true
+region_rect = Rect2(50, 0, 50, 100)
+
+[node name="EndPanel" type="Sprite2D" parent="PicklesPickedPanel/Panel"]
+modulate = Color(0.390625, 0.304688, 0.1875, 1)
+position = Vector2(-90, 0)
+texture = ExtResource("7_3rx1k")
+region_enabled = true
+region_rect = Rect2(0, 0, 50, 100)
+
+[node name="Pickle" type="Sprite2D" parent="PicklesPickedPanel/Panel"]
+position = Vector2(-65, 0)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_xh83i")
+
+[node name="PicklesPicked" type="Label" parent="PicklesPickedPanel"]
+layout_mode = 0
+offset_left = 962.0
+offset_top = 25.0
+offset_right = 1152.0
+offset_bottom = 125.0
+theme_override_fonts/font = ExtResource("8_1v5xl")
+theme_override_font_sizes/font_size = 20
+text = "0
+"
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="PicklesPerSecondPanel" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1152.0
+offset_right = -1152.0
+grow_horizontal = 0
+
+[node name="Panel" type="Node2D" parent="PicklesPerSecondPanel"]
+position = Vector2(967, 200)
+
+[node name="ExtensionPanel" type="Sprite2D" parent="PicklesPerSecondPanel/Panel"]
+modulate = Color(0.390625, 0.304688, 0.1875, 1)
+position = Vector2(60, 0)
+scale = Vector2(5, 1)
+texture = ExtResource("7_3rx1k")
+region_enabled = true
+region_rect = Rect2(50, 0, 50, 100)
+
+[node name="EndPanel" type="Sprite2D" parent="PicklesPerSecondPanel/Panel"]
+modulate = Color(0.390625, 0.304688, 0.1875, 1)
+position = Vector2(-90, 0)
+texture = ExtResource("7_3rx1k")
+region_enabled = true
+region_rect = Rect2(0, 0, 50, 100)
+
+[node name="Pickle" type="Sprite2D" parent="PicklesPerSecondPanel/Panel"]
+position = Vector2(-65, 0)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_xh83i")
+
+[node name="PicklesPerSecond" type="Label" parent="PicklesPerSecondPanel"]
+layout_mode = 0
+offset_left = 962.0
+offset_top = 150.0
+offset_right = 1152.0
+offset_bottom = 250.0
+theme_override_fonts/font = ExtResource("8_1v5xl")
+theme_override_font_sizes/font_size = 20
+text = "0
+"
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="PerSecond" type="Label" parent="PicklesPerSecondPanel"]
+layout_mode = 0
+offset_left = 877.0
+offset_top = 175.0
+offset_right = 927.0
+offset_bottom = 225.0
+theme_override_fonts/font = ExtResource("8_1v5xl")
+theme_override_font_sizes/font_size = 15
+text = "Per
+Second"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementDebug" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ClearAchievements" type="Button" parent="AchievementDebug"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 70.0
+offset_right = 241.0
+offset_bottom = 110.0
+theme_override_fonts/font = ExtResource("8_1v5xl")
+theme_override_font_sizes/font_size = 25
+action_mode = 0
+text = "Clear Achievements"
+
+[node name="GetAchievement" type="Button" parent="AchievementDebug"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 125.0
+offset_right = 241.0
+offset_bottom = 165.0
+theme_override_fonts/font = ExtResource("8_1v5xl")
+theme_override_font_sizes/font_size = 25
+action_mode = 0
+text = "Get Achievement"
+
+[node name="CanvasButtons" type="VBoxContainer" parent="."]
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 225.0
+offset_bottom = 275.0
+theme_override_constants/separation = 25
+
+[node name="OpenSettings" type="Button" parent="CanvasButtons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_1v5xl")
+theme_override_font_sizes/font_size = 25
+action_mode = 0
+text = "Settings
+"
+
+[node name="OpenShop" type="Button" parent="CanvasButtons"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_1v5xl")
+theme_override_font_sizes/font_size = 25
+action_mode = 0
+text = "Pickle Exchange
+"
+
+[node name="OpenApparel" type="Button" parent="CanvasButtons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_1v5xl")
+theme_override_font_sizes/font_size = 25
+action_mode = 0
+text = "Fitting Room
+"
+
+[node name="OpenPoglinary" type="Button" parent="CanvasButtons"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_1v5xl")
+theme_override_font_sizes/font_size = 25
+action_mode = 0
+text = "Poglinary
+"
+
+[node name="PickleProgressBar" type="TextureRect" parent="."]
+self_modulate = Color(0.392157, 0.305882, 0.188235, 1)
+offset_left = 1105.0
+offset_top = 545.0
+offset_right = 1255.0
+offset_bottom = 695.0
+texture = ExtResource("9_2ke1y")
+script = ExtResource("10_k4ucy")
+metadata/_edit_group_ = true
+
+[node name="Pickle" type="TextureRect" parent="PickleProgressBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_xh83i")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="PickleLevel" type="Label" parent="PickleProgressBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+offset_left = 1.25
+offset_top = 1.25
+offset_right = 1.24998
+offset_bottom = 1.25
+theme = ExtResource("11_2u64o")
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Under" type="TextureRect" parent="PickleProgressBar"]
+self_modulate = Color(1, 1, 0, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 145.0
+offset_bottom = 145.0
+texture = ExtResource("8_h0xf5")
+
+[node name="InitialProgressBar" type="TextureProgressBar" parent="PickleProgressBar"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 145.0
+offset_bottom = 145.0
+rounded = true
+allow_greater = true
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = ExtResource("8_h0xf5")
+tint_progress = Color(1, 0.509804, 0, 1)
+
+[node name="FinalProgressBar" type="TextureProgressBar" parent="PickleProgressBar"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 145.0
+offset_bottom = 145.0
+rounded = true
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = ExtResource("8_h0xf5")
+tint_progress = Color(0.372549, 0.494118, 0.207843, 1)
+
+[connection signal="pressed" from="PickleButton" to="PickleButton" method="ClickPickle"]
+[connection signal="value_changed" from="PickleProgressBar/InitialProgressBar" to="PickleProgressBar" method="UpdateProgress"]

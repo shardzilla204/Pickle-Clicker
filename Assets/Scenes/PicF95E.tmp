@@ -1,0 +1,331 @@
+[gd_scene load_steps=11 format=3 uid="uid://c36kd7o7wl3di"]
+
+[ext_resource type="Texture2D" uid="uid://bj6c4gsupnue7" path="res://Assets/Images/RadialGradient.png" id="3_cqbj3"]
+[ext_resource type="Texture2D" uid="uid://km3vo781gia0" path="res://Assets/Images/Pickle.png" id="4_xh83i"]
+[ext_resource type="Script" path="res://Assets/Scripts/PickleButton.cs" id="5_p8plr"]
+[ext_resource type="Texture2D" uid="uid://bm8icucimxr83" path="res://Assets/Images/Blur.png" id="6_7suit"]
+[ext_resource type="Texture2D" uid="uid://co4h8eh6qt60d" path="res://Assets/Images/LeftRounded45.png" id="7_3rx1k"]
+[ext_resource type="FontFile" uid="uid://be5okn7w3gx46" path="res://Assets/Fonts/Pangolin-Regular.ttf" id="8_1v5xl"]
+[ext_resource type="Texture2D" uid="uid://rdui6xevkpsd" path="res://Assets/Images/UnderProgressBar.png" id="8_h0xf5"]
+[ext_resource type="Texture2D" uid="uid://bmle0ilt2muv" path="res://Assets/Images/OverProgressBar.png" id="9_2ke1y"]
+[ext_resource type="Script" path="res://Assets/Scripts/PickleProgressBar.cs" id="10_k4ucy"]
+[ext_resource type="Theme" uid="uid://dfhjflg85dfk5" path="res://Assets/Themes/Default.tres" id="11_2u64o"]
+
+[node name="MainCanvas" type="CanvasLayer"]
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_cqbj3")
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="UserInterface" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Counters" type="VBoxContainer" parent="MarginContainer/UserInterface"]
+custom_minimum_size = Vector2(300, 215)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -285.0
+offset_right = 15.0
+offset_bottom = 215.0
+grow_horizontal = 0
+theme_override_constants/separation = 15
+
+[node name="PicklesPicked" type="NinePatchRect" parent="MarginContainer/UserInterface/Counters"]
+self_modulate = Color(0.390625, 0.304688, 0.1875, 1)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("7_3rx1k")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/UserInterface/Counters/PicklesPicked"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/UserInterface/Counters/PicklesPicked/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/UserInterface/Counters/PicklesPicked/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("4_xh83i")
+expand_mode = 1
+
+[node name="Counter" type="Label" parent="MarginContainer/UserInterface/Counters/PicklesPicked/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("8_1v5xl")
+theme_override_font_sizes/font_size = 20
+text = "0
+"
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="PicklesPerSecond" type="NinePatchRect" parent="MarginContainer/UserInterface/Counters"]
+self_modulate = Color(0.390625, 0.304688, 0.1875, 1)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("7_3rx1k")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/UserInterface/Counters/PicklesPerSecond"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/UserInterface/Counters/PicklesPerSecond/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/UserInterface/Counters/PicklesPerSecond/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("4_xh83i")
+expand_mode = 1
+
+[node name="PerSecond" type="Label" parent="MarginContainer/UserInterface/Counters/PicklesPerSecond/HBoxContainer/MarginContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_1v5xl")
+theme_override_font_sizes/font_size = 15
+text = "Per 
+Second
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="Counter" type="Label" parent="MarginContainer/UserInterface/Counters/PicklesPerSecond/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("8_1v5xl")
+theme_override_font_sizes/font_size = 20
+text = "0
+"
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="CanvasButtons" type="VBoxContainer" parent="MarginContainer/UserInterface"]
+custom_minimum_size = Vector2(200, 0)
+offset_right = 145.0
+offset_bottom = 95.0
+theme_override_constants/separation = 15
+
+[node name="OpenSettings" type="Button" parent="MarginContainer/UserInterface/CanvasButtons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_1v5xl")
+theme_override_font_sizes/font_size = 25
+action_mode = 0
+text = "Settings
+"
+
+[node name="OpenShop" type="Button" parent="MarginContainer/UserInterface/CanvasButtons"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_1v5xl")
+theme_override_font_sizes/font_size = 25
+action_mode = 0
+text = "Pickle Exchange
+"
+
+[node name="OpenApparel" type="Button" parent="MarginContainer/UserInterface/CanvasButtons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_1v5xl")
+theme_override_font_sizes/font_size = 25
+action_mode = 0
+text = "Fitting Room
+"
+
+[node name="OpenPoglinary" type="Button" parent="MarginContainer/UserInterface/CanvasButtons"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_1v5xl")
+theme_override_font_sizes/font_size = 25
+action_mode = 0
+text = "Poglinary
+"
+
+[node name="PickleProgressBar" type="TextureRect" parent="MarginContainer/UserInterface"]
+self_modulate = Color(0.392157, 0.305882, 0.188235, 1)
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -150.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("9_2ke1y")
+script = ExtResource("10_k4ucy")
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/UserInterface/PickleProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Pickle" type="TextureRect" parent="MarginContainer/UserInterface/PickleProgressBar/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("4_xh83i")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PickleLevel" type="Label" parent="MarginContainer/UserInterface/PickleProgressBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+offset_left = 1.25
+offset_top = 1.25
+offset_right = 1.24998
+offset_bottom = 1.25
+theme = ExtResource("11_2u64o")
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Under" type="TextureRect" parent="MarginContainer/UserInterface/PickleProgressBar"]
+self_modulate = Color(1, 1, 0, 1)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_h0xf5")
+
+[node name="InitialProgressBar" type="TextureProgressBar" parent="MarginContainer/UserInterface/PickleProgressBar"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rounded = true
+allow_greater = true
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = ExtResource("8_h0xf5")
+tint_progress = Color(1, 0.509804, 0, 1)
+
+[node name="FinalProgressBar" type="TextureProgressBar" parent="MarginContainer/UserInterface/PickleProgressBar"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rounded = true
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = ExtResource("8_h0xf5")
+tint_progress = Color(0.372549, 0.494118, 0.207843, 1)
+
+[node name="AchievementDebug" type="VBoxContainer" parent="MarginContainer/UserInterface"]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -95.0
+offset_right = 216.0
+grow_vertical = 0
+theme_override_constants/separation = 15
+metadata/_edit_group_ = true
+
+[node name="ClearAchievements" type="Button" parent="MarginContainer/UserInterface/AchievementDebug"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_1v5xl")
+theme_override_font_sizes/font_size = 25
+action_mode = 0
+text = "Clear Achievements"
+
+[node name="GetAchievement" type="Button" parent="MarginContainer/UserInterface/AchievementDebug"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_1v5xl")
+theme_override_font_sizes/font_size = 25
+action_mode = 0
+text = "Get Achievement"
+
+[node name="Pickle" type="Sprite2D" parent="MarginContainer/UserInterface"]
+position = Vector2(640, 360)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_xh83i")
+script = ExtResource("5_p8plr")
+
+[node name="Area2D" type="Area2D" parent="MarginContainer/UserInterface/Pickle"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MarginContainer/UserInterface/Pickle/Area2D"]
+build_mode = 1
+polygon = PackedVector2Array(-165, -85, -295, -150, -345, -165, -375, -160, -400, -140, -415, -95, -400, -50, -330, 25, -295, 54.9999, -250, 79.9999, -90, 150, 10, 160, 110, 155, 225, 125, 330, 79.9999, 375, 30, 405, -15, 410, -50, 405, -100, 390, -125, 365, -150, 330, -155, 285, -140, 225, -105, 150, -75, 35, -55, -80, -60)
+
+[node name="Shadow" type="Sprite2D" parent="MarginContainer/UserInterface/Pickle"]
+position = Vector2(0, 300)
+scale = Vector2(5, 2)
+texture = ExtResource("6_7suit")
+
+[connection signal="value_changed" from="MarginContainer/UserInterface/PickleProgressBar/InitialProgressBar" to="MarginContainer/UserInterface/PickleProgressBar" method="UpdateProgress"]
+[connection signal="mouse_entered" from="MarginContainer/UserInterface/Pickle/Area2D" to="MarginContainer/UserInterface/Pickle" method="OnHover" binds= [true]]
+[connection signal="mouse_exited" from="MarginContainer/UserInterface/Pickle/Area2D" to="MarginContainer/UserInterface/Pickle" method="OnHover" binds= [false]]

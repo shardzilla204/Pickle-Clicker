@@ -1,26 +1,45 @@
 using Godot;
 using System;
 
-public partial class PickleButton : TextureButton
+public partial class PickleButton : Sprite2D
 {
-	public double pickles = 0;
-	const string USER_INTERFACE_PATH = "/root/Canvases/MainCanvas/UserInterface";
+	public bool hovering = false;
 
-	public override void _Ready()
-	{
-	}
+	public double pickles = 0;
 
 	public override void _Process(double delta)
 	{
+		if (!Input.IsActionJustPressed("clickPickle")) return;
+
+		if (!hovering) return;
+
+		ClickPickle();
+		EmitParticles();
+	}
+
+	public void OnHover(bool isHovering)
+	{
+		hovering = isHovering;
+	}
+
+	private async void EmitParticles()
+	{
+		PackedScene pickleParticlesScene = GD.Load<PackedScene>("res://Assets/Scenes/PickleParticles.tscn");
+		Node pickleParticlesNode = pickleParticlesScene.Instantiate();
+		GpuParticles2D pickleParticles = (GpuParticles2D) pickleParticlesNode;
+		pickleParticles.Position = GetLocalMousePosition();
+		AddChild(pickleParticles);
+		await ToSignal(GetTree().CreateTimer(1), SceneTreeTimer.SignalName.Timeout);
+		pickleParticles.QueueFree();
 	}
 
 	private void ClickPickle()
 	{
-		TextureProgressBar pickleProgressBar = GetNode<TextureProgressBar>($"{USER_INTERFACE_PATH}/PickleProgressBar");
+		TextureRect pickleProgressBar = GetNode<TextureRect>($"../PickleProgressBar");
 		double pickleLevel = (double) pickleProgressBar.Get("pickleLevel");
 		pickles += 1 + (Math.Pow(pickleLevel, 2) / 10);
 		string picklesFormatted = BigNumberHandler(pickles);
-		Label picklesPicked = GetNode<Label>($"{USER_INTERFACE_PATH}/PicklesPickedPanel/PicklesPicked");
+		Label picklesPicked = GetNode<Label>($"../Counters/PicklesPicked/HBoxContainer/Counter");
 		picklesPicked.Text = $"{picklesFormatted}";
 
 		pickleProgressBar.Call("AddProgress");

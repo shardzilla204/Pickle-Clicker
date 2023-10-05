@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://wxqb51qeo0ll"]
+
+[ext_resource type="Texture2D" uid="uid://cjb7o2xp3e63o" path="res://Assets/Images/Cosmetics/Bandit/Revolver.png" id="1_66wqu"]
+[ext_resource type="Texture2D" uid="uid://bypxr23dec7p3" path="res://Assets/Images/CosmeticIcons/RevolverIcon.png" id="2_ejilx"]
+[ext_resource type="Script" path="res://Assets/Scripts/Accessory/AccessoryData.cs" id="3_varts"]
+
+[resource]
+resource_name = "Revolver"
+script = ExtResource("3_varts")
+type = 2
+accessory = ExtResource("1_66wqu")
+icon = ExtResource("2_ejilx")
+description = ""

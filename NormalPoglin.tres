@@ -1,0 +1,67 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://dq82d1unwxpmg"]
+
+[ext_resource type="Texture2D" uid="uid://ra3ypsla0r8o" path="res://Assets/Images/NormalPoglinSpritesheet.png" id="1_pjcbn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12mch"]
+atlas = ExtResource("1_pjcbn")
+region = Rect2(0, 0, 375, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_438a6"]
+atlas = ExtResource("1_pjcbn")
+region = Rect2(375, 0, 375, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wixd7"]
+atlas = ExtResource("1_pjcbn")
+region = Rect2(750, 0, 375, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ega80"]
+atlas = ExtResource("1_pjcbn")
+region = Rect2(1125, 0, 375, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxp64"]
+atlas = ExtResource("1_pjcbn")
+region = Rect2(1500, 0, 375, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upv0t"]
+atlas = ExtResource("1_pjcbn")
+region = Rect2(1875, 0, 375, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpssj"]
+atlas = ExtResource("1_pjcbn")
+region = Rect2(2250, 0, 375, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_saa4k"]
+atlas = ExtResource("1_pjcbn")
+region = Rect2(2625, 0, 375, 350)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12mch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_438a6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wixd7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ega80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxp64")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upv0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpssj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_saa4k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 16.0
+}]
