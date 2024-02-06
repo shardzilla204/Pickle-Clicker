@@ -1,25 +1,8 @@
 using Godot;
 using System;
 
-public partial class PickleButton : Sprite2D
+public partial class Pickle : Sprite2D
 {
-<<<<<<< Updated upstream:Assets/Scripts/PickleButton.cs
-	public bool hovering = false;
-
-	public double pickles = 0;
-
-	public override void _Process(double delta)
-	{
-		if (!Input.IsActionJustPressed("clickPickle")) return;
-
-		if (!hovering) return;
-
-		ClickPickle();
-		EmitParticles();
-	}
-
-	public void OnHover(bool isHovering)
-=======
 	[Export] public PickleProgressBar pickleProgressBar;
 	[Export] public Label picklesPicked;
 
@@ -66,6 +49,13 @@ public partial class PickleButton : Sprite2D
 		EmitParticles();
 	}
 
+	private void GetPickles()
+	{
+		pickles += 1;
+		picklesPicked.Text = $"{pickles:N0}";
+        pickleProgressBar.AddProgress(1);
+	}
+
 	public async void PlayAudio()
 	{
 		RandomNumberGenerator randomNumber = new RandomNumberGenerator();
@@ -86,9 +76,8 @@ public partial class PickleButton : Sprite2D
 	}
 
 	public void OnHover(bool value)
->>>>>>> Stashed changes:Assets/Scripts/Pickle.cs
 	{
-		hovering = isHovering;
+		isHovering = value;
 	}
 
 	private async void EmitParticles()
@@ -105,32 +94,15 @@ public partial class PickleButton : Sprite2D
 	private void ClickPickle()
 	{
 		double pickleLevel = (double) pickleProgressBar.Get("pickleLevel");
-<<<<<<< Updated upstream:Assets/Scripts/PickleButton.cs
-		pickles += 1 + (Math.Pow(pickleLevel, 2) / 10);
-		string picklesFormatted = BigNumberHandler(pickles);
 		Label picklesPicked = GetNode<Label>($"../Counters/PicklesPicked/HBoxContainer/Counter");
-		picklesPicked.Text = $"{picklesFormatted}";
-=======
 		pickles += 1 + (int) (Math.Pow(pickleLevel, 2) / 10);
 		picklesPicked.Text = $"{pickles:N0}";
->>>>>>> Stashed changes:Assets/Scripts/Pickle.cs
-
 		pickleProgressBar.AddProgress(1);
 	}
 
-<<<<<<< Updated upstream:Assets/Scripts/PickleButton.cs
-	private string BigNumberHandler(double pickles)
-	{
-		string[] abbreviations = { "", "K", "M", "B", "T", "Qa", "Qi", "Sx", "Sp", "Oc", "No"};
-		int mag = (int)(Math.Floor(Math.Log10(pickles))/3); // Truncates to 6, divides to 2
-		double divisor = Math.Pow(10, mag * 3);
-		double shortNumber = pickles / divisor;
-		return $"{shortNumber:N2} {abbreviations[mag]}";
-=======
 	public void CenterPickle()
 	{
 		Window window = GetWindow();
 		Position = window.Size / 2;
->>>>>>> Stashed changes:Assets/Scripts/Pickle.cs
 	}
 }
