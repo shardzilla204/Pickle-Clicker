@@ -17,13 +17,6 @@ ResourceScriptDirectories=["res://"]
 [application]
 
 config/name="Pickle Clicker"
-<<<<<<< Updated upstream
-run/main_scene="res://Assets/Scenes/PickleClicker.tscn"
-config/features=PackedStringArray("4.1", "C#", "GL Compatibility")
-run/max_fps=60
-config/icon="res://ReleaseIcons/ApplicationIcon.png"
-
-=======
 run/main_scene="res://Assets/Scenes/Canvases/PickleClicker.tscn"
 config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 run/max_fps=60
@@ -40,7 +33,6 @@ MusicManager="*res://Assets/Scripts/Manager/MusicManager.cs"
 CanvasManager="*res://Assets/Scripts/Manager/CanvasManager.cs"
 JarManager="*res://Assets/Scripts/Manager/JarManager.cs"
 
->>>>>>> Stashed changes
 [display]
 
 window/size/viewport_width=1280
@@ -63,8 +55,6 @@ click={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
-<<<<<<< Updated upstream
-=======
 damagePoglin={
 "deadzone": 0.5,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
@@ -95,7 +85,6 @@ scrollDown={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":16,"position":Vector2(99, 24),"global_position":Vector2(103, 67),"factor":1.0,"button_index":5,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
->>>>>>> Stashed changes
 
 [rendering]
 

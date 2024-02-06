@@ -56,6 +56,8 @@ public partial class PickleProgressBar : TextureRect
 
 	public void LevelUp()
 	{
+		if (pickleLevel >= MAX_PICKLE_LEVEL) return;
+
 		RemoveProgress();
 		pickleLevel += 1;
 		Label pickleLevelText = GetNode<Label>($"./PickleLevel");
