@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://blb4mdrgfhhpd"]
+
+[ext_resource type="PackedScene" uid="uid://c0kek8l32ecua" path="res://Assets/Scenes/Poglins/NormalPoglin.tscn" id="1_v88n4"]
+[ext_resource type="SpriteFrames" uid="uid://chj5wsgi086yl" path="res://Assets/Resources/Poglins/FirePoglin.tres" id="2_p6gqe"]
+
+[node name="FirePoglin" instance=ExtResource("1_v88n4")]
+requiredLevel = 1
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = ExtResource("2_p6gqe")
+frame_progress = 0.496561

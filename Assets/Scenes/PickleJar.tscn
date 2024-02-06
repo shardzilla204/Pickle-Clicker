@@ -1,0 +1,170 @@
+[gd_scene load_steps=13 format=3 uid="uid://c7e612yca4w7e"]
+
+[ext_resource type="Material" uid="uid://s0fjjfy125qv" path="res://Assets/Resources/ShaderMaterials/Shader.tres" id="1_7x5qr"]
+[ext_resource type="Script" path="res://Assets/Scripts/PickleJar.cs" id="1_af2c7"]
+[ext_resource type="Texture2D" uid="uid://btyt3qpqdu483" path="res://Assets/Images/PickleJarEmpty.png" id="1_d0ms3"]
+[ext_resource type="Texture2D" uid="uid://km3vo781gia0" path="res://Assets/Images/Pickle.png" id="2_1fybk"]
+[ext_resource type="Texture2D" uid="uid://cb5gm0jgdktg4" path="res://Assets/Images/PickleJarMask.png" id="3_6oj65"]
+[ext_resource type="Texture2D" uid="uid://dln0g2at1w50p" path="res://Assets/Images/PickleJarContent.png" id="4_aou6p"]
+[ext_resource type="Texture2D" uid="uid://cknp1intxtqvf" path="res://Assets/Images/PickleJarLid.png" id="7_rsyfm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sc5xs"]
+size = Vector2(600, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vc10"]
+size = Vector2(552, 708)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rajou"]
+lifetime_randomness = 0.25
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+gravity = Vector3(0, 98, 0)
+scale_min = 5.0
+scale_max = 10.0
+
+[sub_resource type="Animation" id="Animation_p1d6y"]
+resource_name = "Pour"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 2.79253]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PickleJarLid:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -2.35619]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mask/Liquid:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -2.35619]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mask/Liquid:offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.4, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 450)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5wlqe"]
+_data = {
+"Pour": SubResource("Animation_p1d6y")
+}
+
+[node name="Node2D" type="Node2D"]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_af2c7")
+
+[node name="JarPickle" type="RigidBody2D" parent="."]
+show_behind_parent = true
+disable_mode = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="JarPickle"]
+scale = Vector2(0.1, 0.1)
+polygon = PackedVector2Array(-165, -85, -295, -150, -345, -165, -375, -160, -400, -140, -415, -95, -400, -50, -330, 25, -295, 54.9999, -250, 79.9999, -90, 150, 10, 160, 110, 155, 225, 125, 330, 79.9999, 375, 30, 405, -15, 410, -50, 405, -100, 390, -125, 365, -150, 330, -155, 285, -140, 225, -105, 150, -75, 35, -55, -80, -60)
+
+[node name="Pickle" type="Sprite2D" parent="JarPickle/CollisionPolygon2D"]
+texture = ExtResource("2_1fybk")
+region_rect = Rect2(88, 333, 823, 335)
+
+[node name="Mask" type="Sprite2D" parent="."]
+clip_children = 1
+position = Vector2(-3.3617e-05, -98.9154)
+scale = Vector2(1.0038, 1.29567)
+texture = ExtResource("3_6oj65")
+offset = Vector2(2.73143e-06, 70.1687)
+region_rect = Rect2(1, 1, 524, 529)
+
+[node name="Liquid" type="Sprite2D" parent="Mask"]
+material = ExtResource("1_7x5qr")
+position = Vector2(0, 59.5493)
+texture = ExtResource("4_aou6p")
+region_enabled = true
+region_rect = Rect2(0, 0, 1000, 1000)
+
+[node name="PickleJarEmpty" type="Sprite2D" parent="."]
+texture = ExtResource("1_d0ms3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="PickleJarEmpty"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PickleJarEmpty/StaticBody2D"]
+position = Vector2(128, -128.5)
+build_mode = 1
+polygon = PackedVector2Array(-428, -219.5, -428, 500.5, 172, 500.5, 172, -219.5, 136, -219.5, 136, 464.5, -392, 464.5, -392, -219.5)
+
+[node name="PickleJarLid" type="Sprite2D" parent="."]
+position = Vector2(-232, -350)
+texture = ExtResource("7_rsyfm")
+offset = Vector2(232, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="PickleJarLid"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickleJarLid/StaticBody2D"]
+position = Vector2(232, -16)
+shape = SubResource("RectangleShape2D_sc5xs")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_1vc10")
+debug_color = Color(0.337255, 0.486275, 1, 0.419608)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(0.415686, 0.6, 0.364706, 1)
+position = Vector2(152.735, -356.382)
+emitting = false
+amount = 48
+process_material = SubResource("ParticleProcessMaterial_rajou")
+speed_scale = 10.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5wlqe")
+}
+
+[connection signal="mouse_entered" from="Area2D" to="." method="OnHover" binds= [true]]
+[connection signal="mouse_exited" from="Area2D" to="." method="OnHover" binds= [false]]

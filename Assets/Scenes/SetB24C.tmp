@@ -1,0 +1,193 @@
+[gd_scene load_steps=5 format=3 uid="uid://6ebuvgh2qafd"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Canvas/SettingsCanvas.cs" id="1_gwxe7"]
+[ext_resource type="Texture2D" uid="uid://bj6c4gsupnue7" path="res://Assets/Images/RadialGradient.png" id="2_2mwew"]
+[ext_resource type="FontFile" uid="uid://be5okn7w3gx46" path="res://Assets/Fonts/Pangolin-Regular.ttf" id="3_g7l1v"]
+[ext_resource type="Theme" uid="uid://b5hdhpyhi751h" path="res://Assets/Resources/Default.tres" id="4_broha"]
+
+[node name="SettingsCanvas" type="CanvasLayer" node_paths=PackedStringArray("windowOptions", "resolutionOptions", "borderlessOption", "vSyncOption", "framerateOptions")]
+follow_viewport_enabled = true
+script = ExtResource("1_gwxe7")
+windowOptions = NodePath("")
+resolutionOptions = NodePath("")
+borderlessOption = NodePath("")
+vSyncOption = NodePath("")
+framerateOptions = NodePath("")
+
+[node name="Background" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.784314)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_2mwew")
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+metadata/_edit_group_ = true
+
+[node name="ExitSettings" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_g7l1v")
+theme_override_font_sizes/font_size = 25
+action_mode = 0
+text = "Exit Settings
+"
+
+[node name="ExitGame" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_broha")
+theme_override_fonts/font = ExtResource("3_g7l1v")
+theme_override_font_sizes/font_size = 25
+action_mode = 0
+text = "Exit Game
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="WindowOptions" type="OptionButton" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_broha")
+theme_override_fonts/font = ExtResource("3_g7l1v")
+item_count = 3
+selected = 0
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "Fullscreen"
+popup/item_1/id = 1
+popup/item_2/text = "Exclusive Fullscreen"
+popup/item_2/id = 2
+
+[node name="ResolutionOptions" type="OptionButton" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_broha")
+item_count = 4
+selected = 2
+popup/item_0/text = "720x480"
+popup/item_0/id = 0
+popup/item_1/text = "960x540"
+popup/item_1/id = 1
+popup/item_2/text = "1280x720"
+popup/item_2/id = 2
+popup/item_3/text = "1920x1080"
+popup/item_3/id = 3
+
+[node name="BorderlessOption" type="CheckButton" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_broha")
+theme_override_fonts/font = ExtResource("3_g7l1v")
+theme_override_font_sizes/font_size = 25
+action_mode = 0
+text = "Borderless"
+
+[node name="VSyncOption" type="CheckButton" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_broha")
+theme_override_fonts/font = ExtResource("3_g7l1v")
+theme_override_font_sizes/font_size = 25
+action_mode = 0
+text = "V-Sync"
+
+[node name="FramerateOptions" type="SpinBox" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 1
+theme = ExtResource("4_broha")
+min_value = 30.0
+max_value = 240.0
+value = 30.0
+rounded = true
+suffix = "FPS"
+custom_arrow_step = 5.0
+select_all_on_focus = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_broha")
+text = "Master"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+min_value = -50.0
+max_value = 9.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("4_broha")
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer2"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+min_value = -50.0
+max_value = 9.0
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer3"]
+layout_mode = 2
+theme = ExtResource("4_broha")
+text = "Sound Effects"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer3"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+min_value = -50.0
+max_value = 9.0
+
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/ExitSettings" to="." method="CloseSettings"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/ExitGame" to="." method="CloseGame" binds= ["(Any unsaved data will be lost.)", "Exit"]]
+[connection signal="item_selected" from="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/WindowOptions" to="." method="SetWindowOption"]
+[connection signal="item_selected" from="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/ResolutionOptions" to="." method="SetResolutionOption"]
+[connection signal="toggled" from="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/BorderlessOption" to="." method="ToggleBorderlessOption"]
+[connection signal="toggled" from="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/VSyncOption" to="." method="ToggleVSyncOption"]
+[connection signal="value_changed" from="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/FramerateOptions" to="." method="SetFramerate"]
+[connection signal="value_changed" from="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/HSlider" to="." method="SetVolume" binds= ["Master"]]
+[connection signal="value_changed" from="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer2/HSlider" to="." method="SetVolume" binds= ["Music"]]
+[connection signal="value_changed" from="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer3/HSlider" to="." method="SetVolume" binds= ["SoundEffects"]]

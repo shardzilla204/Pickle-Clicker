@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://s0fjjfy125qv"]
+
+[ext_resource type="Shader" path="res://Assets/Resources/Shaders/Shader.gdshader" id="1_q8517"]
+
+[resource]
+shader = ExtResource("1_q8517")
+shader_parameter/progress = 0.75
+shader_parameter/wave_1_color = Vector4(0.35, 0.55, 0.25, 0.8)
+shader_parameter/wave_1_amplitude = 0.15
+shader_parameter/wave_1_frequency = 3.0
+shader_parameter/wave_1_speed = -0.5
+shader_parameter/wave_2_color = Vector4(0.35, 0.75, 0.25, 0.8)
+shader_parameter/wave_2_amplitude = -0.15
+shader_parameter/wave_2_frequency = 2.5
+shader_parameter/wave_2_speed = 0.5
+shader_parameter/wave_2_shift = 0.1
+shader_parameter/bg_color = Vector4(1, 1, 1, 0)

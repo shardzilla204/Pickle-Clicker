@@ -1,0 +1,660 @@
+[gd_scene load_steps=35 format=3 uid="uid://dl8d8vgciti5p"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Canvas/ShopCanvas.cs" id="1_c4koy"]
+[ext_resource type="Texture2D" uid="uid://cajxdo3d8egbh" path="res://Assets/Images/PickleExchangeBackground.png" id="1_rtfbf"]
+[ext_resource type="Texture2D" uid="uid://chu26m14upto" path="res://Assets/Images/RoundedSquare.png" id="2_fqgpl"]
+[ext_resource type="Theme" uid="uid://b5hdhpyhi751h" path="res://Assets/Resources/Default.tres" id="3_armdv"]
+[ext_resource type="Texture2D" uid="uid://bdsarrga64xvr" path="res://Assets/Images/RopeLine.png" id="4_kgciq"]
+[ext_resource type="Texture2D" uid="uid://bi2lc8lk5uap5" path="res://Assets/Images/RopeHandle.png" id="5_jmsqb"]
+[ext_resource type="Texture2D" uid="uid://dx8gc7n28uucb" path="res://Assets/Images/RoundedSquare45.png" id="6_h4g3q"]
+[ext_resource type="Texture2D" uid="uid://tcovmjg6ros2" path="res://Assets/Images/Poglin/Shopkeeper.png" id="7_rfquw"]
+[ext_resource type="Texture2D" uid="uid://dxbjsscvfba6i" path="res://Assets/Images/Arrow.png" id="7_rvi7c"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kwv54"]
+texture = ExtResource("2_fqgpl")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+modulate_color = Color(0.29, 0.227167, 0.1392, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g7koi"]
+texture = ExtResource("4_kgciq")
+expand_margin_top = 15.0
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4qpwl"]
+texture = ExtResource("5_jmsqb")
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhou2"]
+atlas = ExtResource("7_rfquw")
+region = Rect2(0, 0, 393, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjb7k"]
+atlas = ExtResource("7_rfquw")
+region = Rect2(393, 0, 393, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5avsn"]
+atlas = ExtResource("7_rfquw")
+region = Rect2(786, 0, 393, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5tjy"]
+atlas = ExtResource("7_rfquw")
+region = Rect2(1179, 0, 393, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xg57b"]
+atlas = ExtResource("7_rfquw")
+region = Rect2(1572, 0, 393, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_er105"]
+atlas = ExtResource("7_rfquw")
+region = Rect2(1965, 0, 393, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ic3x"]
+atlas = ExtResource("7_rfquw")
+region = Rect2(2358, 0, 393, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fcjt"]
+atlas = ExtResource("7_rfquw")
+region = Rect2(2751, 0, 393, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfyv5"]
+atlas = ExtResource("7_rfquw")
+region = Rect2(3144, 0, 393, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d02d5"]
+atlas = ExtResource("7_rfquw")
+region = Rect2(3537, 0, 393, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvdj7"]
+atlas = ExtResource("7_rfquw")
+region = Rect2(3930, 0, 393, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kuex"]
+atlas = ExtResource("7_rfquw")
+region = Rect2(3930, 0, 393, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifdwl"]
+atlas = ExtResource("7_rfquw")
+region = Rect2(3537, 0, 393, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tglm8"]
+atlas = ExtResource("7_rfquw")
+region = Rect2(3144, 0, 393, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ph25b"]
+atlas = ExtResource("7_rfquw")
+region = Rect2(2751, 0, 393, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atqy1"]
+atlas = ExtResource("7_rfquw")
+region = Rect2(2358, 0, 393, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dlrc"]
+atlas = ExtResource("7_rfquw")
+region = Rect2(1965, 0, 393, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lbuw"]
+atlas = ExtResource("7_rfquw")
+region = Rect2(1572, 0, 393, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mph6f"]
+atlas = ExtResource("7_rfquw")
+region = Rect2(1179, 0, 393, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0gqs"]
+atlas = ExtResource("7_rfquw")
+region = Rect2(786, 0, 393, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1pvv"]
+atlas = ExtResource("7_rfquw")
+region = Rect2(393, 0, 393, 432)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0658e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhou2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjb7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5avsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5tjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xg57b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_er105")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ic3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fcjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfyv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d02d5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvdj7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kuex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifdwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tglm8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ph25b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atqy1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dlrc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lbuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mph6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0gqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1pvv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 21.0
+}]
+
+[node name="ShopCanvas" type="CanvasLayer" node_paths=PackedStringArray("picklesCounter")]
+script = ExtResource("1_c4koy")
+picklesCounter = NodePath("UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3/NinePatchRect/MarginContainer/PicklesCounter")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_rtfbf")
+metadata/_edit_lock_ = true
+
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="UserInterface"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UserInterface/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UserInterface/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 15
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UserInterface/MarginContainer/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 265)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_kwv54")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="UserInterface/MarginContainer/HBoxContainer/HBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/MarginContainer/HBoxContainer/HBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="UserInterface/MarginContainer/HBoxContainer/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+self_modulate = Color(0.390625, 0.304688, 0.1875, 1)
+custom_minimum_size = Vector2(0, 230)
+layout_mode = 2
+texture = ExtResource("2_fqgpl")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label" type="Label" parent="UserInterface/MarginContainer/HBoxContainer/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/NinePatchRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_armdv")
+theme_override_font_sizes/font_size = 40
+text = "Pickle Hand"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="UserInterface/MarginContainer/HBoxContainer/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+self_modulate = Color(0.390625, 0.304688, 0.1875, 1)
+custom_minimum_size = Vector2(0, 230)
+layout_mode = 2
+texture = ExtResource("2_fqgpl")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label" type="Label" parent="UserInterface/MarginContainer/HBoxContainer/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/NinePatchRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_armdv")
+theme_override_font_sizes/font_size = 40
+text = "Pickle Hand"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/MarginContainer/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VScrollBar" type="VScrollBar" parent="UserInterface/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(10, 280)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/scroll = SubResource("StyleBoxTexture_g7koi")
+theme_override_styles/grabber = SubResource("StyleBoxTexture_4qpwl")
+value = 100.0
+allow_greater = true
+
+[node name="TextureRect" type="TextureRect" parent="UserInterface/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+texture = ExtResource("7_rvi7c")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+self_modulate = Color(0.386719, 0.304688, 0.1875, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_fqgpl")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="MarginContainer" type="MarginContainer" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="PicklesCounter" type="Label" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3/NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("3_armdv")
+text = "100 Pickles"
+vertical_alignment = 1
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+self_modulate = Color(0.390625, 0.304688, 0.1875, 1)
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_fqgpl")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Button" type="Button" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3/NinePatchRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_armdv")
+text = "Exit"
+flat = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+self_modulate = Color(0.39, 0.3055, 0.1872, 1)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_fqgpl")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="MarginContainer" type="MarginContainer" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/NinePatchRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label2" type="Label" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_armdv")
+text = "0 Pickles"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_armdv")
+text = "Bought 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
+self_modulate = Color(0.45, 0.3525, 0.216, 1)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("6_h4g3q")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Button" type="Button" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_armdv")
+theme_override_font_sizes/font_size = 20
+toggle_mode = true
+text = "1x
+"
+flat = true
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
+self_modulate = Color(0.45, 0.3525, 0.216, 1)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("6_h4g3q")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Button" type="Button" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_armdv")
+theme_override_font_sizes/font_size = 20
+toggle_mode = true
+text = "5x
+"
+flat = true
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
+self_modulate = Color(0.45, 0.3525, 0.216, 1)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("6_h4g3q")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Button" type="Button" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_armdv")
+theme_override_font_sizes/font_size = 20
+toggle_mode = true
+text = "10x
+"
+flat = true
+
+[node name="NinePatchRect4" type="NinePatchRect" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
+self_modulate = Color(0.45, 0.3525, 0.216, 1)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("6_h4g3q")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Button" type="Button" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_armdv")
+theme_override_font_sizes/font_size = 20
+toggle_mode = true
+text = "25x
+"
+flat = true
+
+[node name="NinePatchRect5" type="NinePatchRect" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
+self_modulate = Color(0.45, 0.3525, 0.216, 1)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("6_h4g3q")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Button" type="Button" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_armdv")
+theme_override_font_sizes/font_size = 20
+toggle_mode = true
+text = "Max
+"
+flat = true
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+self_modulate = Color(0.39, 0.3055, 0.1872, 1)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_fqgpl")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="MarginContainer" type="MarginContainer" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/NinePatchRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/NinePatchRect2/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label2" type="Label" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_armdv")
+text = "0 Pickles"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_armdv")
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer"]
+self_modulate = Color(0.45, 0.3525, 0.216, 1)
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+texture = ExtResource("2_fqgpl")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Button" type="Button" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/NinePatchRect"]
+layout_mode = 2
+offset_top = 15.0
+offset_right = 380.0
+offset_bottom = 55.0
+theme = ExtResource("3_armdv")
+text = "Upgrade"
+flat = true
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+self_modulate = Color(0.390625, 0.304688, 0.1875, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("2_fqgpl")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="MarginContainer2" type="MarginContainer" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/NinePatchRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/NinePatchRect2/MarginContainer2"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="Label" type="Label" parent="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/NinePatchRect2/MarginContainer2/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("3_armdv")
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pellentesque molestie ex, non egestas dui maximus nec. Praesent eu egestas dolor. Suspendisse id odio sodales, laoreet erat vel, mattis lacus. Phasellus tempus vel quam eu mattis. Fusce placerat semper tortor, maximus pellentesque mi commodo vitae. Curabitur ut ipsum nec tellus placerat viverra. Aenean vestibulum diam maximus nisl sollicitudin suscipit. Integer lacinia elit et nisi feugiat sodales. Cras eu mi interdum, convallis tortor vitae, tincidunt neque. Sed ultrices consequat mi. Fusce aliquam ligula eros, in tincidunt erat convallis eu. Duis efficitur arcu vitae aliquam viverra. Vivamus et metus lorem. Quisque at iaculis magna."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UserInterface/MarginContainer"]
+position = Vector2(216, 485)
+sprite_frames = SubResource("SpriteFrames_0658e")
+autoplay = "default"
+frame_progress = 0.304853
+
+[connection signal="pressed" from="UserInterface/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3/NinePatchRect2/Button" to="." method="CloseShop"]

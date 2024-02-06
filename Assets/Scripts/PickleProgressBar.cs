@@ -3,20 +3,42 @@ using System;
 
 public partial class PickleProgressBar : TextureRect
 {
+<<<<<<< Updated upstream
 	TextureProgressBar initialProgressBar;
 	TextureProgressBar finalProgressBar;
 	int pickleLevel = 0;
 	// Called when the node enters the scene tree for the first time.
 	bool removeProgress = false;
+=======
+	private TextureProgressBar initialProgressBar;
+	private TextureProgressBar finalProgressBar;
+	private Label pickleLevelLabel;
+
+	public int pickleLevel = 0;
+	private const int MAX_PICKLE_LEVEL = 250;
+
+	private bool removeProgress = false;
+
+>>>>>>> Stashed changes
 	public override void _Ready()
 	{
 		initialProgressBar = GetNode<TextureProgressBar>($"./InitialProgressBar");
 		finalProgressBar = GetNode<TextureProgressBar>($"./FinalProgressBar");
 	}
 
+<<<<<<< Updated upstream
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{	
+=======
+	public void AddProgress(int gain)
+	{
+		initialProgressBar.Value += gain;
+
+		if (removeProgress) return;
+		
+		AnimateAddProgress();
+>>>>>>> Stashed changes
 	}
 
 

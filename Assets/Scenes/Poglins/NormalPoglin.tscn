@@ -1,7 +1,17 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=5 format=3 uid="uid://c0kek8l32ecua"]
+=======
+[gd_scene load_steps=27 format=3 uid="uid://c0kek8l32ecua"]
+>>>>>>> Stashed changes
 
 [ext_resource type="SpriteFrames" uid="uid://dq82d1unwxpmg" path="res://NormalPoglin.tres" id="1_2xsnc"]
 [ext_resource type="Script" path="res://Assets/Scripts/Poglin/NormalPoglin.cs" id="1_o5di4"]
+<<<<<<< Updated upstream
+=======
+[ext_resource type="SpriteFrames" uid="uid://dq82d1unwxpmg" path="res://Assets/Resources/Poglins/NormalPoglin.tres" id="2_psokb"]
+[ext_resource type="Texture2D" uid="uid://chu26m14upto" path="res://Assets/Images/RoundedSquare.png" id="3_2uegw"]
+[ext_resource type="Theme" uid="uid://b5hdhpyhi751h" path="res://Assets/Resources/Default.tres" id="4_ku4o6"]
+>>>>>>> Stashed changes
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wf7n3"]
 radius = 225.0
@@ -9,13 +19,198 @@ radius = 225.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_msogr"]
 radius = 225.0
 
+<<<<<<< Updated upstream
+=======
+[sub_resource type="Animation" id="Animation_iedws"]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HealthBar:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_oncad"]
+resource_name = "Label"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PicklesLabel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PicklesLabel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1.5, 1),
+"update": 0,
+"values": [Vector2(-85, -250), Vector2(-85, -350)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PicklesLabel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HealthBar:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_gnv6o"]
+resource_name = "Reset"
+
+[sub_resource type="Animation" id="Animation_xbe61"]
+resource_name = "ResetHealthBar"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HealthBar:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x583h"]
+_data = {
+"Death": SubResource("Animation_iedws"),
+"Label": SubResource("Animation_oncad"),
+"Reset": SubResource("Animation_gnv6o"),
+"ResetHealthBar": SubResource("Animation_xbe61")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3qip8"]
+animation = &"Label"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jilsb"]
+animation = &"Death"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_a8bkg"]
+filter_enabled = true
+filters = ["PicklesLabel:modulate", "PicklesLabel:position", "PicklesLabel:scale"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ahi46"]
+graph_offset = Vector2(-238.966, 55.8849)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_jilsb")
+nodes/Animation/position = Vector2(-40, 160)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_3qip8")
+"nodes/Animation 2/position" = Vector2(-40, 380)
+nodes/Blend2/node = SubResource("AnimationNodeBlend2_a8bkg")
+nodes/Blend2/position = Vector2(180, 140)
+nodes/output/position = Vector2(420, 140)
+node_connections = [&"Blend2", 0, &"Animation", &"Blend2", 1, &"Animation 2", &"output", 0, &"Blend2"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vfysm"]
+animation = &"Label"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_si5di"]
+animation = &"Reset"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_824vs"]
+animation = &"ResetHealthBar"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7mgi2"]
+animation = &"ResetHealthBar"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1c4mg"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t460b"]
+advance_mode = 2
+advance_condition = &"isDead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7lg41"]
+advance_mode = 2
+advance_condition = &"isAlive"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u62w6"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ptqjp"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vnqux"]
+advance_mode = 2
+advance_condition = &"isDead"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_vb0jo"]
+states/BlendTree/node = SubResource("AnimationNodeBlendTree_ahi46")
+states/BlendTree/position = Vector2(440, 91)
+states/End/position = Vector2(795, 172)
+states/Label/node = SubResource("AnimationNodeAnimation_vfysm")
+states/Label/position = Vector2(440, 158)
+states/Reset/node = SubResource("AnimationNodeAnimation_si5di")
+states/Reset/position = Vector2(619, 91)
+states/ResetHealthBar/node = SubResource("AnimationNodeAnimation_7mgi2")
+states/ResetHealthBar/position = Vector2(268, 91)
+"states/ResetHealthBar 2/node" = SubResource("AnimationNodeAnimation_824vs")
+"states/ResetHealthBar 2/position" = Vector2(619, 158)
+states/Start/position = Vector2(128, 91)
+transitions = ["Start", "ResetHealthBar", SubResource("AnimationNodeStateMachineTransition_1c4mg"), "ResetHealthBar", "BlendTree", SubResource("AnimationNodeStateMachineTransition_t460b"), "ResetHealthBar", "Label", SubResource("AnimationNodeStateMachineTransition_7lg41"), "BlendTree", "Reset", SubResource("AnimationNodeStateMachineTransition_u62w6"), "Label", "ResetHealthBar 2", SubResource("AnimationNodeStateMachineTransition_ptqjp"), "ResetHealthBar 2", "BlendTree", SubResource("AnimationNodeStateMachineTransition_vnqux")]
+graph_offset = Vector2(20, 5)
+
+>>>>>>> Stashed changes
 [node name="NormalPoglin" type="CharacterBody2D"]
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_o5di4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+<<<<<<< Updated upstream
 sprite_frames = ExtResource("1_2xsnc")
 frame_progress = 0.642227
+=======
+sprite_frames = ExtResource("2_psokb")
+frame_progress = 0.971805
+>>>>>>> Stashed changes
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wf7n3")
@@ -25,5 +220,62 @@ shape = SubResource("CircleShape2D_wf7n3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_msogr")
 
+<<<<<<< Updated upstream
+=======
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = -275.0
+offset_right = 150.0
+offset_bottom = -225.0
+grow_horizontal = 2
+value = 100.0
+rounded = true
+nine_patch_stretch = true
+stretch_margin_left = 20
+stretch_margin_top = 20
+stretch_margin_right = 20
+stretch_margin_bottom = 20
+texture_under = ExtResource("3_2uegw")
+texture_progress = ExtResource("3_2uegw")
+tint_under = Color(0.807843, 0.392157, 0.309804, 1)
+tint_progress = Color(0.46215, 0.65, 0.3185, 1)
+
+[node name="PicklesLabel" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_right = 169.999
+offset_bottom = 100.0
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(85, 50)
+theme = ExtResource("4_ku4o6")
+theme_override_font_sizes/font_size = 75
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -17.5
+bus = &"SoundEffects"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_x583h")
+}
+autoplay = "ResetHealthBar"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_x583h")
+}
+tree_root = SubResource("AnimationNodeStateMachine_vb0jo")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/isAlive = false
+parameters/conditions/isDead = false
+parameters/BlendTree/Blend2/blend_amount = 1.0
+
+[connection signal="mouse_entered" from="." to="." method="OnHover" binds= [true]]
+[connection signal="mouse_exited" from="." to="." method="OnHover" binds= [false]]
+>>>>>>> Stashed changes
 [connection signal="area_entered" from="Area2D" to="." method="OnPickleContact"]
 [connection signal="body_entered" from="Area2D" to="." method="OnPickleContact"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcxn1glwhnaxw"]
+
+[ext_resource type="PackedScene" uid="uid://c0kek8l32ecua" path="res://Assets/Scenes/Poglins/NormalPoglin.tscn" id="1_rf0ah"]
+[ext_resource type="SpriteFrames" uid="uid://cypx6f3scy7ao" path="res://Assets/Resources/Poglins/PinkPoglin.tres" id="2_nvsey"]
+
+[node name="PinkPoglin" instance=ExtResource("1_rf0ah")]
+minSpeed = 1.5
+maxSpeed = 3.75
+minSteal = 2.25
+maxSteal = 3.75
+maxHealth = 6.0
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = ExtResource("2_nvsey")

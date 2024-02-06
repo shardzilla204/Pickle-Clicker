@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm5tx33yhns3c"]
+
+[ext_resource type="Texture2D" uid="uid://km3vo781gia0" path="res://Assets/Images/Pickle.png" id="1_xdtwo"]
+
+[node name="JarPickle" type="RigidBody2D"]
+show_behind_parent = true
+mass = 0.01
+
+[node name="Pickle" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_xdtwo")
+region_rect = Rect2(88, 333, 823, 335)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.25, 0.25)
+polygon = PackedVector2Array(-165, -85, -295, -150, -345, -165, -375, -160, -400, -140, -415, -95, -400, -50, -330, 25, -295, 54.9999, -250, 79.9999, -90, 150, 10, 160, 110, 155, 225, 125, 330, 79.9999, 375, 30, 405, -15, 410, -50, 405, -100, 390, -125, 365, -150, 330, -155, 285, -140, 225, -105, 150, -75, 35, -55, -80, -60)

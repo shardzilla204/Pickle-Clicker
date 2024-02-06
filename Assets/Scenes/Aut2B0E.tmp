@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2qtlixhc1hn"]
+
+[ext_resource type="Texture2D" uid="uid://chu26m14upto" path="res://Assets/Images/RoundedSquare.png" id="1_5msmk"]
+[ext_resource type="Theme" uid="uid://b5hdhpyhi751h" path="res://Assets/Resources/Default.tres" id="3_8itkg"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_4rube"]
+script/source = "using Godot;
+using System;
+
+public partial class AutoBuyable : NinePatchRect
+{
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+	}
+}
+"
+
+[node name="AutoBuyable" type="NinePatchRect"]
+self_modulate = Color(0.390625, 0.304688, 0.1875, 1)
+custom_minimum_size = Vector2(0, 145)
+texture = ExtResource("1_5msmk")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+script = SubResource("CSharpScript_4rube")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_8itkg")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1

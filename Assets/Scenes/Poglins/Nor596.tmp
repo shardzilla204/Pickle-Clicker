@@ -1,0 +1,95 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0kek8l32ecua"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Poglin/NormalPoglin.cs" id="1_o5di4"]
+[ext_resource type="SpriteFrames" uid="uid://dq82d1unwxpmg" path="res://Assets/Resources/Poglins/NormalPoglin.tres" id="2_psokb"]
+[ext_resource type="Texture2D" uid="uid://chu26m14upto" path="res://Assets/Images/RoundedSquare.png" id="3_2uegw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wf7n3"]
+radius = 225.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_msogr"]
+radius = 225.0
+
+[sub_resource type="Animation" id="Animation_iedws"]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5708]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HealthBar:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x583h"]
+_data = {
+"Death": SubResource("Animation_iedws")
+}
+
+[node name="NormalPoglin" type="CharacterBody2D"]
+top_level = true
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_o5di4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_psokb")
+frame_progress = 0.971805
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wf7n3")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_msogr")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = -275.0
+offset_right = 150.0
+offset_bottom = -225.0
+grow_horizontal = 2
+value = 100.0
+rounded = true
+fill_mode = 1
+nine_patch_stretch = true
+stretch_margin_left = 20
+stretch_margin_top = 20
+stretch_margin_right = 20
+stretch_margin_bottom = 20
+texture_under = ExtResource("3_2uegw")
+texture_progress = ExtResource("3_2uegw")
+tint_under = Color(0.807843, 0.392157, 0.309804, 1)
+tint_progress = Color(0.46215, 0.65, 0.3185, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -17.5
+bus = &"SoundEffects"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_x583h")
+}
+
+[connection signal="area_entered" from="Area2D" to="." method="OnPickleContact"]
+[connection signal="mouse_entered" from="Area2D" to="." method="OnHover" binds= [true]]
+[connection signal="mouse_exited" from="Area2D" to="." method="OnHover" binds= [false]]
