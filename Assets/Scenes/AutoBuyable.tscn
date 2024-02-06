@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c2qtlixhc1hn"]
 
 [ext_resource type="Texture2D" uid="uid://chu26m14upto" path="res://Assets/Images/RoundedSquare.png" id="1_5msmk"]
-[ext_resource type="Theme" uid="uid://b5hdhpyhi751h" path="res://Assets/Resources/Default.tres" id="3_8itkg"]
+[ext_resource type="Theme" uid="uid://cxtdj06fe177g" path="res://Assets/Themes/Default.tres" id="3_8itkg"]
 
 [sub_resource type="CSharpScript" id="CSharpScript_4rube"]
 script/source = "using Godot;

@@ -1,0 +1,208 @@
+[gd_scene load_steps=9 format=3 uid="uid://bsypoqj4r8u8k"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Customize.cs" id="1_0ngen"]
+[ext_resource type="Texture2D" uid="uid://cajxdo3d8egbh" path="res://Assets/Images/PickleExchangeBackground.png" id="2_66pjo"]
+[ext_resource type="Texture2D" uid="uid://chu26m14upto" path="res://Assets/Images/RoundedSquare.png" id="3_dgumr"]
+[ext_resource type="Theme" uid="uid://cxtdj06fe177g" path="res://Assets/Themes/Default.tres" id="4_mt3q8"]
+[ext_resource type="Script" path="res://Assets/Scripts/Accessory/AccessoryInventory.cs" id="5_fc5y7"]
+[ext_resource type="PackedScene" uid="uid://wqnk816arwrw" path="res://Assets/Scenes/Accessory.tscn" id="6_xjjvu"]
+[ext_resource type="Texture2D" uid="uid://km3vo781gia0" path="res://Assets/Images/Pickle.png" id="7_44lyf"]
+[ext_resource type="PackedScene" uid="uid://bmwiw12oy3qco" path="res://Assets/Scenes/AccessorySlot.tscn" id="8_04cx1"]
+
+[node name="CustomizeCanvas" type="CanvasLayer"]
+script = ExtResource("1_0ngen")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_66pjo")
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/HFlowContainer"]
+self_modulate = Color(0.390625, 0.304688, 0.1875, 1)
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_dgumr")
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 25
+
+[node name="ExitCustomize" type="NinePatchRect" parent="MarginContainer/VBoxContainer/HFlowContainer"]
+self_modulate = Color(0.390625, 0.304688, 0.1875, 1)
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("3_dgumr")
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 25
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HFlowContainer/ExitCustomize"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_mt3q8")
+theme_override_font_sizes/font_size = 25
+text = "Back"
+flat = true
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="AccessoriesContainer" type="NinePatchRect" parent="MarginContainer/VBoxContainer/HSplitContainer"]
+self_modulate = Color(0.390625, 0.304688, 0.1875, 1)
+clip_contents = true
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+texture = ExtResource("3_dgumr")
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 25
+script = ExtResource("5_fc5y7")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HSplitContainer/AccessoriesContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/HSplitContainer/AccessoriesContainer/MarginContainer"]
+clip_contents = false
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="FlowContainer" type="FlowContainer" parent="MarginContainer/VBoxContainer/HSplitContainer/AccessoriesContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+
+[node name="Bandana" parent="MarginContainer/VBoxContainer/HSplitContainer/AccessoriesContainer/MarginContainer/ScrollContainer/FlowContainer" instance=ExtResource("6_xjjvu")]
+layout_mode = 2
+
+[node name="Revolver" parent="MarginContainer/VBoxContainer/HSplitContainer/AccessoriesContainer/MarginContainer/ScrollContainer/FlowContainer" instance=ExtResource("6_xjjvu")]
+layout_mode = 2
+
+[node name="WizardHat" parent="MarginContainer/VBoxContainer/HSplitContainer/AccessoriesContainer/MarginContainer/ScrollContainer/FlowContainer" instance=ExtResource("6_xjjvu")]
+layout_mode = 2
+
+[node name="PreviewSection" type="NinePatchRect" parent="MarginContainer/VBoxContainer/HSplitContainer"]
+self_modulate = Color(0.390625, 0.304688, 0.1875, 1)
+custom_minimum_size = Vector2(850, 0)
+layout_mode = 2
+texture = ExtResource("3_dgumr")
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 25
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HSplitContainer/PreviewSection"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HSplitContainer/PreviewSection/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="PreviewPanel" type="NinePatchRect" parent="MarginContainer/VBoxContainer/HSplitContainer/PreviewSection/MarginContainer/VBoxContainer"]
+self_modulate = Color(0.3, 0.235, 0.144, 1)
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("3_dgumr")
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 25
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/HSplitContainer/PreviewSection/MarginContainer/VBoxContainer/PreviewPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PicklePreview" type="TextureRect" parent="MarginContainer/VBoxContainer/HSplitContainer/PreviewSection/MarginContainer/VBoxContainer/PreviewPanel/CenterContainer"]
+custom_minimum_size = Vector2(360, 360)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("7_44lyf")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HSplitContainer/PreviewSection/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 45
+alignment = 1
+
+[node name="AccessorySlot" parent="MarginContainer/VBoxContainer/HSplitContainer/PreviewSection/MarginContainer/VBoxContainer/HBoxContainer" groups=["AccessorySlots"] instance=ExtResource("8_04cx1")]
+layout_mode = 2
+
+[node name="AccessorySlot2" parent="MarginContainer/VBoxContainer/HSplitContainer/PreviewSection/MarginContainer/VBoxContainer/HBoxContainer" groups=["AccessorySlots"] instance=ExtResource("8_04cx1")]
+layout_mode = 2
+
+[node name="AccessorySlot3" parent="MarginContainer/VBoxContainer/HSplitContainer/PreviewSection/MarginContainer/VBoxContainer/HBoxContainer" groups=["AccessorySlots"] instance=ExtResource("8_04cx1")]
+layout_mode = 2
+accessoryType = 1
+
+[node name="AccessorySlot4" parent="MarginContainer/VBoxContainer/HSplitContainer/PreviewSection/MarginContainer/VBoxContainer/HBoxContainer" groups=["AccessorySlots"] instance=ExtResource("8_04cx1")]
+layout_mode = 2
+accessoryType = 2
+
+[node name="AccessorySlot5" parent="MarginContainer/VBoxContainer/HSplitContainer/PreviewSection/MarginContainer/VBoxContainer/HBoxContainer" groups=["AccessorySlots"] instance=ExtResource("8_04cx1")]
+layout_mode = 2
+accessoryType = 2
+
+[node name="AccessorySlot6" parent="MarginContainer/VBoxContainer/HSplitContainer/PreviewSection/MarginContainer/VBoxContainer/HBoxContainer" groups=["AccessorySlots"] instance=ExtResource("8_04cx1")]
+layout_mode = 2
+accessoryType = 3
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HFlowContainer/ExitCustomize/Button" to="." method="ToggleCustomizeCanvas"]

@@ -5,9 +5,6 @@ using System.Collections.Generic;
 public partial class SettingsCanvas : CanvasLayer
 {
 	Vector2I initialScreenPosition;
-<<<<<<< Updated upstream:Assets/Scripts/Settings.cs
-	// Called when the node enters the scene tree for the first time.
-=======
 
 	[Export] public OptionButton windowOptions;
 	[Export] public OptionButton resolutionOptions;
@@ -17,18 +14,10 @@ public partial class SettingsCanvas : CanvasLayer
 
 	private CanvasManager canvasManager;
 
->>>>>>> Stashed changes:Assets/Scripts/Canvas/SettingsCanvas.cs
 	public override void _Ready()
 	{
 		DisplayServer.WindowSetMinSize(new Vector2I(720, 480));
-<<<<<<< Updated upstream:Assets/Scripts/Settings.cs
-		DisplayServer.WindowSetSize(new Vector2I(1280, 720));
-		SpinBox framerateOption = GetNode<SpinBox>("./VBoxContainer/FramerateOptions");
-		framerateOption.GetLineEdit().ContextMenuEnabled = false;
-=======
->>>>>>> Stashed changes:Assets/Scripts/Canvas/SettingsCanvas.cs
 		initialScreenPosition = DisplayServer.WindowGetPosition();
-		Console.WriteLine(initialScreenPosition);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -51,14 +40,11 @@ public partial class SettingsCanvas : CanvasLayer
 
 	public void SetWindowOption(int index)
 	{
-<<<<<<< Updated upstream:Assets/Scripts/Settings.cs
 		CheckButton borderlessOption = GetNode<CheckButton>("./VBoxContainer/BorderlessOption");
 		OptionButton resolutionOptions = GetNode<OptionButton>("./VBoxContainer/ResolutionOptions");
 		resolutionOptions.Disabled = false;
 		borderlessOption.Disabled = false;
 		DisplayServer.MouseSetMode(DisplayServer.MouseMode.Visible);
-=======
->>>>>>> Stashed changes:Assets/Scripts/Canvas/SettingsCanvas.cs
 		switch(index)
 		{
 			case 0: 
@@ -115,7 +101,6 @@ public partial class SettingsCanvas : CanvasLayer
 		}
 	}
 
-<<<<<<< Updated upstream:Assets/Scripts/Settings.cs
 	public void SetCustomResolutionOption()
 	{
 		OptionButton resolutionOptions = GetNode<OptionButton>("./VBoxContainer/ResolutionOptions");
@@ -131,21 +116,6 @@ public partial class SettingsCanvas : CanvasLayer
 			resolutionOptions.Select(4);
 		}
 	}
-=======
-	// public void SetCustomResolutionOption()
-	// {
-	// 	Vector2I currentScreenSize = DisplayServer.WindowGetSize();
-	// 	if (resolutionOptions.ItemCount >= 5)
-	// 	{
-	// 		resolutionOptions.SetItemText(4, $"Custom ({currentScreenSize[0]}x{currentScreenSize[1]})");
-	// 	}
-	// 	else 
-	// 	{
-	// 		resolutionOptions.AddItem($"Custom ({currentScreenSize[0]}x{currentScreenSize[1]})");
-	// 		resolutionOptions.Select(4);
-	// 	}
-	// }
->>>>>>> Stashed changes:Assets/Scripts/Canvas/SettingsCanvas.cs
 
 	public void SetResolutionOption(int index)
 	{
@@ -214,27 +184,11 @@ public partial class SettingsCanvas : CanvasLayer
 				break;
 			}
 		}
-<<<<<<< Updated upstream:Assets/Scripts/Settings.cs
-		framerateOption.Editable = !toggled;
-		framerateOption.SelectAllOnFocus = !toggled;
-		RemoveFramerateFocus();
-=======
 		framerateOptions.Disabled = !toggled;
->>>>>>> Stashed changes:Assets/Scripts/Canvas/SettingsCanvas.cs
 	}
 
 	public void SetFramerate(int index)
 	{
-<<<<<<< Updated upstream:Assets/Scripts/Settings.cs
-		Engine.MaxFps = framerate.ToInt();
-		RemoveFramerateFocus();
-	}
-
-	public void RemoveFramerateFocus()
-	{
-		SpinBox framerateOption = GetNode<SpinBox>("./VBoxContainer/FramerateOptions");
-		framerateOption.GetLineEdit().ReleaseFocus();
-=======
 		switch (index)
 		{
 			case 0:
@@ -269,6 +223,5 @@ public partial class SettingsCanvas : CanvasLayer
 	{
 		int busIndex = AudioServer.GetBusIndex($"{busName}");
 		AudioServer.SetBusVolumeDb(busIndex, value);
->>>>>>> Stashed changes:Assets/Scripts/Canvas/SettingsCanvas.cs
 	}
 }

@@ -17,6 +17,7 @@ ResourceScriptDirectories=["res://"]
 [application]
 
 config/name="Pickle Clicker"
+config/version="0.2.0"
 run/main_scene="res://Assets/Scenes/Canvases/PickleClicker.tscn"
 config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 run/max_fps=60

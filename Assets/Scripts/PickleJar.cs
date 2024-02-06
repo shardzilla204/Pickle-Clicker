@@ -15,6 +15,7 @@ public partial class PickleJar : Node2D
         liquid = GetNode<Sprite2D>("./Mask/Liquid");
         clicksToOpen = randomNumber.RandiRange(3, 8);
         pickle = GetNode<Pickle>("../Pickle");
+        SetLifetime();
     }
     public override void _Process(double delta)
     {

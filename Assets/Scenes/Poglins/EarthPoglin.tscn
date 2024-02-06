@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbxhtr1ioi4b"]
+[gd_scene load_steps=4 format=3 uid="uid://c7h4o670mop30"]
 
 [ext_resource type="PackedScene" uid="uid://c0kek8l32ecua" path="res://Assets/Scenes/Poglins/NormalPoglin.tscn" id="1_ku27v"]
 [ext_resource type="SpriteFrames" uid="uid://b78pptlh08vje" path="res://Assets/Resources/Poglins/EarthPoglin.tres" id="2_e6qhx"]

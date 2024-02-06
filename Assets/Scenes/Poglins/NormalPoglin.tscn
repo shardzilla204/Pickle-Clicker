@@ -1,17 +1,9 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=5 format=3 uid="uid://c0kek8l32ecua"]
-=======
 [gd_scene load_steps=27 format=3 uid="uid://c0kek8l32ecua"]
->>>>>>> Stashed changes
 
-[ext_resource type="SpriteFrames" uid="uid://dq82d1unwxpmg" path="res://NormalPoglin.tres" id="1_2xsnc"]
 [ext_resource type="Script" path="res://Assets/Scripts/Poglin/NormalPoglin.cs" id="1_o5di4"]
-<<<<<<< Updated upstream
-=======
 [ext_resource type="SpriteFrames" uid="uid://dq82d1unwxpmg" path="res://Assets/Resources/Poglins/NormalPoglin.tres" id="2_psokb"]
 [ext_resource type="Texture2D" uid="uid://chu26m14upto" path="res://Assets/Images/RoundedSquare.png" id="3_2uegw"]
-[ext_resource type="Theme" uid="uid://b5hdhpyhi751h" path="res://Assets/Resources/Default.tres" id="4_ku4o6"]
->>>>>>> Stashed changes
+[ext_resource type="Theme" uid="uid://cxtdj06fe177g" path="res://Assets/Themes/Default.tres" id="4_ku4o6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wf7n3"]
 radius = 225.0
@@ -19,8 +11,6 @@ radius = 225.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_msogr"]
 radius = 225.0
 
-<<<<<<< Updated upstream
-=======
 [sub_resource type="Animation" id="Animation_iedws"]
 resource_name = "Death"
 tracks/0/type = "value"
@@ -198,19 +188,13 @@ states/Start/position = Vector2(128, 91)
 transitions = ["Start", "ResetHealthBar", SubResource("AnimationNodeStateMachineTransition_1c4mg"), "ResetHealthBar", "BlendTree", SubResource("AnimationNodeStateMachineTransition_t460b"), "ResetHealthBar", "Label", SubResource("AnimationNodeStateMachineTransition_7lg41"), "BlendTree", "Reset", SubResource("AnimationNodeStateMachineTransition_u62w6"), "Label", "ResetHealthBar 2", SubResource("AnimationNodeStateMachineTransition_ptqjp"), "ResetHealthBar 2", "BlendTree", SubResource("AnimationNodeStateMachineTransition_vnqux")]
 graph_offset = Vector2(20, 5)
 
->>>>>>> Stashed changes
 [node name="NormalPoglin" type="CharacterBody2D"]
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_o5di4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-<<<<<<< Updated upstream
-sprite_frames = ExtResource("1_2xsnc")
-frame_progress = 0.642227
-=======
 sprite_frames = ExtResource("2_psokb")
 frame_progress = 0.971805
->>>>>>> Stashed changes
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wf7n3")
@@ -220,8 +204,6 @@ shape = SubResource("CircleShape2D_wf7n3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_msogr")
 
-<<<<<<< Updated upstream
-=======
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
@@ -276,6 +258,5 @@ parameters/BlendTree/Blend2/blend_amount = 1.0
 
 [connection signal="mouse_entered" from="." to="." method="OnHover" binds= [true]]
 [connection signal="mouse_exited" from="." to="." method="OnHover" binds= [false]]
->>>>>>> Stashed changes
 [connection signal="area_entered" from="Area2D" to="." method="OnPickleContact"]
 [connection signal="body_entered" from="Area2D" to="." method="OnPickleContact"]

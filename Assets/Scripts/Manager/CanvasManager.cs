@@ -22,7 +22,6 @@ public partial class CanvasManager : VBoxContainer
 	{
 		shopCanvasScene = GD.Load<PackedScene>("res://Assets/Scenes/Canvases/ShopCanvas.tscn");
 		settingsCanvasScene = GD.Load<PackedScene>("res://Assets/Scenes/Canvases/SettingsCanvas.tscn");
-		// settingsCanvasScene = GD.Load<PackedScene>("res://Assets/Scenes/Canvases/A.tscn");
 		confirmCanvasScene = GD.Load<PackedScene>("res://Assets/Scenes/Canvases/ConfirmCanvas.tscn");
 		root = GetNode<Node>("/root");
 	}

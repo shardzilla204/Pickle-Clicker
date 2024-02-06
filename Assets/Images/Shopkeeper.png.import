@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://tcovmjg6ros2"
-path="res://.godot/imported/Shopkeeper.png-7e4f061f35c1750472ec45f68c9a6345.ctex"
+path="res://.godot/imported/Shopkeeper.png-29afbf58023f723d4ee9627c4a6baa6f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Poglin/Shopkeeper.png"
-dest_files=["res://.godot/imported/Shopkeeper.png-7e4f061f35c1750472ec45f68c9a6345.ctex"]
+source_file="res://Assets/Images/Shopkeeper.png"
+dest_files=["res://.godot/imported/Shopkeeper.png-29afbf58023f723d4ee9627c4a6baa6f.ctex"]
 
 [params]
 

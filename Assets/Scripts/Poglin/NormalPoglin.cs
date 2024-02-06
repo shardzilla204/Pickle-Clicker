@@ -1,15 +1,8 @@
+using System;
 using Godot;
 
 public partial class NormalPoglin : CharacterBody2D
 {
-<<<<<<< Updated upstream
-	[Export] public float minSpeed = 10;
-	[Export] public float maxSpeed = 20;
-	[Export] public float minSteal = 1.5f;
-	[Export] public float maxSteal = 2.5f;
-	public bool stolePickles;
-	public PickleButton pickleButton;
-=======
 	public RandomNumberGenerator randomNumber = new RandomNumberGenerator();
 	public Pickle pickle;
 	public TextureProgressBar healthBar;
@@ -33,15 +26,11 @@ public partial class NormalPoglin : CharacterBody2D
 	public bool hasStolePickles = false;
 	public bool isHovering = false;
 	public bool isDead = false;
->>>>>>> Stashed changes
 
 	public float knockbackAmount = 0.075f;
 
     public override void _Ready()
     {
-<<<<<<< Updated upstream
-        pickleButton = GetNode<PickleButton>("root/MainCanvas");
-=======
 		spawnPosition = Position;
 
 		sprite = GetNode<AnimatedSprite2D>("./AnimatedSprite2D");
@@ -51,26 +40,25 @@ public partial class NormalPoglin : CharacterBody2D
 
 		healthBar = GetNode<TextureProgressBar>("./HealthBar");
 		AssignAttributes();
->>>>>>> Stashed changes
     }
 
     public override void _Process(double delta)
 	{
-		Position = Position.MoveToward(pickleButton.Position, maxSpeed);
+		Position = Position.MoveToward(pickle.Position, maxSpeed);
 
-		if (!stolePickles) return;
+		if (!hasStolePickles) return;
 
-		Position = Position.MoveToward(pickleButton.Position, minSpeed);
+		Position = Position.MoveToward(pickle.Position, minSpeed);
 	}
 
-<<<<<<< Updated upstream
 	public void OnPickleContact(Node2D area)
 	{
-		if (area is PickleButton)
+		if (area is Pickle)
 		{
-			stolePickles = true;
+			hasStolePickles = true;
 		}
-=======
+	}
+
 	public void AssignAttributes()
 	{
 		float minSize = 0.125f;
@@ -265,6 +253,5 @@ public partial class NormalPoglin : CharacterBody2D
 		}
 		
 		PlayAnimation("Stole");
->>>>>>> Stashed changes
 	}
 }

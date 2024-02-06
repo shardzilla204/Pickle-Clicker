@@ -1,0 +1,89 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0qmnrbnmis1k"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Confirm.cs" id="1_cr1ml"]
+[ext_resource type="Texture2D" uid="uid://bj6c4gsupnue7" path="res://Assets/Images/RadialGradient.png" id="2_eo62g"]
+[ext_resource type="Theme" uid="uid://cxtdj06fe177g" path="res://Assets/Themes/Default.tres" id="3_ovhld"]
+
+[node name="ConfirmCanvas" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_cr1ml")
+
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="Background" type="TextureRect" parent="UserInterface"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_eo62g")
+metadata/_edit_lock_ = true
+
+[node name="ConfirmText" type="Label" parent="UserInterface"]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 360.0
+theme = ExtResource("3_ovhld")
+theme_override_font_sizes/font_size = 75
+text = "Are You Sure?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WarningText" type="Label" parent="UserInterface"]
+layout_mode = 0
+offset_top = 260.0
+offset_right = 1280.0
+offset_bottom = 360.0
+theme = ExtResource("3_ovhld")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ConfirmButtons" type="Control" parent="UserInterface"]
+layout_mode = 1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="YesButton" type="Button" parent="UserInterface/ConfirmButtons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.5
+anchor_right = 0.25
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -25.0
+offset_right = 87.0
+offset_bottom = 25.0
+theme = ExtResource("3_ovhld")
+theme_override_font_sizes/font_size = 30
+text = "Yes"
+
+[node name="NoButton" type="Button" parent="UserInterface/ConfirmButtons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.751
+anchor_top = 0.5
+anchor_right = 0.751
+anchor_bottom = 0.5
+offset_left = -87.28
+offset_top = -25.0
+offset_right = 87.72
+offset_bottom = 25.0
+theme = ExtResource("3_ovhld")
+theme_override_font_sizes/font_size = 30
+text = "No"
+
+[connection signal="pressed" from="UserInterface/ConfirmButtons/YesButton" to="." method="Accept"]
+[connection signal="pressed" from="UserInterface/ConfirmButtons/NoButton" to="." method="Decline"]

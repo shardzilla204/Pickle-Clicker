@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public enum Mode
+public enum Option
 {
 	SAVE, 
 	LOAD, 
@@ -11,7 +11,7 @@ public enum Mode
 
 public partial class ConfirmCanvas : CanvasLayer
 {
-	Mode currentMode;
+	Option currentMode;
 	CanvasLayer previousCanvas;
 	private CanvasManager canvasManager;
 
@@ -25,7 +25,7 @@ public partial class ConfirmCanvas : CanvasLayer
 		if (warning == "") return;
 
 		previousCanvas = canvas;
-		currentMode = Enum.Parse<Mode>(mode, true);
+		currentMode = Enum.Parse<Option>(mode, true);
 
 		Label warningText = GetNode<Label>($"/root/ConfirmCanvas/MarginContainer/VBoxContainer/WarningText");
 		warningText.Text = warning;
@@ -35,28 +35,28 @@ public partial class ConfirmCanvas : CanvasLayer
 	{
 		switch(currentMode)
 		{
-			case Mode.SAVE:
+			case Option.SAVE:
 			{
 				break;
 			}
 
-			case Mode.LOAD:
+			case Option.LOAD:
 			{
 				break;
 			}
 
-			case Mode.DELETE:
+			case Option.DELETE:
 			{
 				break;
 			}
 
-			case Mode.EXIT:
+			case Option.EXIT:
 			{
 				SettingsCanvas settingsCanvas = GetNode<SettingsCanvas>($"/root/SettingsCanvas");
-				settingsCanvas.CloseGame();
+				settingsCanvas.ExitGame();
 
-				SteamworksManager steamworksManager = GetNode<SteamworksManager>($"/root/SteamworksManager");
-				steamworksManager.CloseSteam();
+				SteamManager steamManager = GetNode<SteamManager>($"/root/SteamworksManager");
+				steamManager.ExitSteam();
 				break;
 			}
 		}
